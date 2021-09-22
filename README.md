@@ -1,0 +1,2 @@
+# project-anant
+aNANt is an initiative of Materials Theory and Simulations Group, Materials Research Centre, Indian Institute of Science Bangalore to develop and host an open-access online repository of functional materials. aNANt database shares the structures and electronic properties of computationally designed two-dimensional functional materials in a single platform. Currently, it hosts over 23,000 materials data.
