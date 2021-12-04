@@ -5,18 +5,23 @@ import Publications from "../components/home/Publications/Publications"
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+    <div className="min-h-screen py-2 bg-theme text-gray-50">
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="bg-theme">
+      <header>
+        <p>Navigation Bar goes here</p>
+      </header>
+
+
+      <main className="pt-20">
         <Publications />
       </main>
 
-      <footer className="w-full h-24">
-
+      <footer className="w-full h-24 text-center">
+        <p>Sample footer</p>
       </footer>
     </div>
   )

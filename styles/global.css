@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  display        : flex;
+  flex-direction : column;
+  justify-content: flex-start;
+}
+
 @layer utilities {
   .bg-theme {
     background-color: #163F65;
