@@ -3,9 +3,7 @@
 @tailwind utilities;
 
 @layer utilities {
-  @variants colors {
-    .theme {
-      background-color: "#163F65"
-    }
+  .bg-theme {
+    background-color: #163F65;
   }
 }
