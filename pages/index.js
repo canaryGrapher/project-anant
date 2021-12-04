@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className="min-h-screen py-2 bg-theme text-gray-50">
       <Head>
-        <title>Create Next App</title>
+        <title>Project Anant</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -21,10 +21,6 @@ export default function Home() {
         {/* <Publications /> */}
         <About />
       </main>
-
-      <footer className="w-full h-24 text-center">
-        <p>Sample footer</p>
-      </footer>
     </div>
   )
 }

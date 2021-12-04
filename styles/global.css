@@ -9,7 +9,9 @@ body {
 }
 
 @layer utilities {
-  .bg-theme {
-    background-color: #163F65;
+  @variants colors {
+    .theme {
+      background-color: #163F65
+    }
   }
 }
