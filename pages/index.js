@@ -1,7 +1,7 @@
 import Head from 'next/head'
 
 // importing components
-import Publications from "../components/home/Publications"
+import Publications from "../components/home/Publications/Publications"
 
 export default function Home() {
   return (
