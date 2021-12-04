@@ -8,7 +8,7 @@ const monthArray = ["January", "February", "March", "April", "May", "June", "Jul
 
 const Sidebar = () => {
     return (
-        <div className="flex flex-row px-20 pt-10">
+        <div className="flex flex-row px-20 pt-16">
             <div className="w-1/2">
                 <div className="w-3/4 ml-auto">
                     <Image src="https://ik.imagekit.io/iiscvsmanipal/anantLogo_jDpZAhBDXG9.png?updatedAt=1638595324436" alt="Anant Logo" width={700} height={175} layout="responsive" />

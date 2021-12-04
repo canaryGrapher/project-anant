@@ -13,7 +13,6 @@ export default function Home() {
       </Head>
 
       <header>
-        <p>Navigation Bar goes here</p>
       </header>
 
 
