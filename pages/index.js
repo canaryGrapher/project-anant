@@ -1,6 +1,7 @@
 import Head from 'next/head'
 
 // importing components
+import About from "../components/home/About/About"
 import Publications from "../components/home/Publications/Publications"
 
 export default function Home() {
@@ -17,7 +18,8 @@ export default function Home() {
 
 
       <main className="pt-20">
-        <Publications />
+        {/* <Publications /> */}
+        <About />
       </main>
 
       <footer className="w-full h-24 text-center">
