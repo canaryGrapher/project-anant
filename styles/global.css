@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  @variants colors {
+    .theme {
+      background-color: "#163F65"
+    }
+  }
+}
