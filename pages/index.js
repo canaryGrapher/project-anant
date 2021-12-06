@@ -1,7 +1,9 @@
 import Head from 'next/head'
 
 // importing components
-import Landing from '../components/home/Landing/landing'
+import About from "../components/home/About/About"
+import Landing from "../components/home/Landing/Landing"
+import Publications from "../components/home/Publications/Publications"
 
 export default function Home() {
   return (
@@ -11,8 +13,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <Landing />
+      <header>
+      </header>
+
+
+      <main className="pt-20">
+        {/* <Publications /> */}
+        {/* <Landing /> */}
+        <About />
       </main>
     </div>
   )
