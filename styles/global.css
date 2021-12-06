@@ -6,12 +6,16 @@ body {
   display        : flex;
   flex-direction : column;
   justify-content: flex-start;
+  overflow-x: hidden;
 }
 
 @layer utilities {
   @variants colors {
     .theme {
-      background-color: #163F65
+      background-color: #163F65;
+    }
+    .theme-text {
+      color: #163F65;
     }
   }
 }

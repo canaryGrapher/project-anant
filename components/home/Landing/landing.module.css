@@ -1,0 +1,14 @@
+.landing {
+    max-height: 100vh;
+    height: 100vh;
+    max-width: 100vw;
+}
+
+.background_image {
+    background-image: url("https://ik.imagekit.io/iiscvsmanipal/blueBackground_mQlYSzSHG.png?updatedAt=1638600692252");
+    background-position: fixed;
+    width: 100%;
+    background-size: cover;
+    background-position: right;
+    background-repeat: no-repeat;
+  }

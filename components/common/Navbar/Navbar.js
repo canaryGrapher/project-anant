@@ -7,7 +7,7 @@ export default function NavBar () {
     const [isActiveIndex, setIsActiveIndex] = useState(null)
 
     return (
-        <navbar className="flex h-16 fixed top-0 w-screen items-center">
+        <navbar className="flex h-16 fixed top-0 w-screen items-center z-20">
             <div className="md:w-1/4 w-full h-full md:p-5 py-5">
                 <Image width={200} height={40} alt="Anant Logo" src="https://ik.imagekit.io/iiscvsmanipal/anantLogo_jDpZAhBDXG9.png?updatedAt=1638595324436"/>
             </div>
@@ -34,7 +34,7 @@ export default function NavBar () {
                         </Link>
                     </div>
                 </div>
-                <div className="md:w-40 w-24 py-5 bg-theme flex justify-center items-center">
+                <div className="md:w-40 w-24 py-5 theme flex justify-center items-center">
                     <Image className="cursor-pointer" height={35} width={30} alt="Account" src="https://ik.imagekit.io/iiscvsmanipal/account_vmJJKFcge.png?updatedAt=1638595344875"/>
                 </div>
             </div>
