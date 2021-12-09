@@ -26,13 +26,8 @@ const NavBar = () => {
                         ))
                     }
                 </div>
-<<<<<<< HEAD
-                <div className="md:w-40 w-24 py-5 theme flex justify-center items-center">
-                    <Image className="cursor-pointer" height={35} width={30} alt="Account" src="https://ik.imagekit.io/iiscvsmanipal/account_vmJJKFcge.png?updatedAt=1638595344875"/>
-=======
                 <div className="md:w-40 w-24 py-5 bg-theme flex justify-center items-center">
                     <Image className="cursor-pointer" height={35} width={30} alt="Account" src="https://ik.imagekit.io/iiscvsmanipal/account_vmJJKFcge.png?updatedAt=1638595344875" />
->>>>>>> d01b90f3ef520e1f882303c5f439d04f50bfc5dd
                 </div>
             </div>
         </navbar>

@@ -2,8 +2,9 @@ import Head from 'next/head'
 
 // importing components
 import About from "../components/home/About/About"
-import Landing from "../components/home/Landing/Landing"
+import Landing from "./../components/home/Landing/landing"
 import Publications from "../components/home/Publications/Publications"
+import Apps from "./../components/home/Apps/Apps"
 
 export default function Home() {
   return (
@@ -16,11 +17,11 @@ export default function Home() {
       <header>
       </header>
 
-
-      <main className="pt-20">
+      <main>
         {/* <Publications /> */}
         {/* <Landing /> */}
-        <About />
+        <Apps />
+        {/* <About /> */}
       </main>
     </div>
   )
