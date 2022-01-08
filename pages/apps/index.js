@@ -1,13 +1,13 @@
 import Head from 'next/head'
 
 // importing components
-import Landing from "./../components/home/Landing/landing"
+import Apps from "../../components/home/Apps/Apps"
 
-export default function Home() {
+export default function Publication() {
   return (
     <div className="min-h-screen bg-theme text-gray-50">
       <Head>
-        <title>Project Anant</title>
+        <title>Publications | Project Anant</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -15,7 +15,7 @@ export default function Home() {
       </header>
 
       <main>
-        <Landing />
+        <Apps />
       </main>
     </div>
   )

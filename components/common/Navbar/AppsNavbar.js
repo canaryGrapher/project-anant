@@ -3,22 +3,21 @@ import Link from "next/link"
 import Image from "next/image"
 
 const menuOptions = [
-    {name: "Apps", href: "/apps"}, 
-    {name: "Publications", href: "/publications"}, 
-    {name: "About", href: "/about"}, 
-    {name: "Contact", href: "/contact"}
+    {name: "About", href: "/apps/mxene"}, 
+    {name: "Upload", href: "/apps/mxene/upload"}, 
+    {name: "Mxene Search", href: "/apps/mxene/search"}
 ]
 
 const NavBar = () => {
-    const [isActiveIndex, setIsActiveIndex] = useState(null)
+    const [isActiveIndex, setIsActiveIndex] = useState(0)
 
     return (
         <navbar className="flex h-16 fixed top-0 w-screen items-center z-20 theme">
             <div className="md:w-1/4 w-full h-full md:p-2 py-5">
                 <Image width={200} height={40} alt="Anant Logo" src="https://ik.imagekit.io/iiscvsmanipal/anantLogo_jDpZAhBDXG9.png?updatedAt=1638595324436" />
             </div>
-            <div className="md:w-3/4 h-full w-screen flex justify-end">
-                <div className="w-full items-center bg-gray-100 justify-center md:grid hidden grid-cols-4 h-full">
+            <div className="md:w-2/4 h-full w-screen flex justify-end">
+                <div className="w-full items-center bg-gray-100 justify-center md:grid hidden grid-cols-3 h-full">
                     {
                         menuOptions.map((option, index) => (
                             <Link key={index} href={option.href} className="p-2 ">
