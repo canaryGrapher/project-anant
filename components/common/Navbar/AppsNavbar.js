@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link"
 import Image from "next/image"
+
+import Sidebar from "../Sidebar/Sidebar";
 
 const menuOptions = [
     {name: "About", href: "/apps/mxene"}, 
@@ -8,8 +10,34 @@ const menuOptions = [
     {name: "Mxene Search", href: "/apps/mxene/search"}
 ]
 
-const NavBar = () => {
-    const [isActiveIndex, setIsActiveIndex] = useState(0)
+const AppsNavBar = () => {
+    
+    const [isActiveIndex, setIsActiveIndex] = useState(null)
+    const [expanded, setExpanded] = useState(false);
+
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const ref = useRef()
+
+    useEffect(() => {
+        const checkIfClickedOutside = e => {
+            if (isMenuOpen && ref.current && !ref.current.contains(e.target)) {
+                setIsMenuOpen(false);
+                const sidebar = document.querySelector('.sidebar');
+                sidebar.classList.toggle('translate-x-full');
+            }
+        }
+        document.addEventListener("mousedown", checkIfClickedOutside)
+        return () => {
+            document.removeEventListener("mousedown", checkIfClickedOutside)
+        }
+    }, [isMenuOpen])
+    
+    const handleClick = () => {
+        setExpanded(true);
+        setIsMenuOpen(true);
+        const sidebar = document.querySelector('.sidebar');
+        sidebar.classList.toggle('translate-x-full');
+    }
 
     return (
         <navbar className="flex h-16 fixed top-0 w-screen items-center z-20 theme">
@@ -28,12 +56,15 @@ const NavBar = () => {
                         ))
                     }
                 </div>
-                <div className="md:w-40 w-24 py-5 bg-theme flex justify-center items-center">
+                <div className="md:w-40 w-24 py-5 bg-theme flex justify-center items-center" onClick={handleClick}>
                     <Image className="cursor-pointer" height={35} width={30} alt="Account" src="https://ik.imagekit.io/iiscvsmanipal/account_vmJJKFcge.png?updatedAt=1638595344875" />
+                </div>
+                <div className="sidebar h-screen w-96 absolute right-0 translate-x-full transform transition duration-700 ease-in-out" ref={ref}>
+                    <Sidebar/>
                 </div>
             </div>
         </navbar>
     );
 }
 
-export default NavBar;
+export default AppsNavBar;
