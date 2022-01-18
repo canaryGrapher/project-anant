@@ -23,8 +23,8 @@ const Sidebar = (props) => {
                     </div>
                 </div>
                 <div className='w-full text-right my-5 px-4 flex flex-col items-end'>
-                    <button className='text-3xl my-3 mr-4 focus:outline-none' onClick={handleModalClick}>Sign up</button>
-                    <button className='text-3xl my-3 mr-4 focus:outline-none' onClick={handleModalClick}>Sign in</button>
+                    <button className='text-3xl my-3 mr-4 focus:outline-none' onClick={handleModalClick}>Sign In</button>
+                    <button className='text-3xl my-3 mr-4 focus:outline-none' onClick={handleModalClick}>Sign Up</button>
                 </div>
             </div>
             <div className="text-center theme-text text-xl font-bold">

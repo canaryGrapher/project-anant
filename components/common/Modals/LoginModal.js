@@ -4,25 +4,24 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
 const LoginModal = (props) => {
-    
-    const SignUp = () => {
-        const signup = document.querySelector('.signup');
-        signup.style.backgroundColor = 'white';
-        signup.style.color = '#163F65';
-
-        const signin = document.querySelector('.signin');
-        signin.style.backgroundColor = '#163F65';
-        signin.style.color = 'white';
-    }
-
-    const SignIn = () => { 
-        const signup = document.querySelector('.signup');
-        signup.style.backgroundColor = '#163F65';
-        signup.style.color = 'white';
-
+    const SignIn = () => {
         const signin = document.querySelector('.signin');
         signin.style.backgroundColor = 'white';
         signin.style.color = '#163F65';
+
+        const signup = document.querySelector('.signup');
+        signup.style.backgroundColor = '#163F65';
+        signup.style.color = 'white';
+    }
+
+    const SignUp = () => { 
+        const signin = document.querySelector('.signin');
+        signin.style.backgroundColor = '#163F65';
+        signin.style.color = 'white';
+
+        const signup = document.querySelector('.signup');
+        signup.style.backgroundColor = 'white';
+        signup.style.color = '#163F65';
     }
 
     const closeModal = () => {
