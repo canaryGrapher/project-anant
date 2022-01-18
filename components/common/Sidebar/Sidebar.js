@@ -3,13 +3,13 @@ import React from 'react';
 import Image from "next/image"
 
 
-const Sidebar = () => {
+const Sidebar = (props) => {
 
     const handleModalClick = () => {
-        document.getElementById("login-modal").style.display = "flex"
+        props.setShowModal(true)
+        props.setIsAuthModal(true)
     }
 
-    const [showModal, setShowModal] = React.useState(false);
     return (
         <div className="bg-white z-50 text-black h-screen flex flex-col justify-between pb-3 border-l-2 border-white">
             <div>

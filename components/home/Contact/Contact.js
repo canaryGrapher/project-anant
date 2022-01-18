@@ -61,7 +61,7 @@ export default function Contact () {
                     </div>
                 </div>
                 <div className="md:w-3/4 w-full text-right my-2">
-                    <button className="rounded-lg bg-white theme-text px-8 py-2 text-xl">Send</button>
+                    <button className="rounded-lg bg-white theme-text px-8 py-2 text-xl hover:-translate-y-0.5">Send</button>
                 </div>
             </div>
             <div className="md:w-2/3 w-full md:px-0 px-1">

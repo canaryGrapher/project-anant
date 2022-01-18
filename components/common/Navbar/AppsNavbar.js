@@ -3,6 +3,8 @@ import Link from "next/link"
 import Image from "next/image"
 
 import Sidebar from "../Sidebar/Sidebar";
+import LoginModal from '../Modals/LoginModal';
+import ModalArea from "../Modals/ModalArea";
 
 const menuOptions = [
     {name: "About", href: "/apps/mxene"}, 
@@ -11,6 +13,12 @@ const menuOptions = [
 ]
 
 const AppsNavBar = () => {
+
+    // modal state variables
+    const [showModal, setShowModal] = useState(false)
+    const [isAuthModal, setIsAuthModal] = useState(false)
+    const [isEditProfileModal, setIsEditModal] = useState(false)
+    const [isUserRecordModal, setUserRecordModal] = useState(false)
     
     const [isActiveIndex, setIsActiveIndex] = useState(null)
     const [expanded, setExpanded] = useState(false);
@@ -60,8 +68,9 @@ const AppsNavBar = () => {
                     <Image className="cursor-pointer" height={35} width={30} alt="Account" src="https://ik.imagekit.io/iiscvsmanipal/account_vmJJKFcge.png?updatedAt=1638595344875" />
                 </div>
                 <div className="sidebar h-screen w-96 absolute right-0 translate-x-full transform transition duration-700 ease-in-out" ref={ref}>
-                    <Sidebar/>
+                    <Sidebar setShowModal={setShowModal} setIsAuthModal={setIsAuthModal} setIsEditModal={setIsEditModal}/>
                 </div>
+                <ModalArea setShowModal={setShowModal} showModal={showModal} isAuthModal={isAuthModal} isEditProfileModal={isEditProfileModal}/>
             </div>
         </navbar>
     );
