@@ -42,7 +42,9 @@ const AppsNavBar = () => {
     return (
         <navbar className="flex h-16 fixed top-0 w-screen items-center z-20 theme">
             <div className="md:w-1/4 w-full h-full md:p-2 py-5">
-                <Image width={200} height={40} alt="Anant Logo" src="https://ik.imagekit.io/iiscvsmanipal/anantLogo_jDpZAhBDXG9.png?updatedAt=1638595324436" />
+                <a href="\">
+                    <Image width={200} height={40} alt="Anant Logo" src="https://ik.imagekit.io/iiscvsmanipal/anantLogo_jDpZAhBDXG9.png?updatedAt=1638595324436" />
+                </a>
             </div>
             <div className="md:w-2/4 h-full w-screen flex justify-end">
                 <div className="w-full items-center bg-gray-100 justify-center md:grid hidden grid-cols-3 h-full">

@@ -4,24 +4,24 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
 const LoginModal = () => {
-    const SignUp = () => {
-        const signup = document.querySelector('.signup');
-        signup.style.backgroundColor = 'white';
-        signup.style.color = '#163F65';
-
-        const signin = document.querySelector('.signin');
-        signin.style.backgroundColor = '#163F65';
-        signin.style.color = 'white';
-    }
-
-    const SignIn = () => { 
-        const signup = document.querySelector('.signup');
-        signup.style.backgroundColor = '#163F65';
-        signup.style.color = 'white';
-
+    const SignIn = () => {
         const signin = document.querySelector('.signin');
         signin.style.backgroundColor = 'white';
         signin.style.color = '#163F65';
+
+        const signup = document.querySelector('.signup');
+        signup.style.backgroundColor = '#163F65';
+        signup.style.color = 'white';
+    }
+
+    const SignUp = () => { 
+        const signin = document.querySelector('.signin');
+        signin.style.backgroundColor = '#163F65';
+        signin.style.color = 'white';
+
+        const signup = document.querySelector('.signup');
+        signup.style.backgroundColor = 'white';
+        signup.style.color = '#163F65';
     }
 
     const closeModal = () => {
@@ -41,8 +41,8 @@ const LoginModal = () => {
                         </div>
                         <Tabs className="bg-white rounded-b-xl">
                             <TabList className="flex flex-row justify-between items-center text-white">
-                                <Tab className="signup w-1/2 text-center text-2xl font-semibold p-4" style={{color:'#163F65'}} onClick={SignUp}>SignUp</Tab>
-                                <Tab className="signin w-1/2 text-center text-white text-2xl font-semibold p-4" style={{backgroundColor:'#163F65'}} onClick={SignIn}>SignIn</Tab>
+                                <Tab className="signin w-1/2 text-center text-2xl font-semibold p-4" style={{color:'#163F65'}} onClick={SignIn}>Sign In</Tab>
+                                <Tab className="signup w-1/2 text-center text-white text-2xl font-semibold p-4" style={{backgroundColor:'#163F65'}} onClick={SignUp}>Sign Up</Tab>
                             </TabList>
 
                             <TabPanel>
