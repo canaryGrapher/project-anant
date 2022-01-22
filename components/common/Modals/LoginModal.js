@@ -47,32 +47,6 @@ const LoginModal = (props) => {
                             <Tab className="signin w-1/2 text-center text-white text-2xl font-semibold p-4 cursor-pointer" style={{backgroundColor:'#163F65'}} onClick={SignIn}>SignIn</Tab>
                         </TabList>
                         <TabPanel>
-                            <div className='flex flex-col justify-center items-center'>
-                                <p className='text-lg md:px-20 px-2 py-5 text-center font-semibold theme-text'>
-                                    Complete the following sign up procedure before contributing to the database
-                                </p>
-                                <div className="flex flex-col md:w-3/4 w-full mx-auto md:px-0 px-3 m-1">
-                                    <div className="my-1">
-                                        <p className="theme-text text-xs md:text-sm">Email ID</p>
-                                        <input className="w-full h-12 border-2 text-black px-2 rounded focus:outline-none" type="email" id="email" name="email" style={{ boxShadow: 'inset 0px 0px 8px rgba(0, 0, 0, 0.2)'}}/>
-                                    </div>
-                                    <div className="my-1">
-                                        <p className="theme-text text-xs md:text-sm">Password</p>
-                                        <input className="w-full h-12 border-2 text-black px-2 rounded focus:outline-none" type="password" id="pass" name="password" required  style={{boxShadow: 'inset 0px 0px 8px rgba(0, 0, 0, 0.15)'}}/>
-                                    </div>
-                                </div>
-                                <div className='flex flex-col md:flex-row justify-between items-center md:w-3/4 w-full my-5'>
-                                    <div className='flex flex-row items-center mt-2 md:m-0 md:order-1 order-2'>
-                                        <p className="pr-2">Don't have an account?</p><a className="theme-text" href="#">Signup</a>
-                                    </div>
-                                    <button className="rounded-md px-5 py-1 text-white flex flex-row items-center mt-2 md:m-0 md:order-2 order-1" style={{backgroundColor:'#163F65'}}>
-                                        Sign In
-                                        <svg className='mx-1' xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                                    </button>
-                                </div>
-                            </div>
-                        </TabPanel>
-                        <TabPanel>
                             <div className='flex flex-col justify-center items-center px-3'>
                                 <p className='text-lg md:px-20 py-5 text-center font-semibold theme-text'>
                                     Complete the following sign in procedure before contributing to the database
@@ -108,6 +82,32 @@ const LoginModal = (props) => {
                                     <button className="rounded-md px-5 py-1 mb-1 md:m-0 text-white flex flex-row items-center md:order-2 order-1" style={{backgroundColor:'#163F65'}}>
                                         Sign Up
                                         <svg className='mt-1 mx-1'xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </TabPanel>
+                        <TabPanel>
+                            <div className='flex flex-col justify-center items-center'>
+                                <p className='text-lg md:px-20 px-2 py-5 text-center font-semibold theme-text'>
+                                    Complete the following sign up procedure before contributing to the database
+                                </p>
+                                <div className="flex flex-col md:w-3/4 w-full mx-auto md:px-0 px-3 m-1">
+                                    <div className="my-1">
+                                        <p className="theme-text text-xs md:text-sm">Email ID</p>
+                                        <input className="w-full h-12 border-2 text-black px-2 rounded focus:outline-none" type="email" id="email" name="email" style={{ boxShadow: 'inset 0px 0px 8px rgba(0, 0, 0, 0.2)'}}/>
+                                    </div>
+                                    <div className="my-1">
+                                        <p className="theme-text text-xs md:text-sm">Password</p>
+                                        <input className="w-full h-12 border-2 text-black px-2 rounded focus:outline-none" type="password" id="pass" name="password" required  style={{boxShadow: 'inset 0px 0px 8px rgba(0, 0, 0, 0.15)'}}/>
+                                    </div>
+                                </div>
+                                <div className='flex flex-col md:flex-row justify-between items-center md:w-3/4 w-full my-5'>
+                                    <div className='flex flex-row items-center mt-2 md:m-0 md:order-1 order-2'>
+                                        <p className="pr-2">Don't have an account?</p><a className="theme-text" href="#">Signup</a>
+                                    </div>
+                                    <button className="rounded-md px-5 py-1 text-white flex flex-row items-center mt-2 md:m-0 md:order-2 order-1" style={{backgroundColor:'#163F65'}}>
+                                        Sign In
+                                        <svg className='mx-1' xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
                                     </button>
                                 </div>
                             </div>

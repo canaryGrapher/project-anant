@@ -37,7 +37,7 @@ const Publications = () => {
   return (
     <div className="flex flex-col items-center w-screen py-32">
         <div className="my-8 text-white text-center">
-          <h2 className="md:text-4xl text-xl">Our Applications</h2>
+          <h2 className="md:text-4xl text-xl">Our Publications</h2>
           <div className="w-56 mx-auto my-2 h-1 bg-gray-100"></div>
         </div>
         <div className="w-full md:w-3/4 h-4/5 p-10 mt-6 mx-auto">

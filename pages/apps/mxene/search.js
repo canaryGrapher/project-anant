@@ -131,264 +131,264 @@ export default function MxeneSearch() {
                     </div>
                 </div>
                 <div className="px-6 py-8 my-1 w-full rounded-md" style={{ backgroundColor: "rgba(255, 255, 255, 0.2)" }}>
-                    <div className="grid md:grid-cols-9 md:grid-rows-8 grid-cols-3 gap-1 gap-y-2 w-3/4 mx-auto my-4">
+                    <div className="grid md:grid-cols-9 md:grid-rows-8 grid-cols-3 gap-1 gap-y-1 w-3/4 mx-auto my-4">
                         {/* first row */}
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 flex justify-center items-center bg-yellow-200 text-yellow-700 rounded-md cursor-pointer hover:scale-105 duration-200"  onClick={() => handleFunc("H")}>H</div>
-                            <div className="h-16 w-16 bg-transparent rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full flex justify-center items-center bg-yellow-200 text-yellow-700 rounded-md cursor-pointer hover:scale-105 duration-200"  onClick={() => handleFunc("H")}>H</div>
+                            <div className="h-full w-full bg-transparent rounded-md"></div>
                         </div>
                         {
                             Array.from(Array(7).keys()).map((val) => {
                                 return (
                                     <div key={val} className="grid grid-cols-2 gap-1">    
-                                        <div className="h-16 w-16 bg-transparent rounded-md"></div>
-                                        <div className="h-16 w-16 bg-transparent rounded-md"></div>
+                                        <div className="h-full w-full bg-transparent rounded-md"></div>
+                                        <div className="h-full w-full bg-transparent rounded-md"></div>
                                     </div>
                                 )
                             })
                         }
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 bg-transparent rounded-md"></div>
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full bg-transparent rounded-md"></div>
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
                         {/* second row */}
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
                         {
                             Array.from(Array(5).keys()).map((val) => {
                                 return (
-                                    <div key={val} className="grid grid-cols-2 gap-1">    
-                                        <div className="h-16 w-16 bg-transparent rounded-md"></div>
-                                        <div className="h-16 w-16 bg-transparent rounded-md"></div>
+                                    <div key={val} className="h-16 grid grid-cols-2 gap-1">    
+                                        <div className="h-full w-full bg-transparent rounded-md"></div>
+                                        <div className="h-full w-full bg-transparent rounded-md"></div>
                                     </div>
                                 )
                             })
                         }
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
-                            <div className="h-16 w-16 flex justify-center items-center bg-blue-300 text-blue-700 rounded-md cursor-pointer hover:scale-105 duration-200" onClick={() => handleX("C")}>C</div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
+                            <div className="h-full w-full flex justify-center items-center bg-blue-300 text-blue-700 rounded-md cursor-pointer hover:scale-105 duration-200" onClick={() => handleX("C")}>C</div>
                         </div>
-                        <div className="grid md:grid-cols-2 grid-cols-1 gap-1">    
-                            <div className="h-16 w-16 flex justify-center items-center bg-blue-300 text-blue-700 rounded-md cursor-pointer hover:scale-105 duration-200" onClick={() => handleX("N")}>N</div>
-                            <div className="h-16 w-16 flex justify-center items-center bg-yellow-200 text-yellow-700 rounded-md cursor-pointer hover:scale-105 duration-200"  onClick={() => handleFunc("O")}>O</div>
+                        <div className="h-16 grid md:grid-cols-2 grid-cols-1 gap-1">    
+                            <div className="h-full w-full flex justify-center items-center bg-blue-300 text-blue-700 rounded-md cursor-pointer hover:scale-105 duration-200" onClick={() => handleX("N")}>N</div>
+                            <div className="h-full w-full flex justify-center items-center bg-yellow-200 text-yellow-700 rounded-md cursor-pointer hover:scale-105 duration-200"  onClick={() => handleFunc("O")}>O</div>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 flex justify-center items-center bg-yellow-200 text-yellow-700 rounded-md cursor-pointer hover:scale-105 duration-200"  onClick={() => handleFunc("F")}>F</div>
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full flex justify-center items-center bg-yellow-200 text-yellow-700 rounded-md cursor-pointer hover:scale-105 duration-200"  onClick={() => handleFunc("F")}>F</div>
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
                         {/* third row */}
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
                         {
                             Array.from(Array(5).keys()).map((val) => {
                                 return (
-                                    <div key={val} className="grid grid-cols-2 gap-1">    
-                                        <div className="h-16 w-16 bg-transparent rounded-md"></div>
-                                        <div className="h-16 w-16 bg-transparent rounded-md"></div>
+                                    <div key={val} className="h-16  grid grid-cols-2 gap-1">    
+                                        <div className="h-full w-full bg-transparent rounded-md"></div>
+                                        <div className="h-full w-full bg-transparent rounded-md"></div>
                                     </div>
                                 )
                             })
                         }
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
-                        <div className="grid md:grid-cols-2 grid-cols-1 gap-1">    
-                            <div className="h-16 w-16 flex justify-center items-center bg-yellow-200 text-yellow-700 rounded-md cursor-pointer hover:scale-105 duration-200"  onClick={() => handleFunc("Cl")}>Cl</div>
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
+                        <div className="h-16 grid md:grid-cols-2 grid-cols-1 gap-1">    
+                            <div className="h-full w-full flex justify-center items-center bg-yellow-200 text-yellow-700 rounded-md cursor-pointer hover:scale-105 duration-200"  onClick={() => handleFunc("Cl")}>Cl</div>
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
                         {/* fourth row */}
-                        <div className="grid md:grid-cols-2 grid-cols-1 gap-1">    
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
+                        <div className="h-16 grid md:grid-cols-2 grid-cols-1 gap-1">    
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
-                        <div className="grid md:grid-cols-2 grid-cols-1 gap-1">    
-                            <div className="h-16 w-16 flex justify-center items-center bg-green-200 text-green-700 rounded-md cursor-pointer hover:scale-105 duration-200" onClick={() => handleTransition("Sc")}>Sc</div>
-                            <div className="h-16 w-16 flex justify-center items-center bg-green-200 text-green-700 rounded-md cursor-pointer hover:scale-105 duration-200" onClick={() => handleTransition("Ti")}>Ti</div>
+                        <div className="h-16 grid md:grid-cols-2 grid-cols-1 gap-1">    
+                            <div className="h-full w-full flex justify-center items-center bg-green-200 text-green-700 rounded-md cursor-pointer hover:scale-105 duration-200" onClick={() => handleTransition("Sc")}>Sc</div>
+                            <div className="h-full w-full flex justify-center items-center bg-green-200 text-green-700 rounded-md cursor-pointer hover:scale-105 duration-200" onClick={() => handleTransition("Ti")}>Ti</div>
                         </div>
-                        <div className="grid md:grid-cols-2 grid-cols-1 gap-1">    
-                            <div className="h-16 w-16 flex justify-center items-center bg-green-200 text-green-700 rounded-md cursor-pointer hover:scale-105 duration-200" onClick={() => handleTransition("V")}>V</div>
-                            <div className="h-16 w-16 flex justify-center items-center bg-green-200 text-green-700 rounded-md cursor-pointer hover:scale-105 duration-200" onClick={() => handleTransition("Cr")}>Cr</div>
+                        <div className="h-16 grid md:grid-cols-2 grid-cols-1 gap-1">    
+                            <div className="h-full w-full flex justify-center items-center bg-green-200 text-green-700 rounded-md cursor-pointer hover:scale-105 duration-200" onClick={() => handleTransition("V")}>V</div>
+                            <div className="h-full w-full flex justify-center items-center bg-green-200 text-green-700 rounded-md cursor-pointer hover:scale-105 duration-200" onClick={() => handleTransition("Cr")}>Cr</div>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 flex justify-center items-center bg-yellow-200 text-yellow-700 rounded-md cursor-pointer hover:scale-105 duration-200" onClick={() => handleTransition("Br")}>Br</div>
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full flex justify-center items-center bg-yellow-200 text-yellow-700 rounded-md cursor-pointer hover:scale-105 duration-200" onClick={() => handleTransition("Br")}>Br</div>
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
                         {/* fifth row */}
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
-                        <div className="grid md:grid-cols-2 grid-cols-1 gap-1">    
-                            <div className="h-16 w-16 flex justify-center items-center bg-green-200 text-green-700 rounded-md cursor-pointer hover:scale-105 duration-200" onClick={() => handleTransition("Y")}>Y</div>
-                            <div className="h-16 w-16 flex justify-center items-center bg-green-200 text-green-700 rounded-md cursor-pointer hover:scale-105 duration-200" onClick={() => handleTransition("Zr")}>Zr</div>
+                        <div className="h-16 grid md:grid-cols-2 grid-cols-1 gap-1">    
+                            <div className="h-full w-full flex justify-center items-center bg-green-200 text-green-700 rounded-md cursor-pointer hover:scale-105 duration-200" onClick={() => handleTransition("Y")}>Y</div>
+                            <div className="h-full w-full flex justify-center items-center bg-green-200 text-green-700 rounded-md cursor-pointer hover:scale-105 duration-200" onClick={() => handleTransition("Zr")}>Zr</div>
                         </div>
-                        <div className="grid md:grid-cols-2 grid-cols-1 gap-1">    
-                            <div className="h-16 w-16 flex justify-center items-center bg-green-200 text-green-700 rounded-md cursor-pointer hover:scale-105 duration-200" onClick={() => handleTransition("Nb")}>Nb</div>
-                            <div className="h-16 w-16 flex justify-center items-center bg-green-200 text-green-700 rounded-md cursor-pointer hover:scale-105 duration-200" onClick={() => handleTransition("Mo")}>Mo</div>
+                        <div className="h-16 grid md:grid-cols-2 grid-cols-1 gap-1">    
+                            <div className="h-full w-full flex justify-center items-center bg-green-200 text-green-700 rounded-md cursor-pointer hover:scale-105 duration-200" onClick={() => handleTransition("Nb")}>Nb</div>
+                            <div className="h-full w-full flex justify-center items-center bg-green-200 text-green-700 rounded-md cursor-pointer hover:scale-105 duration-200" onClick={() => handleTransition("Mo")}>Mo</div>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
                         {/* sixth row */}
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 bg-transparent rounded-md"></div>
-                            <div className="h-16 w-16 flex justify-center items-center bg-green-200 text-green-700 rounded-md cursor-pointer hover:scale-105 duration-200" onClick={() => handleTransition("Hf")}>Hf</div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full bg-transparent rounded-md"></div>
+                            <div className="h-full w-full flex justify-center items-center bg-green-200 text-green-700 rounded-md cursor-pointer hover:scale-105 duration-200" onClick={() => handleTransition("Hf")}>Hf</div>
                         </div>
-                        <div className="grid md:grid-cols-2 grid-cols-1 gap-1">    
-                            <div className="h-16 w-16 flex justify-center items-center bg-green-200 text-green-700 rounded-md cursor-pointer hover:scale-105 duration-200" onClick={() => handleTransition("Ta")}>Ta</div>
-                            <div className="h-16 w-16 flex justify-center items-center bg-green-200 text-green-700 rounded-md cursor-pointer hover:scale-105 duration-200" onClick={() => handleTransition("W")}>W</div>
+                        <div className="h-16 grid md:grid-cols-2 grid-cols-1 gap-1">    
+                            <div className="h-full w-full flex justify-center items-center bg-green-200 text-green-700 rounded-md cursor-pointer hover:scale-105 duration-200" onClick={() => handleTransition("Ta")}>Ta</div>
+                            <div className="h-full w-full flex justify-center items-center bg-green-200 text-green-700 rounded-md cursor-pointer hover:scale-105 duration-200" onClick={() => handleTransition("W")}>W</div>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
                         {/* seventh row */}
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 bg-transparent rounded-md"></div>
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full bg-transparent rounded-md"></div>
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
-                            <div className="h-16 w-16 bg-gray-100 rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
+                            <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
                         {/* eighth row */}
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 flex justify-center items-center bg-yellow-200 text-yellow-700 rounded-md cursor-pointer hover:scale-105 duration-200"  onClick={() => handleFunc("OH")}>OH</div>
-                            <div className="h-16 w-16 bg-transparent rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full flex justify-center items-center bg-yellow-200 text-yellow-700 rounded-md cursor-pointer hover:scale-105 duration-200"  onClick={() => handleFunc("OH")}>OH</div>
+                            <div className="h-full w-full bg-transparent rounded-md"></div>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">    
-                        <div className="h-16 w-16 flex justify-center items-center bg-yellow-200 text-yellow-700 rounded-md cursor-pointer hover:scale-105 duration-200"  onClick={() => handleFunc("NP")}>NP</div>
-                            <div className="h-16 w-16 bg-transparent rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                        <div className="h-full w-full flex justify-center items-center bg-yellow-200 text-yellow-700 rounded-md cursor-pointer hover:scale-105 duration-200"  onClick={() => handleFunc("NP")}>NP</div>
+                            <div className="h-full w-full bg-transparent rounded-md"></div>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 flex justify-center items-center bg-yellow-200 text-yellow-700 rounded-md cursor-pointer hover:scale-105 duration-200"  onClick={() => handleFunc("CN")}>CN</div>
-                            <div className="h-16 w-16 bg-transparent rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full flex justify-center items-center bg-yellow-200 text-yellow-700 rounded-md cursor-pointer hover:scale-105 duration-200"  onClick={() => handleFunc("CN")}>CN</div>
+                            <div className="h-full w-full bg-transparent rounded-md"></div>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 flex justify-center items-center bg-yellow-200 text-yellow-700 rounded-md cursor-pointer hover:scale-105 duration-200"  onClick={() => handleFunc("RO")}>RO</div>
-                            <div className="h-16 w-16 bg-transparent rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full flex justify-center items-center bg-yellow-200 text-yellow-700 rounded-md cursor-pointer hover:scale-105 duration-200"  onClick={() => handleFunc("RO")}>RO</div>
+                            <div className="h-full w-full bg-transparent rounded-md"></div>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 flex justify-center items-center bg-yellow-200 text-yellow-700 rounded-md cursor-pointer hover:scale-105 duration-200"  onClick={() => handleFunc("OBr")}>OBr</div>
-                            <div className="h-16 w-16 bg-transparent rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full flex justify-center items-center bg-yellow-200 text-yellow-700 rounded-md cursor-pointer hover:scale-105 duration-200"  onClick={() => handleFunc("OBr")}>OBr</div>
+                            <div className="h-full w-full bg-transparent rounded-md"></div>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 flex justify-center items-center bg-yellow-200 text-yellow-700 rounded-md cursor-pointer hover:scale-105 duration-200"  onClick={() => handleFunc("OCl")}>OCl</div>
-                            <div className="h-16 w-16 bg-transparent rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full flex justify-center items-center bg-yellow-200 text-yellow-700 rounded-md cursor-pointer hover:scale-105 duration-200"  onClick={() => handleFunc("OCl")}>OCl</div>
+                            <div className="h-full w-full bg-transparent rounded-md"></div>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 flex justify-center items-center bg-yellow-200 text-yellow-700 rounded-md cursor-pointer hover:scale-105 duration-200"  onClick={() => handleFunc("SCN")}>SCN</div>
-                            <div className="h-16 w-16 bg-transparent rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full flex justify-center items-center bg-yellow-200 text-yellow-700 rounded-md cursor-pointer hover:scale-105 duration-200"  onClick={() => handleFunc("SCN")}>SCN</div>
+                            <div className="h-full w-full bg-transparent rounded-md"></div>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 flex justify-center items-center bg-yellow-200 text-yellow-700 rounded-md cursor-pointer hover:scale-105 duration-200"  onClick={() => handleFunc("NCS")}>NCS</div>
-                            <div className="h-16 w-16 bg-transparent rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full flex justify-center items-center bg-yellow-200 text-yellow-700 rounded-md cursor-pointer hover:scale-105 duration-200"  onClick={() => handleFunc("NCS")}>NCS</div>
+                            <div className="h-full w-full bg-transparent rounded-md"></div>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">    
-                            <div className="h-16 w-16 flex justify-center items-center bg-yellow-200 text-yellow-700 rounded-md cursor-pointer hover:scale-105 duration-200"  onClick={() => handleFunc("OCN")}>OCN</div>
-                            <div className="h-16 w-16 bg-transparent rounded-md"></div>
+                        <div className="h-16 grid grid-cols-2 gap-1">    
+                            <div className="h-full w-full flex justify-center items-center bg-yellow-200 text-yellow-700 rounded-md cursor-pointer hover:scale-105 duration-200"  onClick={() => handleFunc("OCN")}>OCN</div>
+                            <div className="h-full w-full bg-transparent rounded-md"></div>
                         </div>
                     </div>
                     <h5 className="font-bold text-white text-2xl text-center pt-4">Reference Periodic Table</h5>

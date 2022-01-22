@@ -11,4 +11,16 @@
     background-size: cover;
     background-position: right;
     background-repeat: no-repeat;
-  }
+}
+
+.welcome {
+    width: fit-content;
+}
+
+@media only screen and (max-width: 812px) {
+    .welcome {
+        width: 100%;
+        height: fit-content;
+        text-align: center;
+    }
+}

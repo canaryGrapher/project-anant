@@ -3,10 +3,10 @@ import Link from "next/link"
 import Image from "next/image"
 
 import Sidebar from "../Sidebar/Sidebar";
-import LoginModal from '../Modals/LoginModal';
 import ModalArea from "../Modals/ModalArea";
 
 const menuOptions = [
+    {name: "Home", href: "/"},
     {name: "About", href: "/apps/mxene"}, 
     {name: "Upload", href: "/apps/mxene/upload"}, 
     {name: "Mxene Search", href: "/apps/mxene/search"}
@@ -54,8 +54,8 @@ const AppsNavBar = () => {
                     <Image width={200} height={40} alt="Anant Logo" src="https://ik.imagekit.io/iiscvsmanipal/anantLogo_jDpZAhBDXG9.png?updatedAt=1638595324436" />
                 </a>
             </div>
-            <div className="md:w-2/4 h-full w-screen flex justify-end">
-                <div className="w-full items-center bg-gray-100 justify-center md:grid hidden grid-cols-3 h-full">
+            <div className="h-full w-screen flex justify-end">
+                <div className="w-full items-center bg-gray-100 justify-center md:grid hidden grid-cols-4 h-full">
                     {
                         menuOptions.map((option, index) => (
                             <Link key={index} href={option.href} className="p-2 ">
