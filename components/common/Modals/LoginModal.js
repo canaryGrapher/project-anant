@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from "next/image" 
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
 const LoginModal = (props) => {
+
+    // modify this state to handle initial state on signin/signup click
+    const [selectedIndex, setSelectedIndex] = useState(0)
+
     const SignIn = () => {
         const signin = document.querySelector('.signin');
         signin.style.backgroundColor = 'white';
@@ -24,6 +28,16 @@ const LoginModal = (props) => {
         signup.style.color = '#163F65';
     }
 
+    const redirectSignIn = () => {
+        setSelectedIndex(1)
+        SignIn();
+    }
+
+    const redirectSignUp = () => {
+        setSelectedIndex(0)
+        SignUp();
+    }
+
     const closeModal = () => {
         props.setShowModal(false)
     }
@@ -41,10 +55,10 @@ const LoginModal = (props) => {
                     <div className="ml-auto">
                         <Image onClick={closeModal} className="cursor-pointer" src="https://ik.imagekit.io/iiscvsmanipal/close__1__A0_1Zg8-pXf.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1642289536550" height={20} width={20}/>
                     </div>
-                    <Tabs className="bg-white rounded-b-xl">
-                        <TabList className="flex flex-row justify-between items-center text-white">
-                            <Tab className="signup w-1/2 text-center text-2xl font-semibold p-4 cursor-pointer" style={{color:'#163F65'}} onClick={SignUp}>SignUp</Tab>
-                            <Tab className="signin w-1/2 text-center text-white text-2xl font-semibold p-4 cursor-pointer" style={{backgroundColor:'#163F65'}} onClick={SignIn}>SignIn</Tab>
+                    <Tabs className="bg-white rounded-b-xl" selectedIndex={selectedIndex}>
+                        <TabList className="flex flex-row justify-between items-center">
+                            <Tab className="signup w-1/2 text-center text-2xl text-white font-semibold p-4 cursor-pointer" style={{ color:'#163F65' }} onClick={redirectSignUp}>SignUp</Tab>
+                            <Tab className="signin w-1/2 text-center text-2xl text-white font-semibold p-4 cursor-pointer" style={{ backgroundColor:'#163F65' }} onClick={redirectSignIn}>SignIn</Tab>
                         </TabList>
                         <TabPanel>
                             <div className='flex flex-col justify-center items-center px-3'>
@@ -76,7 +90,7 @@ const LoginModal = (props) => {
                                     <input className="w-full h-12 border-2 text-black px-2 rounded focus:outline-none" type="password" id="cpass" name="password" required  style={{boxShadow: 'inset 0px 0px 8px rgba(0, 0, 0, 0.15)'}}/>
                                 </div>
                                 <div className='flex flex-col md:flex-row justify-between items-center md:w-3/4 w-full my-5'>
-                                    <div className='w-3/4 flex flex-row items-center mt-2 md:m-0 md:order-1 order-2'>
+                                    <div className='w-3/4 flex flex-row items-center mt-2 md:m-0 md:order-1 order-2' onClick={redirectSignIn}>
                                         <p className="pr-2">Already have an account?</p><a className="theme-text" href="#">Sign In</a>
                                     </div>
                                     <button className="rounded-md px-5 py-1 mb-1 md:m-0 text-white flex flex-row items-center md:order-2 order-1" style={{backgroundColor:'#163F65'}}>
@@ -102,7 +116,7 @@ const LoginModal = (props) => {
                                     </div>
                                 </div>
                                 <div className='flex flex-col md:flex-row justify-between items-center md:w-3/4 w-full my-5'>
-                                    <div className='flex flex-row items-center mt-2 md:m-0 md:order-1 order-2'>
+                                    <div className='flex flex-row items-center mt-2 md:m-0 md:order-1 order-2' onClick={redirectSignUp}>
                                         <p className="pr-2">Don't have an account?</p><a className="theme-text" href="#">Signup</a>
                                     </div>
                                     <button className="rounded-md px-5 py-1 text-white flex flex-row items-center mt-2 md:m-0 md:order-2 order-1" style={{backgroundColor:'#163F65'}}>

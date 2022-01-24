@@ -5,9 +5,17 @@ import Image from "next/image"
 
 const Sidebar = (props) => {
 
-    const handleModalClick = () => {
+    const handleModalClick = (type) => {
         props.setShowModal(true)
         props.setIsAuthModal(true)
+        console.log(type)
+        if(type === "signup") {
+            props.setIsLogin(false)
+            props.setIsSignUp(true)
+        } else if (type === "signin") {
+            props.setIsSignUp(false)
+            props.setIsLogin(true)
+        }
     }
 
     return (
@@ -23,8 +31,8 @@ const Sidebar = (props) => {
                     </div>
                 </div>
                 <div className='w-full text-right my-5 px-4 flex flex-col items-end'>
-                    <button className='text-3xl my-3 mr-4 focus:outline-none' onClick={handleModalClick}>Sign In</button>
-                    <button className='text-3xl my-3 mr-4 focus:outline-none' onClick={handleModalClick}>Sign Up</button>
+                    <button className='text-3xl my-3 mr-4 focus:outline-none' onClick={() => handleModalClick("signin")}>Sign In</button>
+                    <button className='text-3xl my-3 mr-4 focus:outline-none' onClick={() => handleModalClick("signup")}>Sign Up</button>
                 </div>
             </div>
             <div className="text-center theme-text text-xl font-bold">

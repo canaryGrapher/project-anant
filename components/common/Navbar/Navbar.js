@@ -20,6 +20,10 @@ const NavBar = () => {
     const [isAuthModal, setIsAuthModal] = useState(false)
     const [isEditProfileModal, setIsEditModal] = useState(false)
     const [isUserRecordModal, setUserRecordModal] = useState(false)
+
+    // controlling sign up or sign in
+    const [isLogin, setIsLogin] = useState(false)
+    const [isSignUp, setIsSignUp] = useState(false)
     
     const [isActiveIndex, setIsActiveIndex] = useState(null)
     const [expanded, setExpanded] = useState(false);
@@ -71,9 +75,22 @@ const NavBar = () => {
                     <Image className="cursor-pointer" height={35} width={30} alt="Account" src="https://ik.imagekit.io/iiscvsmanipal/account_vmJJKFcge.png?updatedAt=1638595344875" />
                 </div>
                 <div className="sidebar h-screen w-96 absolute right-0 translate-x-full transform transition duration-700 ease-in-out" ref={ref}>
-                    <Sidebar setShowModal={setShowModal} setIsAuthModal={setIsAuthModal} setIsEditModal={setIsEditModal}/>
+                    <Sidebar 
+                        setShowModal={setShowModal} 
+                        setIsAuthModal={setIsAuthModal} 
+                        setIsEditModal={setIsEditModal}
+                        setIsLogin={setIsLogin}
+                        setIsSignUp={setIsSignUp}
+                    />
                 </div>
-                <ModalArea setShowModal={setShowModal} showModal={showModal} isAuthModal={isAuthModal} isEditProfileModal={isEditProfileModal}/>
+                <ModalArea 
+                    setShowModal={setShowModal} 
+                    showModal={showModal} 
+                    isAuthModal={isAuthModal} 
+                    isLogin={isLogin}
+                    isSignUp={isSignUp}
+                    isEditProfileModal={isEditProfileModal}
+                />
             </div>
         </navbar>
     );
