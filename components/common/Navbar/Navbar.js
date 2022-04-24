@@ -1,30 +1,35 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useRouter } from 'next/router'
 import Link from "next/link"
 import Image from "next/image"
+import { useUser } from "@auth0/nextjs-auth0";
 
 import Sidebar from "../Sidebar/Sidebar";
-import LoginModal from '../Modals/LoginModal';
-import ModalArea from "../Modals/ModalArea";
 
-const menuOptions = [
+const genMenuOptions = [
     {name: "Apps", href: "/apps"}, 
     {name: "Publications", href: "/publications"}, 
     {name: "About", href: "/about"}, 
     {name: "Contact", href: "/contact"}
 ]
 
+const appMenuOptions = [
+    {name: "Home", href: "/"},
+    {name: "About", href: "/apps/mxene"}, 
+    {name: "Upload", href: "/apps/mxene/upload"}, 
+    {name: "Mxene Search", href: "/apps/mxene/search"}
+]
+
 const NavBar = () => {
+    // use the user from auth0
+    const user = useUser();
+    const router = useRouter();
+    // assign the menu optiosn for navbar
+    let regex = /\/[a-zA-Z]+\//;
+    const menuOptions 
+        = regex.test(router.pathname) 
+        ? appMenuOptions : genMenuOptions; 
 
-    // modal state variables
-    const [showModal, setShowModal] = useState(false)
-    const [isAuthModal, setIsAuthModal] = useState(false)
-    const [isEditProfileModal, setIsEditModal] = useState(false)
-    const [isUserRecordModal, setUserRecordModal] = useState(false)
-
-    // controlling sign up or sign in
-    const [isLogin, setIsLogin] = useState(false)
-    const [isSignUp, setIsSignUp] = useState(false)
-    
     const [isActiveIndex, setIsActiveIndex] = useState(null)
     const [expanded, setExpanded] = useState(false);
 
@@ -65,32 +70,29 @@ const NavBar = () => {
                         menuOptions.map((option, index) => (
                             <Link key={index} href={option.href} className="p-2 ">
                                 <div className={`p-3 flex ${isActiveIndex === index ? "theme" : "bg-gray-100"} m-1 items-center justify-center cursor-pointer`} onClick={() => setIsActiveIndex(index)}>
-                                        <a className={`${isActiveIndex === index ? "text-gray-100" : "text-gray-900"} text-xl`}>{option.name}</a>
+                                    <a className={`${isActiveIndex === index ? "text-gray-100" : "text-gray-900"} text-xl`}>{option.name}</a>
                                 </div>
                             </Link>
                         ))
                     }
                 </div>
-                <div className="md:w-40 w-24 py-5 bg-theme flex justify-center items-center" onClick={handleClick}>
-                    <Image className="cursor-pointer" height={35} width={30} alt="Account" src="https://ik.imagekit.io/iiscvsmanipal/account_vmJJKFcge.png?updatedAt=1638595344875" />
+                <div className="md:w-40 w-24 py-5 bg-theme flex justify-center items-center" >
+                    {
+                        user.user 
+                        ? <a href="/api/auth/logout"><button className="text-white text-lg focus:outline-none">Logout</button></a>
+                        : <Image 
+                            className="cursor-pointer" 
+                            height={35} 
+                            width={30} 
+                            alt="Account" 
+                            onClick={handleClick} 
+                            src="https://ik.imagekit.io/iiscvsmanipal/account_vmJJKFcge.png?updatedAt=1638595344875" 
+                        /> 
+                    }
                 </div>
                 <div className="sidebar h-screen w-96 absolute right-0 translate-x-full transform transition duration-700 ease-in-out" ref={ref}>
-                    <Sidebar 
-                        setShowModal={setShowModal} 
-                        setIsAuthModal={setIsAuthModal} 
-                        setIsEditModal={setIsEditModal}
-                        setIsLogin={setIsLogin}
-                        setIsSignUp={setIsSignUp}
-                    />
+                    <Sidebar />
                 </div>
-                <ModalArea 
-                    setShowModal={setShowModal} 
-                    showModal={showModal} 
-                    isAuthModal={isAuthModal} 
-                    isLogin={isLogin}
-                    isSignUp={isSignUp}
-                    isEditProfileModal={isEditProfileModal}
-                />
             </div>
         </navbar>
     );

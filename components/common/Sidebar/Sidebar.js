@@ -2,22 +2,7 @@
 import React from 'react';
 import Image from "next/image"
 
-
-const Sidebar = (props) => {
-
-    const handleModalClick = (type) => {
-        props.setShowModal(true)
-        props.setIsAuthModal(true)
-        console.log(type)
-        if(type === "signup") {
-            props.setIsLogin(false)
-            props.setIsSignUp(true)
-        } else if (type === "signin") {
-            props.setIsSignUp(false)
-            props.setIsLogin(true)
-        }
-    }
-
+const Sidebar = () => {
     return (
         <div className="bg-white z-50 text-black h-screen flex flex-col justify-between pb-3 border-l-2 border-white">
             <div>
@@ -26,13 +11,14 @@ const Sidebar = (props) => {
                         <Image className="cursor-pointer" height={35} width={30} alt="Account" src="https://ik.imagekit.io/iiscvsmanipal/account_vmJJKFcge.png?updatedAt=1638595344875" />
                     </div>
                     <div className='flex flex-col mr-10 text-white'>
-                        <h1 className='text-4xl ml-auto'>Guest</h1>
-                        <p className='text-2xl'>1231231312</p>
+                        <h1 className='text-4xl font-bold ml-auto'>Hello</h1>
+                        <p className='text-lg'>Welcome to Anant</p>
                     </div>
                 </div>
                 <div className='w-full text-right my-5 px-4 flex flex-col items-end'>
-                    <button className='text-3xl my-3 mr-4 focus:outline-none' onClick={() => handleModalClick("signin")}>Sign In</button>
-                    <button className='text-3xl my-3 mr-4 focus:outline-none' onClick={() => handleModalClick("signup")}>Sign Up</button>
+                    <a href="/api/auth/login">
+                        <button className='text-3xl my-3 mr-4 focus:outline-none'>Sign In</button>
+                    </a>
                 </div>
             </div>
             <div className="text-center theme-text text-xl font-bold">
