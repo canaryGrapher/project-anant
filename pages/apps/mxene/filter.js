@@ -1,23 +1,29 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { useRouter } from "next/router";
 import ResultCard from "../../../components/home/Apps/Mxene/ResultCard";
 
 export default function MxeneFilter() {
-
-    let initial = {
-        "props" : "",
-        "lattice" : "",
-        "bandgap" : ""
-    }
-
-    const [filters, setFilters] = useState(initial)
-
-    const props = ["First", "Second", "Third Property", "Fourth"];
-    const lattice = ["3-4", "4-5"];
-    const bandgap = ["0-1", "1-2"];
-
-    const handleFilter = () => {
-
-    }
+    const [searchResult, setSearchResult] = useState([]);
+    const router = useRouter();
+    useEffect(() => {
+        // handles query to the database
+        const queryDatabase = async () => {
+            const resBody = await fetch("http://localhost:3002/searchMxene", {
+                method: "POST",
+                mode: "cors",
+                cache: "no-cache",
+                credentials: "same-origin",
+                headers: {
+                  "Content-Type": "application/json"
+                },
+                referrerPolicy: "no-referrer",
+                body: JSON.stringify(router.query)
+            });
+            const mxenes = await resBody.json();
+            setSearchResult(mxenes);
+        }
+        queryDatabase();
+    }, [router.query]);
 
     return (
         <div className="w-screen min-h-screen pt-16 flex flex-col items-center justify-start">
@@ -28,18 +34,25 @@ export default function MxeneFilter() {
                     Please use the additional filters available to refine your search
                 </p>
             </div>
+            <div className="w-screen md:px-16 px-6">
+                <p className="text-left text-white text-lg bg-gray-900 inline px-2 py-4 rounded-lg">
+                    {searchResult.length} mxene{searchResult.length === 1 ? "" : "s"} found
+                </p>
+            </div>
             <div className="w-screen flex items-center justify-center py-4 md:px-16 px-6">
                 <div className="grid w-full md:grid-cols-3 grid-cols-1">
                     <div className="col-span-2 md:order-1 order-2">
-                        <ResultCard />
-                        <ResultCard />
-                        <ResultCard />
-                        <ResultCard />
-                        <ResultCard />
-                        <ResultCard />
-                        <ResultCard />
-                        <ResultCard />
-                        <ResultCard />
+                        {
+                            searchResult.map((mxene) => {
+                                return <ResultCard 
+                                         key={mxene.id}
+                                         id={mxene.id} 
+                                         mxene={mxene.mxene} 
+                                         latticeConstant={mxene.latticeConstant} 
+                                         bandGap={mxene.bandGap}
+                                       />
+                            })
+                        }
                     </div>
                     <div className="col-span-1 md:p-2 md:fixed right-20 md:order-2 order-1">
                         <div className="bg-white p-4 m-1 text-2xl rounded-md text-center theme-text font-bold">Filters</div>

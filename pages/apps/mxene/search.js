@@ -1,84 +1,67 @@
 import { useState } from "react"
+import { useRouter } from "next/router";
 
 export default function MxeneSearch() {
-
-    const [trans, setTrans] = useState([])
-    const [isCarbon, setIsCarbon] = useState(null)
-    const [func, setFunc] = useState([])
-
+    const router = useRouter();
+    const [m1, setM1] = useState("");
+    const [m2, setM2] = useState("");
+    const [x, setX] = useState("");
+    const [t1, setT1] = useState("");
+    const [t2, setT2] = useState("");
+    const [allFieldsEmpty, setAllFieldsEmpty] = useState(false)
     // function to handle the change in transition elements
     const handleTransition = (el) => {
-        const m1 = document.getElementById("m1")
-        const m2 = document.getElementById("m2")
-
-        if(trans.length === 0 || trans.length === 1) {
-            trans.push(el)
-        } else if (trans.length === 2) {
-            let temp = trans[1]
-            setTrans([])
-            setTrans([temp, el])
+        if(m1 === "" && m2 === "")
+            setM1(el);
+        else if(m1 !== "" && m2 === "")
+            setM2(el);
+        else if(m1 !== "" && m2 !== ""){
+            setM1(m2);
+            setM2(el);
         }
-
-        if(trans[0] !== undefined)
-            m1.value = trans[0]
-        if(trans[1] !== undefined)
-            m2.value = trans[1]
     }
-
     // function to handle the change in functional elements
     const handleFunc = (el) => {
-        const t1 = document.getElementById("t1")
-        const t2 = document.getElementById("t2")
-
-        if(func.length === 0 || func.length === 1) {
-            func.push(el)
-        } else if (func.length === 2) {
-            let temp = func[1]
-            setFunc([])
-            setFunc([temp, el])
+        if(t1 === "" && t2 === "")
+            setT1(el);
+        else if(t1 !== "" && t2 === "")
+            setT2(el);
+        else if(t1 !== "" && t2 !== ""){
+            setT1(t2);
+            setT2(el);
         }
-
-        if(func[0] !== undefined)
-            t1.value = func[0]
-        if(func[1] !== undefined)
-            t2.value = func[1]
     }
-
     // function to handle the change in choice of carbon or nitrogen
-    const handleX = (x) => {
-        const xField = document.getElementById("x")
-        if(x === "C") {
-            setIsCarbon(true)
-            xField.value = "C"
-        } else if (x === "N") {
-            setIsCarbon(false)
-            xField.value = "N"
-        }
+    const handleX = (xVal) => {
+        setX(xVal)
     }
-
     // function to reset the elements selected
     const handleReset = () => {
-
-        const m1 = document.getElementById("m1")
-        const m2 = document.getElementById("m2")
-        const t1 = document.getElementById("t1")
-        const t2 = document.getElementById("t2")
-        const x = document.getElementById("x")
-
-        let arrOfTextFields = [m1, m2, t1, t2, x]
-        for(let textField of arrOfTextFields) {
-            textField.value = ""
-        }
-        setTrans([])
-        setFunc([])
-        setIsCarbon(null)
+        setM1("")
+        setM2("")
+        setX("")
+        setT1("")
+        setT2("")
+        setAllFieldsEmpty(false)
     }
-
     // function to handle the search
-    const handleSearch = () => {
-
-    }
-
+    const handleSearch = async () => {
+        // have at least element filled
+        if(m1 === "" && m2 === "" && t1 === "" && t2 === "" && x === "") {
+            setAllFieldsEmpty(true);
+        } else {
+            router.push({
+                pathname: '/apps/mxene/filter',
+                query: {
+                    M1: m1,
+                    M2: m2,
+                    T1: t1,
+                    T2: t2,
+                    X: x
+                }
+            });
+        }
+    } 
     return (
         <div className="w-screen min-h-screen pt-16 flex flex-col items-center justify-center">
             <div className="my-8">
@@ -94,11 +77,21 @@ export default function MxeneSearch() {
                             <div className="flex md:flex-row flex-col justify-center items-center">
                                 <div className="m-2">
                                     <p className="text-white text-left p-1">M1</p>
-                                    <input id="m1" value={trans[0]} className="bg-gray-100 p-2 rounded-md caret-green-700 focus:outline-none focus:bg-green-100" name="m1"></input>
+                                    <input 
+                                        value={m1} 
+                                        className="bg-gray-100 p-2 rounded-md caret-green-700 focus:outline-none focus:bg-green-100" 
+                                        onChange={(e) => setM1(e.target.value)}
+                                    ></input>
+                                    {allFieldsEmpty && <p className="text-left text-sm mt-1 text-green-200">All fields cannot be empty!</p>}
                                 </div>
                                 <div className="m-2">
                                     <p className="text-white text-left p-1">M2</p>
-                                    <input id="m2" value={trans[1]} className="bg-gray-100 p-2 rounded-md caret-green-700 focus:outline-none focus:bg-green-100" name="m2"></input>
+                                    <input
+                                        value={m2} 
+                                        className="bg-gray-100 p-2 rounded-md caret-green-700 focus:outline-none focus:bg-green-100" 
+                                        onChange={(e) => setM2(e.target.value)}
+                                    ></input>
+                                    {allFieldsEmpty && <p className="text-left text-sm mt-1 text-green-200">All fields cannot be empty!</p>}
                                 </div>
                             </div>
                         </div>
@@ -107,7 +100,12 @@ export default function MxeneSearch() {
                             <div className="flex justify-center items-center">
                                 <div className="m-2">
                                     <p className="text-white text-left p-1">X</p>
-                                    <input id="x" className="bg-gray-100 p-2 rounded-md caret-blue-700 focus:outline-none focus:bg-blue-200" name="x"></input>
+                                    <input 
+                                        value={x} 
+                                        className="bg-gray-100 p-2 rounded-md caret-blue-700 focus:outline-none focus:bg-blue-200" 
+                                        onChange={(e) => setX(e.target.value)}
+                                    ></input>
+                                    {allFieldsEmpty && <p className="text-left text-sm mt-1 text-blue-200">All fields cannot be empty!</p>}
                                 </div>
                             </div>
                         </div>
@@ -116,18 +114,34 @@ export default function MxeneSearch() {
                             <div className="flex md:flex-row flex-col justify-center items-center">
                                 <div className="m-2">
                                     <p className="text-white text-left p-1">T1</p>
-                                    <input id="t1" value={func[0]} className="bg-gray-100 p-2 rounded-md caret-yellow-700 focus:outline-none focus:bg-yellow-100" name="t1"></input>
+                                    <input 
+                                        value={t1} 
+                                        className="bg-gray-100 p-2 rounded-md caret-yellow-700 focus:outline-none focus:bg-yellow-100" 
+                                        onChange={(e) => setT1(e.target.value)}
+                                    ></input>
+                                    {allFieldsEmpty && <p className="text-left text-sm mt-1 text-yellow-200">All fields cannot be empty!</p>}
                                 </div>
                                 <div className="m-2">
                                     <p className="text-white text-left p-1">T2</p>
-                                    <input id="t2" value={func[1]} className="bg-gray-100 p-2 rounded-md caret-yellow-700 focus:outline-none focus:bg-yellow-100" name="t2"></input>
+                                    <input 
+                                        value={t2} 
+                                        className="bg-gray-100 p-2 rounded-md caret-yellow-700 focus:outline-none focus:bg-yellow-100" 
+                                        onChange={(e) => setT2(e.target.value)}
+                                    ></input>
+                                    {allFieldsEmpty && <p className="text-left text-sm mt-1 text-yellow-200">All fields cannot be empty!</p>}
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div className="flex md:justify-end justify-center mt-4">
-                        <button className="px-8 py-1 mx-1 bg-gray-100 rounded-xl text-lg hover:-translate-y-0.5 focus:outline-none" onClick={handleReset}>Reset</button>
-                        <button className="px-8 py-1 mx-1 theme rounded-xl text-lg text-white hover:-translate-y-0.5 focus:outline-none" onClick={handleSearch}>Search</button>
+                        <button 
+                            className="px-8 py-1 mx-1 bg-gray-100 rounded-xl text-lg hover:-translate-y-0.5 focus:outline-none" 
+                            onClick={handleReset}
+                        >Reset</button>
+                        <button 
+                            className="px-8 py-1 mx-1 theme rounded-xl text-lg text-white hover:-translate-y-0.5 focus:outline-none" 
+                            onClick={handleSearch}
+                        >Search</button>
                     </div>
                 </div>
                 <div className="px-6 py-8 my-1 w-full rounded-md" style={{ backgroundColor: "rgba(255, 255, 255, 0.2)" }}>
@@ -239,7 +253,7 @@ export default function MxeneSearch() {
                             <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
                         <div className="h-16 grid grid-cols-2 gap-1">    
-                            <div className="h-full w-full flex justify-center items-center bg-yellow-200 text-yellow-700 rounded-md cursor-pointer hover:scale-105 duration-200" onClick={() => handleTransition("Br")}>Br</div>
+                            <div className="h-full w-full flex justify-center items-center bg-yellow-200 text-yellow-700 rounded-md cursor-pointer hover:scale-105 duration-200" onClick={() => handleFunc("Br")}>Br</div>
                             <div className="h-full w-full bg-gray-100 rounded-md"></div>
                         </div>
                         {/* fifth row */}
