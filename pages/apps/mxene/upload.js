@@ -126,3 +126,5 @@ export default function MxeneUpload() {
         </div>
     )
 } 
+
+export const getServerSideProps = withPageAuthRequired();

@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react"
 import { useRouter } from "next/router";
 import ResultCard from "../../../components/home/Apps/Mxene/ResultCard";
+import { saveAs } from "file-saver";
 
 export default function MxeneFilter() {
+    const [idList, setIdList] = useState([]); 
     const [searchResult, setSearchResult] = useState([]);
     const router = useRouter();
     useEffect(() => {
@@ -24,7 +26,16 @@ export default function MxeneFilter() {
         }
         queryDatabase();
     }, [router.query]);
-
+    const handleDownload = async () => {
+      try {
+        const mxeneIds = idList.join(",");
+        const resDown = await fetch(`http://localhost:3002/downloadmxene/?id=${mxeneIds}`);
+        const res = await resDown.blob();
+        await saveAs(res, `${idList.length}-Mxenes.zip`); 
+      } catch (error) {
+        console.log(error);
+      }
+    }
     return (
         <div className="w-screen min-h-screen pt-16 flex flex-col items-center justify-start">
             <div className="my-8">
@@ -34,10 +45,13 @@ export default function MxeneFilter() {
                     Please use the additional filters available to refine your search
                 </p>
             </div>
-            <div className="w-screen md:px-16 px-6">
+            <div className="md:w-2/3 md:px-16 px-6 flex justify-between md:mr-auto gap-4">
                 <p className="text-left text-white text-lg bg-gray-900 inline px-2 py-4 rounded-lg">
                     {searchResult.length} mxene{searchResult.length === 1 ? "" : "s"} found
                 </p>
+                <button onClick={handleDownload} className="outline-none text-left text-white text-lg bg-gray-900 inline px-2 py-3 rounded-lg">
+                    Download Mxenes
+                </button>
             </div>
             <div className="w-screen flex items-center justify-center py-4 md:px-16 px-6">
                 <div className="grid w-full md:grid-cols-3 grid-cols-1">
@@ -50,6 +64,8 @@ export default function MxeneFilter() {
                                          mxene={mxene.mxene} 
                                          latticeConstant={mxene.latticeConstant} 
                                          bandGap={mxene.bandGap}
+                                         idList={idList}
+                                         setIdList={setIdList}
                                        />
                             })
                         }

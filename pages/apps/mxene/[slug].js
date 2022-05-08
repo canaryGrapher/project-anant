@@ -1,4 +1,15 @@
+import { saveAs } from 'file-saver';
+
 export default function MxeneResult({mxene}) {
+    const handleDownload = async () => {
+      try {
+        const resDown = await fetch(`http://localhost:3002/downloadmxene/?id=${mxene.id}`);
+        const res = await resDown.blob();
+        await saveAs(res, `${mxene.mxene}.zip`); 
+      } catch (error) {
+        console.log(error);
+      }
+    }
     return (
         <div className="w-screen min-h-screen flex flex-col items-center justify-start pt-16">
             <div className="my-8">
@@ -24,7 +35,10 @@ export default function MxeneResult({mxene}) {
                 </div>
                 <div className="bg-white flex flex-col justify-start items-start p-4">
                     <textarea className="h-4/5 w-full focus:outline-none border-2 border-gray-300 my-2 p-2"></textarea>
-                    <button className="px-8 py-1 mx-1 my-2 self-end theme rounded-xl text-lg text-white hover:-translate-y-0.5 focus:outline-none">Download</button>
+                    <button
+                      onClick={handleDownload} 
+                      className="px-8 py-1 mx-1 my-2 self-end theme rounded-xl text-lg text-white hover:-translate-y-0.5 focus:outline-none"
+                    >Download</button>
                 </div>
             </div>
         </div>
