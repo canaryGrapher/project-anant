@@ -2,6 +2,10 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/router";
 import ResultCard from "../../../components/home/Apps/Mxene/ResultCard";
 import { saveAs } from "file-saver";
+import axios from "axios";
+import { Toaster } from "react-hot-toast";
+import { MyToaster } from "../../../functions/toaster";
+import Head from "next/head";
 
 export default function MxeneFilter() {
     const [idList, setIdList] = useState([]); 
@@ -27,17 +31,52 @@ export default function MxeneFilter() {
         queryDatabase();
     }, [router.query]);
     const handleDownload = async () => {
-      try {
-        const mxeneIds = idList.join(",");
-        const resDown = await fetch(`http://localhost:3002/downloadmxene/?id=${mxeneIds}`);
-        const res = await resDown.blob();
-        await saveAs(res, `${idList.length}-Mxenes.zip`); 
-      } catch (error) {
-        console.log(error);
-      }
+        if (idList.length === 0) {
+            return MyToaster({header: "No mxene selected!", message: "Please select at least 1 mxene"});
+        }
+        try {
+          const mxeneIds = idList.join(",");
+          var options = {
+              method: 'POST',
+              url: `${process.env.NEXT_PUBLIC_AUTH0_ISSUER_BASE_URL}/oauth/token`,
+              headers: {'content-type': 'application/json'},
+              data: {
+                "grant_type": "client_credentials",
+                "client_id": process.env.NEXT_PUBLIC_AUTH0_CLIENT_ID,
+                "client_secret": process.env.NEXT_PUBLIC_AUTH0_CLIENT_SECRET,
+                "audience": process.env.NEXT_PUBLIC_AUTH0_AUDIENCE
+              }
+            };
+            axios.request(options).then(async (response) => {
+              const resp = response.data;
+              if(resp.access_token){
+                  const accessToken = resp.access_token;
+                  const auth_header = {
+                    Authorization: `Bearer ${accessToken}`
+                  }
+                  const resDown = await fetch(`http://localhost:3002/downloadmxene/?id=${mxeneIds}`, { headers: auth_header }); 
+                  const res = await resDown.blob();
+                  await saveAs(res, `${idList.length}.zip`); 
+                  console.log("Verified and downloaded");
+                  MyToaster({header: "Download successfull!", message:`You have downloaded ${idList.length} mxene${idList.length === 1 ? "" : "s"}`});
+              }
+            }).catch(function (error) {
+              console.error(error);
+              MyToaster({header: "Download failed!", message: "There was an error downloading your mxenes"});
+            });
+        } catch (error) {
+          console.log(error);
+          MyToaster({header: "Download failed!", message: "There was an error downloading your mxenes"});
+        }
     }
     return (
         <div className="w-screen min-h-screen pt-16 flex flex-col items-center justify-start">
+            <Head>
+                <title>
+                  Filter Search | Mxene Database
+                </title>
+            </Head>
+            <Toaster position="top-right"/>
             <div className="my-8">
                 <h2 className="md:text-4xl text-2xl text-white text-center">Search Results</h2>
                 <div className="w-56 mx-auto my-2 h-1 bg-gray-100"></div>
