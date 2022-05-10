@@ -3,41 +3,48 @@ import axios from 'axios';
 import { Toaster } from "react-hot-toast";
 import { MyToaster } from "../../../functions/toaster";
 import Head from 'next/head';
+import { useUser } from '@auth0/nextjs-auth0';
 
 export default function MxeneResult({mxene}) {
+    const user = useUser();
     const handleDownload = async () => {
-      try {
-        var options = {
-          method: 'POST',
-          url: `${process.env.NEXT_PUBLIC_AUTH0_ISSUER_BASE_URL}/oauth/token`,
-          headers: {'content-type': 'application/json'},
-          data: {
-            "grant_type": "client_credentials",
-            "client_id": process.env.NEXT_PUBLIC_AUTH0_CLIENT_ID,
-            "client_secret": process.env.NEXT_PUBLIC_AUTH0_CLIENT_SECRET,
-            "audience": process.env.NEXT_PUBLIC_AUTH0_AUDIENCE
-          }
-        };
-        axios.request(options).then(async (response) => {
-          const resp = response.data;
-          if(resp.access_token){
-            const accessToken = resp.access_token;
-            const auth_header = {
-              Authorization: `Bearer ${accessToken}`
+      if(user.user) {
+        try {
+          var options = {
+            method: 'POST',
+            url: `${process.env.NEXT_PUBLIC_AUTH0_ISSUER_BASE_URL}/oauth/token`,
+            headers: {'content-type': 'application/json'},
+            data: {
+              "grant_type": "client_credentials",
+              "client_id": process.env.NEXT_PUBLIC_AUTH0_CLIENT_ID,
+              "client_secret": process.env.NEXT_PUBLIC_AUTH0_CLIENT_SECRET,
+              "audience": process.env.NEXT_PUBLIC_AUTH0_AUDIENCE
             }
-            const resDown = await fetch(`http://localhost:3002/downloadmxene/?id=${mxene.id}`, { headers: auth_header });
-            const res = await resDown.blob();
-            await saveAs(res, `${mxene.mxene}.zip`); 
-            console.log("Verified and downloaded");
-            MyToaster({header: "Download successfull!", message: `You have downloaded ${mxene.mxene}` });
-          }
-        }).catch(function (error) {
-          console.error(error);
+          };
+          axios.request(options).then(async (response) => {
+            const resp = response.data;
+            console.log(resp)
+            if(resp.access_token){
+              const accessToken = resp.access_token;
+              const auth_header = {
+                Authorization: `Bearer ${accessToken}`
+              }
+              const resDown = await fetch(`http://localhost:3002/downloadmxene/?id=${mxene.id}`, { headers: auth_header });
+              const res = await resDown.blob();
+              await saveAs(res, `${mxene.mxene}.zip`); 
+              console.log("Verified and downloaded");
+              MyToaster({header: "Download successfull!", message: `You have downloaded ${mxene.mxene}` });
+            }
+          }).catch(function (error) {
+            console.error(error);
+            MyToaster({header: "Download failed!", message: "There was an error downloading your mxenes"});
+          });
+        } catch (error) {
+          console.log(error);
           MyToaster({header: "Download failed!", message: "There was an error downloading your mxenes"});
-        });
-      } catch (error) {
-        console.log(error);
-        MyToaster({header: "Download failed!", message: "There was an error downloading your mxenes"});
+        }
+      } else {
+        MyToaster({header: "Login to download!", message: "Please login to download mxenes"});
       }
     }
     return (
