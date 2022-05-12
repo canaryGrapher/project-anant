@@ -3,6 +3,7 @@ import 'tailwindcss/tailwind.css'
 import NavBar from '../components/common/Navbar/Navbar'
 import "./../styles/global.css"
 import { UserProvider } from '@auth0/nextjs-auth0';
+import Head from 'next/head';
 
 function MyApp({ Component, pageProps }) {
   // disables console.log in production
@@ -11,6 +12,12 @@ function MyApp({ Component, pageProps }) {
   } 
   return (
     <div className="min-w-screen min-h-screen flex flex-col theme justify-center items-center">
+      <Head>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+      </Head>
       <UserProvider>
         <NavBar />
         <Component {...pageProps} />

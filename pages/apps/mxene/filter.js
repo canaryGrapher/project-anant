@@ -59,7 +59,7 @@ export default function MxeneFilter() {
                       }
                       const resDown = await fetch(`http://localhost:3002/downloadmxene/?id=${mxeneIds}`, { headers: auth_header }); 
                       const res = await resDown.blob();
-                      await saveAs(res, `${idList.length}.zip`); 
+                      await saveAs(res, `${idList.length}-mxenes.zip`); 
                       console.log("Verified and downloaded");
                       MyToaster({header: "Download successfull!", message:`You have downloaded ${idList.length} mxene${idList.length === 1 ? "" : "s"}`});
                   }
@@ -90,13 +90,13 @@ export default function MxeneFilter() {
                     Please use the additional filters available to refine your search
                 </p>
             </div>
-            <div className="md:w-2/3 md:px-16 px-6 flex justify-between md:mr-auto gap-4">
+            <div className="md:w-2/3 md:px-16 px-6 flex flex-wrap md:mr-auto md:gap-4 gap-2">
                 <p className="text-left text-white text-lg bg-gray-900 inline px-2 py-4 rounded-lg">
                     {searchResult.length} mxene{searchResult.length === 1 ? "" : "s"} found
                 </p>
-                <button onClick={handleDownload} className="outline-none text-left text-white text-lg bg-gray-900 inline px-2 py-3 rounded-lg">
+                {idList.length > 0 && <button onClick={handleDownload} className="outline-none text-left text-white text-lg bg-gray-900 inline px-2 py-3 rounded-lg">
                     Download Mxenes
-                </button>
+                </button>}
             </div>
             <div className="w-screen flex items-center justify-center py-4 md:px-16 px-6">
                 <div className="grid w-full md:grid-cols-3 grid-cols-1">
