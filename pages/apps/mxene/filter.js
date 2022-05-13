@@ -90,63 +90,30 @@ export default function MxeneFilter() {
                     Please use the additional filters available to refine your search
                 </p>
             </div>
-            <div className="md:w-2/3 md:px-16 px-6 flex flex-wrap md:mr-auto md:gap-4 gap-2">
-                <p className="text-left text-white text-lg bg-gray-900 inline px-2 py-4 rounded-lg">
-                    {searchResult.length} mxene{searchResult.length === 1 ? "" : "s"} found
-                </p>
-                {idList.length > 0 && <button onClick={handleDownload} className="outline-none text-left text-white text-lg bg-gray-900 inline px-2 py-3 rounded-lg">
-                    Download Mxenes
-                </button>}
-            </div>
-            <div className="w-screen flex items-center justify-center py-4 md:px-16 px-6">
-                <div className="grid w-full md:grid-cols-3 grid-cols-1">
-                    <div className="col-span-2 md:order-1 order-2">
-                        {
-                            searchResult.map((mxene) => {
-                                return <ResultCard 
-                                         key={mxene.id}
-                                         id={mxene.id} 
-                                         mxene={mxene.mxene} 
-                                         latticeConstant={mxene.latticeConstant} 
-                                         bandGap={mxene.bandGap}
-                                         idList={idList}
-                                         setIdList={setIdList}
-                                       />
-                            })
-                        }
-                    </div>
-                    <div className="col-span-1 md:p-2 md:fixed right-20 md:order-2 order-1">
-                        <div className="bg-white p-4 m-1 text-2xl rounded-md text-center theme-text font-bold">Filters</div>
-                        <div className="bg-white m-1 p-2 rounded-md">
-                            <div className="w-full mx-auto flex flex-col items-center p-2">
-                                <h5 className="text-xl theme-text font-bold self-start">Properties</h5>
-                                <div className="flex flex-wrap my-2">
-                                    <p className="theme-text text-xl px-3 m-1 border-2 border-blue-900 rounded-xl cursor-pointer">First</p>
-                                    <p className="theme-text text-xl px-3 m-1 border-2 border-blue-900 rounded-xl cursor-pointer">Second</p>
-                                    <p className="theme-text text-xl px-3 m-1 border-2 border-blue-900 rounded-xl cursor-pointer">Third Property</p>
-                                    <p className="theme-text text-xl px-3 m-1 border-2 border-blue-900 rounded-xl cursor-pointer">Fourth</p>
-                                </div>
-                            </div>
-                            <div className="w-full mx-auto flex flex-col items-center p-2">
-                                <h5 className="text-xl theme-text font-bold self-start">Lattice Constants</h5>
-                                <div className="flex flex-wrap my-2">
-                                    <p className="theme-text text-xl px-3 m-1 border-2 border-blue-900 rounded-xl cursor-pointer">First</p>
-                                    <p className="theme-text text-xl px-3 m-1 border-2 border-blue-900 rounded-xl cursor-pointer">Second</p>
-                                    <p className="theme-text text-xl px-3 m-1 border-2 border-blue-900 rounded-xl cursor-pointer">Third Property</p>
-                                    <p className="theme-text text-xl px-3 m-1 border-2 border-blue-900 rounded-xl cursor-pointer">Fourth</p>
-                                </div>
-                            </div>
-                            <div className="w-full mx-auto flex flex-col items-center p-2">
-                                <h5 className="text-xl theme-text font-bold self-start">Band Gap</h5>
-                                <div className="flex flex-wrap my-2">
-                                    <p className="theme-text text-xl px-3 m-1 border-2 border-blue-900 rounded-xl cursor-pointer">First</p>
-                                    <p className="theme-text text-xl px-3 m-1 border-2 border-blue-900 rounded-xl cursor-pointer">Second</p>
-                                    <p className="theme-text text-xl px-3 m-1 border-2 border-blue-900 rounded-xl cursor-pointer">Third Property</p>
-                                    <p className="theme-text text-xl px-3 m-1 border-2 border-blue-900 rounded-xl cursor-pointer">Fourth</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div className="w-full px-8 py-6">
+                <div className="flex mb-5 gap-2">
+                    <p className="md:text-md text-sm text-left text-white text-lg bg-gray-900 inline px-4 py-3 border border-gray-600 rounded-3xl">
+                        <span><i className="fa fa-list-ul mr-2"></i></span><strong>{searchResult.length}</strong> mxene{searchResult.length === 1 ? "" : "s"} found
+                    </p>
+                    {idList.length > 0 
+                    && <button onClick={handleDownload} className="outline-none md:text-md text-sm text-left text-lg bg-gray-300 inline px-4 py-3 border border-gray-600 rounded-3xl">
+                        <span><i className="fa fa-download mr-1"></i></span> Download {idList.length} Mxene{idList.length === 1 ? "" : "s"} 
+                    </button>}
+                </div>
+                <div className="w-full grid md:grid-cols-2 grid-cols-1 gap-2">
+                {
+                    searchResult.map((mxene) => {
+                        return <ResultCard 
+                                 key={mxene.id}
+                                 id={mxene.id} 
+                                 mxene={mxene.mxene} 
+                                 latticeConstant={mxene.latticeConstant} 
+                                 bandGap={mxene.bandGap}
+                                 idList={idList}
+                                 setIdList={setIdList}
+                               />
+                    })
+                }
                 </div>
             </div>
         </div>
