@@ -57,7 +57,8 @@ export default function MxeneSearch() {
                     M2: m2,
                     T1: t1,
                     T2: t2,
-                    X: x
+                    X: x,
+                    currentPage: 1
                 }
             });
         }

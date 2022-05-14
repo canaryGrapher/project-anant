@@ -7,29 +7,36 @@ import { Toaster } from "react-hot-toast";
 import { MyToaster } from "../../../functions/toaster";
 import Head from "next/head";
 import { useUser } from '@auth0/nextjs-auth0';
+import PageBar from "../../../components/common/PaginationBar/PageBar";
 
 export default function MxeneFilter() {
     const [idList, setIdList] = useState([]); 
     const [searchResult, setSearchResult] = useState([]);
     const router = useRouter();
+    const [currPage, setcurrPage] = useState(parseInt(router.query.currentPage));
+    const [numPages, setNumPages] = useState(0);
+    const [totalMxenes, setTotalMxenes] = useState(0);
     const user = useUser();
+    // handles query to the database
+    const queryDatabase = async () => {
+        const resBody = await fetch("http://localhost:3002/searchMxene", {
+            method: "POST",
+            mode: "cors",
+            cache: "no-cache",
+            credentials: "same-origin",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            referrerPolicy: "no-referrer",
+            body: JSON.stringify(router.query)
+        });
+        const resMxenes = await resBody.json();
+        setSearchResult(resMxenes.mxenes);
+        setTotalMxenes(resMxenes.totalResults);
+        setNumPages(resMxenes.totalPages);
+        setcurrPage(parseInt(resMxenes.currentPage));
+    }
     useEffect(() => {
-        // handles query to the database
-        const queryDatabase = async () => {
-            const resBody = await fetch("http://localhost:3002/searchMxene", {
-                method: "POST",
-                mode: "cors",
-                cache: "no-cache",
-                credentials: "same-origin",
-                headers: {
-                  "Content-Type": "application/json"
-                },
-                referrerPolicy: "no-referrer",
-                body: JSON.stringify(router.query)
-            });
-            const mxenes = await resBody.json();
-            setSearchResult(mxenes);
-        }
         queryDatabase();
     }, [router.query]);
     const handleDownload = async () => {
@@ -91,14 +98,21 @@ export default function MxeneFilter() {
                 </p>
             </div>
             <div className="w-full px-8 py-6">
-                <div className="flex mb-5 gap-2">
-                    <p className="md:text-md text-sm text-left text-white text-lg bg-gray-900 inline px-4 py-3 border border-gray-600 rounded-3xl">
-                        <span><i className="fa fa-list-ul mr-2"></i></span><strong>{searchResult.length}</strong> mxene{searchResult.length === 1 ? "" : "s"} found
+                <div className="flex mb-5 gap-2 items-center">
+                    <p className="md:text-md text-sm text-center text-white text-lg bg-gray-900 inline px-4 py-3 border border-gray-600 rounded-3xl">
+                        <span><i className="fa fa-list-ul mr-2"></i></span><strong>{totalMxenes}</strong> mxene{totalMxenes === 1 ? "" : "s"} found
                     </p>
                     {idList.length > 0 
-                    && <button onClick={handleDownload} className="outline-none md:text-md text-sm text-left text-lg bg-gray-300 inline px-4 py-3 border border-gray-600 rounded-3xl">
+                    && <button onClick={handleDownload} className="outline-none md:text-md text-sm text-center text-lg bg-gray-300 inline px-4 py-3 border border-gray-600 rounded-3xl">
                         <span><i className="fa fa-download mr-1"></i></span> Download {idList.length} Mxene{idList.length === 1 ? "" : "s"} 
                     </button>}
+                    {
+                        idList.length <= 0 
+                        &&
+                        <p className="text-gray-300">
+                          Displaying <span className="underline font-bold">{20 * parseInt(currPage-1) + 1} - {20*parseInt(currPage-1)+searchResult.length}</span> mxenes  
+                        </p> 
+                    }
                 </div>
                 <div className="w-full grid md:grid-cols-2 grid-cols-1 gap-2">
                 {
@@ -114,6 +128,9 @@ export default function MxeneFilter() {
                                />
                     })
                 }
+                </div>
+                <div className="container mx-auto text-center mt-6 mb-4">
+                    <PageBar currPage={currPage} numberOfPages={numPages}/>
                 </div>
             </div>
         </div>
