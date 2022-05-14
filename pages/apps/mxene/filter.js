@@ -130,7 +130,15 @@ export default function MxeneFilter() {
                 }
                 </div>
                 <div className="container mx-auto text-center mt-6 mb-4">
-                    <PageBar currPage={currPage} numberOfPages={numPages}/>
+                    <PageBar 
+                        currPage={currPage} 
+                        numberOfPages={numPages}
+                        m1={router.query.M1}
+                        m2={router.query.M2}
+                        t1={router.query.T1}
+                        t2={router.query.T2}
+                        x={router.query.X}
+                    />
                 </div>
             </div>
         </div>
