@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import Image from 'next/image'
+import Head from 'next/head';
 
 import { FamousCitations, OtherCitations } from "./../data/publication"
 
@@ -36,6 +37,10 @@ const Publications = () => {
   
   return (
     <div className="flex flex-col items-center w-screen py-32">
+        <Head>
+          <title>Publications | Project Anant</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
         <div className="my-8 text-white text-center">
           <h2 className="md:text-4xl text-xl">Our Publications</h2>
           <div className="w-56 mx-auto my-2 h-1 bg-gray-100"></div>

@@ -1,9 +1,14 @@
 import Image from "next/image"
 import Link from "next/link"
+import Head from "next/head"
 
 export default function Mxene() {
     return (
         <div className="w-screen min-h-screen flex flex-col items-center justify-center">
+            <Head>
+              <title>Mxene Database | Project Anant</title>
+              <link rel="icon" href="/favicon.ico" />
+            </Head>
             <div className="my-8">
                 <h2 className="md:text-4xl text-2xl text-white text-center">MXene Database</h2>
                 <div className="w-56 mx-auto my-2 h-1 bg-gray-100"></div>
