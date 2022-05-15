@@ -16,7 +16,7 @@ export default function ResultCard ({mxene, latticeConstant, bandGap, id, idList
             style={{ backgroundColor: "rgba(255, 255, 255, 0.2)" }}
         >
             <div className="md:w-auto w-4/5 flex md:flex-row flex-row-reverse items-center md:justify-start justify-between md:border-0 border-t-2 border-b-2 my-2 border-gray-400 md:text-left text-center">
-                <input type="checkbox" className="md:mr-3 ml-3" onChange={() => handleIdList(id)}/>
+                <input type="checkbox" checked={idList.includes(id)} className="md:mr-3 ml-3" onChange={() => handleIdList(id)}/>
                 <p className="text-white text-2xl md:my-0 my-4">{mxene}</p>
             </div>
             <div className="flex md:justify-between justify-center md:gap-2 gap-4 md:mx-2 my-2">
