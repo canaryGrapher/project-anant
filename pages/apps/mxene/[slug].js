@@ -67,7 +67,7 @@ export default function MxeneResult({ mxene }) {
         <meta name="coverage" content="Worldwide" />
         <meta name="target" content="all" />
         <meta name="HandheldFriendly" content="True" />
-        <link rel="icon" href="" />        
+        <link rel="icon" href="" />
         <link rel="canonical" href="" />
         {/* OG meta tags */}
         <meta property="og:type" content="article" />
@@ -110,9 +110,9 @@ export default function MxeneResult({ mxene }) {
         </div>
         <div className="flex flex-col gap-2 justify-center items-center">
           <div className="result-card h-full w-full justify-start items-start p-4">
-            <textarea 
-              disabled={true} 
-              value={mxene.poscar_data} 
+            <textarea
+              disabled={true}
+              value={mxene.poscar_data}
               className="w-full focus:outline-none border-2 border-gray-300 my-2 p-2"
               style={{ minHeight: "95%", maxHeight: "95%" }}
             ></textarea>
@@ -120,7 +120,7 @@ export default function MxeneResult({ mxene }) {
           <div className="theme border border-white w-full">
             <button
               onClick={handleDownload}
-              className="w-full my-2 text-white uppercase text-lg text-white hover:-translate-y-0.5 focus:outline-none"
+              className="w-full my-2 text-white uppercase text-lg hover:-translate-y-0.5 focus:outline-none"
             >
               Download <span><i className="fa fa-download mx-1"></i></span>
             </button>

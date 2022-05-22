@@ -1,12 +1,9 @@
 import React from 'react';
 import Image from 'next/image'
 
-//importing sample data
-import { AboutUpdates } from '../../../data/aboutpage';
-
 const monthArray = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-const About = () => {
+const About = (props) => {
     return (
         <div className="flex md:flex-row flex-col items-center min-h-screen md:px-20 px-6 py-8 pt-16">
             <div className="md:w-1/2 w-full">
@@ -25,8 +22,8 @@ const About = () => {
                 <div className="md:w-3/4 md:ml-16 p-10 overflow-y-scroll" style={{ backgroundColor: "rgba(255, 255, 255, 0.2)" }}>
                     <h2 className="underline text-center text-3xl pb-10">Updates</h2>
                     {
-                        AboutUpdates.map((item, index) => {
-                            const updateDate = new Date();
+                        props.updates.map((item, index) => {
+                            const updateDate = new Date(item.date);
                             return (
                                 <div key={index} className="pb-5">
                                     <p className="text-xl underline">{`${updateDate.getDate()} ${monthArray[updateDate.getMonth()]}, ${updateDate.getFullYear()}`}</p>
