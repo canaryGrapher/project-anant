@@ -2,8 +2,6 @@ import React from 'react'
 import { useState } from 'react';
 import Image from 'next/image'
 import Head from 'next/head';
-
-import { FamousCitations, OtherCitations } from "./../data/publication"
 import Link from 'next/link';
 
 const Publications = ({ favorites, others }) => {
@@ -56,12 +54,12 @@ const Publications = ({ favorites, others }) => {
         {favorites.length > 0 ?
           favorites.map((cit, index) => {
             return (
-              <div className="my-1" key={index + FamousCitations.length}>
-                <div className="w-full flex justify-between items-center bg-[#FAFAFA] rounded py-2 px-4 cursor-pointer" onClick={() => handleClick(index + FamousCitations.length)}>
+              <div className="my-1" key={index + favorites.length}>
+                <div className="w-full flex justify-between items-center bg-[#ebebeb] rounded py-2 px-4 cursor-pointer" onClick={() => handleClick(index + favorites.length)}>
                   <p className="p-2 text-black text-lg font-medium">{cit.title}</p>
-                  <Image src="https://ik.imagekit.io/iiscvsmanipal/chevron-up_d5sUlZR4fLI.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1642282534518" className={`${expanded && (expandedInd.indexOf(index + FamousCitations.length) !== -1) ? "rotate-180" : "rotate-0"} duration-300 ease-out`} height={20} width={20} />
+                  <Image src="https://ik.imagekit.io/iiscvsmanipal/chevron-up_d5sUlZR4fLI.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1642282534518" className={`${expanded && (expandedInd.indexOf(index + favorites.length) !== -1) ? "rotate-180" : "rotate-0"} duration-300 ease-out`} height={20} width={20} />
                 </div>
-                <div className={`collapsible-${index + FamousCitations.length} rounded-b text-white`} style={{ maxHeight: "0px", overflow: "hidden", transition: "all 0.3s ease-in-out", backgroundColor: "rgba(255, 255, 255, 0.2)" }}>
+                <div className={`collapsible-${index + favorites.length} rounded-b text-white`} style={{ maxHeight: "0px", overflow: "hidden", transition: "all 0.3s ease-in-out", backgroundColor: "rgba(255, 255, 255, 0.2)" }}>
                   <div className="flex md:flex-row flex-col justify-between items-center pb-8">
                     <div>
                       <div className='mx-5 my-2'>
@@ -87,18 +85,18 @@ const Publications = ({ favorites, others }) => {
         <div className="md:flex justify-between mt-16 items-center">
           <div>
             <h4 className="text-white font-bold text-3xl w-auto md:w-96">Other Citations</h4>
-            <div className="w-80 my-2 h-1 bg-gray-100"></div>
+            <div className="w-80 my-2 h-1 bg-[#ebebeb]"></div>
           </div>
         </div>
         {
           others.map((cit, index) => {
             return (
-              <div className="my-1" key={index + FamousCitations.length}>
-                <div className="w-full flex justify-between items-center bg-[#FAFAFA] rounded py-2 px-4 cursor-pointer" onClick={() => handleClick(index + FamousCitations.length)}>
+              <div className="my-1" key={index + favorites.length}>
+                <div className="w-full flex justify-between items-center bg-[#FAFAFA] rounded py-2 px-4 cursor-pointer" onClick={() => handleClick(index + favorites.length)}>
                   <p className="p-2 text-black text-lg font-medium">{cit.title}</p>
-                  <Image src="https://ik.imagekit.io/iiscvsmanipal/chevron-up_d5sUlZR4fLI.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1642282534518" className={`${expanded && (expandedInd.indexOf(index + FamousCitations.length) !== -1) ? "rotate-180" : "rotate-0"} duration-300 ease-out`} height={20} width={20} />
+                  <Image src="https://ik.imagekit.io/iiscvsmanipal/chevron-up_d5sUlZR4fLI.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1642282534518" className={`${expanded && (expandedInd.indexOf(index + favorites.length) !== -1) ? "rotate-180" : "rotate-0"} duration-300 ease-out`} height={20} width={20} />
                 </div>
-                <div className={`collapsible-${index + FamousCitations.length} rounded-b text-white`} style={{ maxHeight: "0px", overflow: "hidden", transition: "all 0.3s ease-in-out", backgroundColor: "rgba(255, 255, 255, 0.2)" }}>
+                <div className={`collapsible-${index + favorites.length} rounded-b text-white`} style={{ maxHeight: "0px", overflow: "hidden", transition: "all 0.3s ease-in-out", backgroundColor: "rgba(255, 255, 255, 0.2)" }}>
                   <div className="flex md:flex-row flex-col justify-between items-center pb-8">
                     <div>
                       <div className='mx-5 my-2'>

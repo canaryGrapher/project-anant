@@ -1,42 +1,38 @@
 import Link from "next/link";
 
-const PageBar = ({currPage, numberOfPages, m1, m2, t1, t2, x}) => {
+const PageBar = (props) => {
+    let pages = [...Array(props.totalPages).keys()];
+    console.log(pages, props);
+    pages.shift()
+    pages.push(props.totalPages)
     return (
-        numberOfPages > 1 && <div className="flex flex-wrap justify-center items-center">
+        <div className="container mx-auto text-center mt-6 mb-4 flex justify-center">
             {
-                ((currPage - 1) > 0) 
-                && 
-                <Link href={`/apps/mxene/filter?M1=${m1 ? m1 : ""}&M2=${m2 ? m2 : ""}&T1=${t1 ? t1 : ""}&T2=${t2 ? t2 : ""}&X=${x ? x : ""}&currentPage=${currPage - 1}`}>
-                    <div className="h-8 w-8 flex items-center justify-center border cursor-pointer rounded-full text-white hover:theme-text hover:bg-gray-100 mx-1">
-                        <i className="fa fa-chevron-left"></i>
-                    </div>
-                </Link>
-            }
-            {
-                [...Array(numberOfPages).keys()].map((page) => {
-                    return (
-                        <Link href={`/apps/mxene/filter?M1=${m1 ? m1 : ""}&M2=${m2 ? m2 : ""}&T1=${t1 ? t1 : ""}&T2=${t2 ? t2 : ""}&X=${x ? x : ""}&currentPage=${page+1}`}>
-                            <div 
-                                key={page} 
-                                className={`h-8 w-8 flex items-center justify-center cursor-pointer rounded-full text-white ${currPage === page + 1 ? "bg-gray-300 theme-text hover:ring ring-gray-900" : ""} hover:theme-text hover:bg-gray-100 mx-1`}
-                            >
-                                {page+1}
+                pages.map(page => {
+                    if (page == props.currentPage) {
+                        return (
+                            <div>
+                                <p className="text-2xl mx-2 rounded-full w-10 h-10 flex flex-col justify-center bg-white">{page}</p>
                             </div>
-                        </Link>
-                    )
+                        )
+                    } else {
+                        let pageLink = `/apps/mxene/filter?M1=${props.query.M1}&M2=${props.query.M2}&T1=${props.query.T1}&T2=${props.query.T2}&X=${props.query.X}&currentPage=${page}`;
+                        if (props.query.bandGap) {
+                            pageLink += `&bandGap=${props.query.bandGap}`;
+                        }
+                        return (
+                            <Link href={pageLink}>
+                                <p className="text-2xl text-white mx-2 w-10 h-10 flex flex-col justify-center">{page}</p>
+                            </Link>
+                        )
+                    }
+
+
+
                 })
-            }
-            {
-                ((currPage + 1) <= numberOfPages) 
-                &&
-                <Link href={`/apps/mxene/filter?M1=${m1 ? m1 : ""}&M2=${m2 ? m2 : ""}&T1=${t1 ? t1 : ""}&T2=${t2 ? t2 : ""}&X=${x ? x : ""}&currentPage=${currPage + 1}`}>
-                    <div className="h-8 w-8 flex items-center justify-center border cursor-pointer rounded-full text-white hover:theme-text hover:bg-gray-100 mx-1">
-                        <i className="fa fa-chevron-right"></i>
-                    </div>
-                </Link>
             }
         </div>
     )
-} 
+}
 
 export default PageBar;

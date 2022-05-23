@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react"
-import { useRouter } from "next/router";
+import { useState } from "react"
 import ResultCard from "../../../components/home/Apps/Mxene/ResultCard";
 import { saveAs } from "file-saver";
 import axios from "axios";
@@ -9,36 +8,10 @@ import Head from "next/head";
 import { useUser } from '@auth0/nextjs-auth0';
 import PageBar from "../../../components/common/PaginationBar/PageBar";
 
-export default function MxeneFilter() {
+export default function MxeneFilter({ query, res }) {
     const [idList, setIdList] = useState([]);
-    const [searchResult, setSearchResult] = useState([]);
-    const router = useRouter();
-    const [currPage, setcurrPage] = useState(parseInt(router.query.currentPage));
-    const [numPages, setNumPages] = useState(0);
-    const [totalMxenes, setTotalMxenes] = useState(0);
     const user = useUser();
-    // handles query to the database
-    const queryDatabase = async () => {
-        const resBody = await fetch("http://localhost:3002/searchMxene", {
-            method: "POST",
-            mode: "cors",
-            cache: "no-cache",
-            credentials: "same-origin",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            referrerPolicy: "no-referrer",
-            body: JSON.stringify(router.query)
-        });
-        const resMxenes = await resBody.json();
-        setSearchResult(resMxenes.mxenes);
-        setTotalMxenes(resMxenes.totalResults);
-        setNumPages(resMxenes.totalPages);
-        setcurrPage(parseInt(resMxenes.currentPage));
-    }
-    useEffect(() => {
-        queryDatabase();
-    }, [router.query]);
+
     const handleDownload = async () => {
         if (idList.length === 0) {
             return MyToaster({ header: "No mxene selected!", message: "Please select at least 1 mxene" });
@@ -66,7 +39,7 @@ export default function MxeneFilter() {
                         }
                         const resDown = await fetch(`http://localhost:3002/downloadmxene/?id=${mxeneIds}`, { headers: auth_header });
                         const res = await resDown.blob();
-                        await saveAs(res, `${idList.length}-mxenes.zip`);
+                        saveAs(res, `${idList.length}-mxenes.zip`);
                         console.log("Verified and downloaded");
                         MyToaster({ header: "Download successfull!", message: `You have downloaded ${idList.length} mxene${idList.length === 1 ? "" : "s"}` });
                     }
@@ -94,13 +67,13 @@ export default function MxeneFilter() {
                 <h2 className="md:text-4xl text-2xl text-white text-center">Search Results</h2>
                 <div className="w-56 mx-auto my-2 h-1 bg-gray-100"></div>
                 <p className="text-white text-lg px-4 text-center">
-                    Please use the additional filters available to refine your search
+                    Click on the search result box to select it for downloading
                 </p>
             </div>
             <div className="w-full px-8 py-6">
                 <div className="flex mb-5 gap-2 items-center">
                     <p className="md:text-md text-center text-white text-lg bg-gray-900 inline px-4 py-3 border border-gray-600 rounded-3xl">
-                        <span><i className="fa fa-list-ul mr-2"></i></span><strong>{totalMxenes}</strong> mxene{totalMxenes === 1 ? "" : "s"} found
+                        <span><i className="fa fa-list-ul mr-2"></i></span><strong>{res.totalResults}</strong> mxene{res.totalResults === 1 ? "" : "s"} found
                     </p>
                     {idList.length > 0
                         && <button onClick={handleDownload} className="outline-none md:text-md text-center text-lg bg-gray-300 inline px-4 py-3 border border-gray-600 rounded-3xl">
@@ -110,13 +83,13 @@ export default function MxeneFilter() {
                         idList.length <= 0
                         &&
                         <p className="text-gray-300">
-                            Displaying <span className="underline font-bold">{20 * parseInt(currPage - 1) + 1} - {20 * parseInt(currPage - 1) + searchResult.length}</span> mxenes
+                            Displaying <span className="underline font-bold">{20 * parseInt(res.currentPage - 1) + 1} - {20 * parseInt(res.currentPage - 1) + res.mxenes.length}</span> of <span className="font-bold">{res.totalResults}</span> mxenes
                         </p>
                     }
                 </div>
-                <div className="w-full grid md:grid-cols-2 grid-cols-1 gap-2">
+                <div className="w-full grid md:grid-cols-2 lg:grid-cols-4 grid-cols-1 gap-2">
                     {
-                        searchResult.map((mxene) => {
+                        res.mxenes.map((mxene) => {
                             return <ResultCard
                                 key={mxene.id}
                                 id={mxene.id}
@@ -131,16 +104,47 @@ export default function MxeneFilter() {
                 </div>
                 <div className="container mx-auto text-center mt-6 mb-4">
                     <PageBar
-                        currPage={currPage}
-                        numberOfPages={numPages}
-                        m1={router.query.M1}
-                        m2={router.query.M2}
-                        t1={router.query.T1}
-                        t2={router.query.T2}
-                        x={router.query.X}
+                        query={query}
+                        totalPages={res.totalPages}
+                        currentPage={res.currentPage}
                     />
                 </div>
             </div>
         </div>
     )
-} 
+}
+
+
+export async function getServerSideProps(context) {
+    const query = context.query;
+    let parameters = {
+        M1: query.M1,
+        M2: query.M2,
+        T1: query.T1,
+        T2: query.T2,
+        X: query.X,
+        currentPage: query.currentPage,
+    }
+    if (query.bandGap) {
+        parameters["bandGap"] = query.bandGap;
+    }
+    const fetchURL = process.env.NEXT_PUBLIC_SERVER_URL + '/searchMxene'
+    const resBody = await fetch(fetchURL, {
+        method: "POST",
+        mode: "cors",
+        cache: "no-cache",
+        credentials: "same-origin",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        referrerPolicy: "no-referrer",
+        body: JSON.stringify(parameters)
+    });
+    const res = await resBody.json();
+    return {
+        props: {
+            query,
+            res
+        }
+    }
+}

@@ -35,6 +35,18 @@ export default function MxeneSearch() {
                         currentPage: 1
                     }
                 });
+            } else {
+                router.push({
+                    pathname: '/apps/mxene/filter',
+                    query: {
+                        M1: m1,
+                        M2: m2,
+                        T1: t1,
+                        T2: t2,
+                        X: x,
+                        currentPage: 1
+                    }
+                });
             }
 
         }

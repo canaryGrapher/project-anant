@@ -5,13 +5,13 @@ const TableLayout = [
     ["_", "_", "Sc", "Ti", "V", "Cr", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "Br", "_"],
     ["_", "_", "Y", "Zr", "Nb", "Mo", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"],
     ["_", "_", "_", "Hf", "Ta", "W", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"],
-    ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"]
+    ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"],
+    ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+    ["", "", "", "", "", "OH", "NP", "CN", "RO", "OBr", "OCl", "SCN", "NCS", "OCN", "", "", "", ""]
 ]
-
-const AdditionalTableLayout = ["OH", "NP", "CN", "RO", "OBr", "OCl", "SCN", "NCS", "OCN"]
 
 const M_Values = ["Sc", "Ti", "V", "Cr", "Y", "Zr", "Nb", "Mo", "Hf", "Ta", "W"]
 const X_Values = ["C", "N"]
 const T_Values = ["H", "O", "F", "Cl", "Br", "OH", "NP", "CN", "RO", "OBr", "OCl", "SCN", "NCS", "OCN"]
 
-export { TableLayout, AdditionalTableLayout, M_Values, X_Values, T_Values }
+export { TableLayout, M_Values, X_Values, T_Values }

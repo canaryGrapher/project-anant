@@ -47,7 +47,7 @@ const SearchForm = (props) => {
                     onClick={props.resetFunction}>
                     Reset
                 </button>
-                <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-sm ml-5"
+                <button className="bg-[#163F65] hover:bg-red-700 text-white font-bold py-2 px-4 rounded-sm ml-5"
                     onClick={props.searchFunction}>
                     Search
                 </button>

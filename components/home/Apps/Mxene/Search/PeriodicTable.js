@@ -1,4 +1,4 @@
-import { AdditionalTableLayout, TableLayout, M_Values, X_Values, T_Values } from "../../../../../data/PeriodicTableData"
+import { TableLayout, M_Values, X_Values, T_Values } from "../../../../../data/PeriodicTableData"
 
 
 

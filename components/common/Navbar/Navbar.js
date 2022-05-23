@@ -7,17 +7,17 @@ import { useUser } from "@auth0/nextjs-auth0";
 import Sidebar from "../Sidebar/Sidebar";
 
 const genMenuOptions = [
-    {name: "Apps", href: "/apps"}, 
-    {name: "Publications", href: "/publications"}, 
-    {name: "About", href: "/about"}, 
-    {name: "Contact", href: "/contact"}
+    { name: "Apps", href: "/apps" },
+    { name: "Publications", href: "/publications" },
+    { name: "About", href: "/about" },
+    { name: "Contact", href: "/contact" }
 ]
 
 const appMenuOptions = [
-    {name: "Home", href: "/"},
-    {name: "About", href: "/apps/mxene"}, 
-    {name: "Upload", href: "/apps/mxene/upload"}, 
-    {name: "Mxene Search", href: "/apps/mxene/search"}
+    { name: "Home", href: "/" },
+    { name: "About", href: "/apps/mxene" },
+    { name: "Upload", href: "/apps/mxene/upload" },
+    { name: "Mxene Search", href: "/apps/mxene/search" }
 ]
 
 const NavBar = () => {
@@ -26,9 +26,9 @@ const NavBar = () => {
     const router = useRouter();
     // assign the menu optiosn for navbar
     let regex = /\/[a-zA-Z]+\//;
-    const menuOptions 
-        = regex.test(router.pathname) 
-        ? appMenuOptions : genMenuOptions; 
+    const menuOptions
+        = regex.test(router.pathname)
+            ? appMenuOptions : genMenuOptions;
 
     const [isActiveIndex, setIsActiveIndex] = useState(null)
     const [expanded, setExpanded] = useState(false);
@@ -49,7 +49,7 @@ const NavBar = () => {
             document.removeEventListener("mousedown", checkIfClickedOutside)
         }
     }, [isMenuOpen])
-    
+
     const handleClick = () => {
         setExpanded(true);
         setIsMenuOpen(true);
@@ -78,16 +78,16 @@ const NavBar = () => {
                 </div>
                 <div className="md:w-40 w-24 py-5 bg-theme flex justify-center items-center" >
                     {
-                        user.user 
-                        ? <a href="/api/auth/logout"><button className="text-white text-lg focus:outline-none">Logout</button></a>
-                        : <Image 
-                            className="cursor-pointer" 
-                            height={35} 
-                            width={30} 
-                            alt="Account" 
-                            onClick={handleClick} 
-                            src="https://ik.imagekit.io/iiscvsmanipal/account_vmJJKFcge.png?updatedAt=1638595344875" 
-                        /> 
+                        user.user
+                            ? <a href="/api/auth/logout"><button className="text-white text-lg focus:outline-none">Logout</button></a>
+                            : <Image
+                                className="cursor-pointer"
+                                height={35}
+                                width={30}
+                                alt="Account"
+                                onClick={handleClick}
+                                src="https://ik.imagekit.io/iiscvsmanipal/account_vmJJKFcge.png?updatedAt=1638595344875"
+                            />
                     }
                 </div>
                 <div className="sidebar h-screen w-96 absolute right-0 translate-x-full transform transition duration-700 ease-in-out" ref={ref}>
