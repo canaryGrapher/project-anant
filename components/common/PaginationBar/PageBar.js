@@ -26,9 +26,6 @@ const PageBar = (props) => {
                             </Link>
                         )
                     }
-
-
-
                 })
             }
         </div>

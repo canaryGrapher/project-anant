@@ -95,7 +95,7 @@ export default function MxeneResult({ mxene }) {
         <div className="flex justify-center items-center result-card">
           {/* 3d model here */}
         </div>
-        <div className="md:h-96 w-full flex flex-col">
+        <div className="md:h-full w-full flex flex-col">
           <div className="result-card h-1/2 flex flex-col justify-center w-full p-8 mb-1 text-center">
             <h5 className="text-2xl">Lattice Constant</h5>
             <h4 className="md:text-4xl text-3xl theme-text font-bold">{mxene.latticeConstant}</h4>
@@ -105,8 +105,9 @@ export default function MxeneResult({ mxene }) {
             <h4 className="md:text-4xl text-3xl theme-text font-bold">{mxene.magneticMoment}</h4>
           </div>
         </div>
-        <div className="result-card flex justify-center items-center">
+        <div className="flex justify-center items-center bg-white">
           {/* graph */}
+          <img src={`data:image/png;base64,${mxene.bandImage}`} alt="Band image for the mxene protein" className="w-full h-full p-4" />
         </div>
         <div className="flex flex-col gap-2 justify-center items-center">
           <div className="result-card h-full w-full justify-start items-start p-4">
@@ -117,10 +118,10 @@ export default function MxeneResult({ mxene }) {
               style={{ minHeight: "95%", maxHeight: "95%" }}
             ></textarea>
           </div>
-          <div className="theme border border-white w-full">
+          <div className="theme border border-white w-full hover:bg-white text-white hover:text-black">
             <button
               onClick={handleDownload}
-              className="w-full my-2 text-white uppercase text-lg hover:-translate-y-0.5 focus:outline-none"
+              className="w-full my-2 uppercase text-lg"
             >
               Download <span><i className="fa fa-download mx-1"></i></span>
             </button>
