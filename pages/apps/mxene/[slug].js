@@ -4,6 +4,7 @@ import { Toaster } from "react-hot-toast";
 import { MyToaster } from "../../../functions/toaster";
 import Head from 'next/head';
 import { useUser } from '@auth0/nextjs-auth0';
+import Script from 'next/script';
 
 export default function MxeneResult({ mxene }) {
   const user = useUser();
@@ -47,6 +48,30 @@ export default function MxeneResult({ mxene }) {
       MyToaster({ header: "Login to download!", message: "Please login to download mxenes" });
     }
   }
+
+  // var Info = {
+  //   width: 400,
+  //   height: 400,
+  //   debug: false,
+  //   color: "white",
+  //   addSelectionOptions: false,
+  //   serverURL: "https://chemapps.stolaf.edu/jmol/jsmol/php/jsmol.php",
+  //   use: "HTML5",
+  //   readyFunction: null,
+  //   defaultModel: "",
+  //   bondWidth: 4,
+  //   zoomScaling: 1.7,
+  //   pinchScaling: 2.0,
+  //   mouseDragFactor: 0.5,
+  //   touchDragFactor: 0.15,
+  //   multipleBondSpacing: 4,
+  //   spinRateX: 0.2,
+  //   spinRateY: 0.5,
+  //   spinFPS: 20,
+  //   spin: false,
+  //   debug: false
+  // }
+
   return (
     <div className="w-screen min-h-screen flex flex-col items-center justify-start pt-16">
       <Head>
@@ -86,6 +111,8 @@ export default function MxeneResult({ mxene }) {
           content="Project Anant"
         />
       </Head>
+      {/* <Script src="/jquery.min.js" strategy='afterInteractive' />
+      <Script src="/JSmol.lite.nojq.js" strategy='afterInteractive' /> */}
       <Toaster position="top-right" />
       <div className="my-8">
         <h2 className="md:text-4xl text-2xl text-white text-center">{mxene.mxene}</h2>
