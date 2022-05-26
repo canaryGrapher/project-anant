@@ -49,28 +49,29 @@ export default function MxeneResult({ mxene }) {
     }
   }
 
-  // var Info = {
-  //   width: 400,
-  //   height: 400,
-  //   debug: false,
-  //   color: "white",
-  //   addSelectionOptions: false,
-  //   serverURL: "https://chemapps.stolaf.edu/jmol/jsmol/php/jsmol.php",
-  //   use: "HTML5",
-  //   readyFunction: null,
-  //   defaultModel: "",
-  //   bondWidth: 4,
-  //   zoomScaling: 1.7,
-  //   pinchScaling: 2.0,
-  //   mouseDragFactor: 0.5,
-  //   touchDragFactor: 0.15,
-  //   multipleBondSpacing: 4,
-  //   spinRateX: 0.2,
-  //   spinRateY: 0.5,
-  //   spinFPS: 20,
-  //   spin: false,
-  //   debug: false
-  // }
+  var Info = {
+    width: 400,
+    height: 400,
+    debug: false,
+    color: "white",
+    addSelectionOptions: false,
+    serverURL: "https://chemapps.stolaf.edu/jmol/jsmol/php/jsmol.php",
+    use: "HTML5",
+    readyFunction: null,
+    defaultModel: "",
+    bondWidth: 4,
+    zoomScaling: 1.7,
+    pinchScaling: 2.0,
+    mouseDragFactor: 0.5,
+    touchDragFactor: 0.15,
+    multipleBondSpacing: 4,
+    spinRateX: 0.2,
+    spinRateY: 0.5,
+    spinFPS: 20,
+    spin: false,
+    debug: false
+  }
+
 
   return (
     <div className="w-screen min-h-screen flex flex-col items-center justify-start pt-16">
@@ -110,17 +111,18 @@ export default function MxeneResult({ mxene }) {
           property="og:site_name"
           content="Project Anant"
         />
+        {/* <Script type="text/javascript" src="/jquery.min.js" strategy="afterInteractive" /> */}
+        <Script type="text/javascript" src="/JSmol.lite.nojq.js" strategy="afterInteractive" />
       </Head>
-      {/* <Script src="/jquery.min.js" strategy='afterInteractive' />
-      <Script src="/JSmol.lite.nojq.js" strategy='afterInteractive' /> */}
       <Toaster position="top-right" />
       <div className="my-8">
         <h2 className="md:text-4xl text-2xl text-white text-center">{mxene.mxene}</h2>
         <div className="w-56 mx-auto my-2 h-1 bg-gray-100"></div>
       </div>
       <div className="container md:mb-12 md:p-0 p-4 grid md:grid-cols-2 grid-cols-1 md:grid-rows-2 gap-2">
-        <div className="flex justify-center items-center result-card">
+        <div className="flex justify-center items-center result-card" id="apphere">
           {/* 3d model here */}
+
         </div>
         <div className="md:h-full w-full flex flex-col">
           <div className="result-card h-1/2 flex flex-col justify-center w-full p-8 mb-1 text-center">
