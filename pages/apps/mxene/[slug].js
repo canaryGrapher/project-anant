@@ -4,10 +4,17 @@ import { Toaster } from "react-hot-toast";
 import { MyToaster } from "../../../functions/toaster";
 import Head from 'next/head';
 import { useUser } from '@auth0/nextjs-auth0';
-import Script from 'next/script';
+import { useState, useEffect, useMemo } from 'react';
+import dynamic from 'next/dynamic';
 
 export default function MxeneResult({ mxene }) {
   const user = useUser();
+  const [model, setModel] = useState(null);
+
+  useEffect
+  const DynamicComponent = dynamic(() => import('../../../components/mxene/ThreeDModel'), { ssr: false });
+
+
   const handleDownload = async () => {
     if (user.user) {
       try {
@@ -49,29 +56,6 @@ export default function MxeneResult({ mxene }) {
     }
   }
 
-  var Info = {
-    width: 400,
-    height: 400,
-    debug: false,
-    color: "white",
-    addSelectionOptions: false,
-    serverURL: "https://chemapps.stolaf.edu/jmol/jsmol/php/jsmol.php",
-    use: "HTML5",
-    readyFunction: null,
-    defaultModel: "",
-    bondWidth: 4,
-    zoomScaling: 1.7,
-    pinchScaling: 2.0,
-    mouseDragFactor: 0.5,
-    touchDragFactor: 0.15,
-    multipleBondSpacing: 4,
-    spinRateX: 0.2,
-    spinRateY: 0.5,
-    spinFPS: 20,
-    spin: false,
-    debug: false
-  }
-
 
   return (
     <div className="w-screen min-h-screen flex flex-col items-center justify-start pt-16">
@@ -111,8 +95,6 @@ export default function MxeneResult({ mxene }) {
           property="og:site_name"
           content="Project Anant"
         />
-        {/* <Script type="text/javascript" src="/jquery.min.js" strategy="afterInteractive" /> */}
-        <Script type="text/javascript" src="/JSmol.lite.nojq.js" strategy="afterInteractive" />
       </Head>
       <Toaster position="top-right" />
       <div className="my-8">
@@ -122,7 +104,7 @@ export default function MxeneResult({ mxene }) {
       <div className="container md:mb-12 md:p-0 p-4 grid md:grid-cols-2 grid-cols-1 md:grid-rows-2 gap-2">
         <div className="flex justify-center items-center result-card" id="apphere">
           {/* 3d model here */}
-
+          <DynamicComponent fileLink={process.env.NEXT_PUBLIC_SERVER_URL + mxene.pdb_file} />
         </div>
         <div className="md:h-full w-full flex flex-col">
           <div className="result-card h-1/2 flex flex-col justify-center w-full p-8 mb-1 text-center">
