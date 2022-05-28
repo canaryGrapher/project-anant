@@ -9,7 +9,6 @@ import dynamic from 'next/dynamic';
 
 export default function MxeneResult({ mxene }) {
   const user = useUser();
-  const [model, setModel] = useState(null);
 
   useEffect
   const DynamicComponent = dynamic(() => import('../../../components/mxene/ThreeDModel'), { ssr: false });
