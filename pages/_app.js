@@ -1,6 +1,7 @@
 import React from 'react'
 import 'tailwindcss/tailwind.css'
 import NavBar from '../components/common/Navbar/Navbar'
+import MobileNav from '../components/common/Navbar/MobileNav'
 import "./../styles/global.css"
 import { UserProvider } from '@auth0/nextjs-auth0';
 import Head from 'next/head';
@@ -23,6 +24,7 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <UserProvider>
         <NavBar />
+        <MobileNav />
         <AppErrorBoundary>
           <Component {...pageProps} />
         </AppErrorBoundary>
