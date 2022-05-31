@@ -52,19 +52,17 @@ export default function MxeneSearch() {
 
         }
     }
-
     const currentlySelectedForm = (formName) => {
         setCurrentlySelected(formName);
     }
-
     const setAllFieldsEmpty = () => {
         setM1("");
         setM2("");
         setT1("");
         setT2("");
         setX("");
+        setBandGap("");
     }
-
     const setElementValue = (element, value) => {
         if (element === "M1") {
             setM1(value);
@@ -79,7 +77,6 @@ export default function MxeneSearch() {
         }
         setCurrentlySelected("")
     }
-
     const setValueBandGap = (value) => {
         setBandGap(value);
     }
@@ -99,12 +96,9 @@ export default function MxeneSearch() {
             <div className="w-screen flex flex-col justify-start py-1 lg:px-16 px-6">
                 {/* The design for forms */}
                 <SearchForm set_value={setElementValue} resetFunction={setAllFieldsEmpty} searchFunction={handleSearch} BandGap={bandGap} SetBandGap={setValueBandGap} currentlySelected={currentlySelectedForm} M1={m1} M2={m2} T1={t1} T2={t2} X={x} />
-                <div className="hidden lg:grid gap-x-2 grid-cols-2">
+                <div className="hidden md:grid gap-x-2 grid-cols-1 lg:grid-cols-2">
                     <PeriodicTable selected={currentlySelected} />
                     <OptionSelector formSelected={currentlySelected} set_value={setElementValue} />
-                </div>
-                <div className="grid lg:hidden grid-cols-1">
-                    <PeriodicTable selected={currentlySelected} />
                 </div>
 
                 <Toaster position="top-right" toastOptions={{

@@ -4,7 +4,7 @@ import { TableLayout, M_Values, X_Values, T_Values } from "../../../../../data/P
 
 const PeriodicTable = (props) => {
     return (
-        <div className="bg-[#ffffff33] px-5 mt-2 rounded-sm select-none py-5 h-full flex flex-col justify-center">
+        <div className="bg-[#ffffff33] px-5 mt-2 rounded-sm select-none py-5 h-full hidden md:flex flex-col justify-center">
             {
                 TableLayout.map((row, index) => {
                     return (

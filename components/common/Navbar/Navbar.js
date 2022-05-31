@@ -59,13 +59,13 @@ const NavBar = () => {
 
     return (
         <navbar className="flex h-16 fixed top-0 w-screen items-center z-20 theme">
-            <div className="md:w-1/4 w-full h-full md:p-2 py-5">
+            <div className="lg:w-1/4 w-full h-full lg:p-2 py-5">
                 <a href="\">
                     <Image width={200} height={40} alt="Anant Logo" src="https://ik.imagekit.io/iiscvsmanipal/anantLogo_jDpZAhBDXG9.png?updatedAt=1638595324436" />
                 </a>
             </div>
             <div className="md:w-3/4 h-full w-screen flex justify-end">
-                <div className="w-full items-center bg-gray-100 justify-center md:grid hidden grid-cols-4 h-full">
+                <div className="w-full items-center bg-gray-100 justify-center lg:grid hidden grid-cols-4 h-full">
                     {
                         menuOptions.map((option, index) => (
                             <Link key={index} href={option.href} className="p-2 ">

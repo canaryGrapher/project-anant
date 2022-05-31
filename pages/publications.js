@@ -40,14 +40,14 @@ const Publications = ({ favorites, others }) => {
         <title>Publications | Project Anant</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="my-8 text-white text-center">
-        <h2 className="md:text-4xl text-xl">Our Publications</h2>
+      <div className="md:mt-8 text-white text-center">
+        <h2 className="md:text-4xl text-3xl font-bold">Our Publications</h2>
         <div className="w-56 mx-auto my-2 h-1 bg-gray-100"></div>
       </div>
-      <div className="w-full md:w-3/4 h-4/5 p-10 mt-6 mx-auto">
+      <div className="w-full lg:w-3/4 h-4/5 p-3 md:p-5 lg:p-10 mt-1 md:mt-6 mx-auto">
         <div className="md:flex justify-between items-center">
           <div>
-            <h4 className="text-white font-bold text-3xl w-auto md:w-96">Our Famous Citations</h4>
+            <h4 className="text-white font-medium text-2xl w-auto md:w-96">Our Famous Citations</h4>
             <div className="w-80 my-2 h-1 bg-gray-100"></div>
           </div>
         </div>
@@ -84,7 +84,7 @@ const Publications = ({ favorites, others }) => {
 
         <div className="md:flex justify-between mt-16 items-center">
           <div>
-            <h4 className="text-white font-bold text-3xl w-auto md:w-96">Other Citations</h4>
+            <h4 className="text-white font-medium text-2xl w-auto md:w-96">Other Citations</h4>
             <div className="w-80 my-2 h-1 bg-[#ebebeb]"></div>
           </div>
         </div>
@@ -93,13 +93,13 @@ const Publications = ({ favorites, others }) => {
             return (
               <div className="my-1" key={index + favorites.length}>
                 <div className="w-full flex justify-between items-center bg-[#FAFAFA] rounded py-2 px-4 cursor-pointer" onClick={() => handleClick(index + favorites.length)}>
-                  <p className="p-2 text-black text-lg font-medium">{cit.title}</p>
+                  <p className="px-2 text-black text-lg font-medium">{cit.title}</p>
                   <Image src="https://ik.imagekit.io/iiscvsmanipal/chevron-up_d5sUlZR4fLI.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1642282534518" className={`${expanded && (expandedInd.indexOf(index + favorites.length) !== -1) ? "rotate-180" : "rotate-0"} duration-300 ease-out`} height={20} width={20} />
                 </div>
                 <div className={`collapsible-${index + favorites.length} rounded-b text-white`} style={{ maxHeight: "0px", overflow: "hidden", transition: "all 0.3s ease-in-out", backgroundColor: "rgba(255, 255, 255, 0.2)" }}>
                   <div className="flex md:flex-row flex-col justify-between items-center pb-8">
                     <div>
-                      <div className='mx-5 my-2'>
+                      <div className='mx-1 md:mx-5 my-2'>
                         <h2 className='mt-5 text-2xl font-bold underline'>{cit.journal}</h2>
                         <p className="text-normal mb-4">Published on <span className='font-bold'>{cit.month + " " + cit.year}</span></p>
                         <p className='text-normal'><span className="font-bold">Authors:</span> {cit.author}</p>

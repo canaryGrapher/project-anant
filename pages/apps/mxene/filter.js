@@ -71,8 +71,8 @@ export default function MxeneFilter({ query, res }) {
                 </p>
             </div>
             <div className="w-full px-8 py-6">
-                <div className="flex mb-5 gap-2 items-center">
-                    <p className="md:text-md text-center text-white text-lg bg-gray-900 inline px-4 py-3 border border-gray-600 rounded-3xl">
+                <div className="flex flex-col md:flex-row mb-5 gap-2 items-center">
+                    <p className="md:text-md text-center text-white text-lg bg-gray-900 inline px-4 py-3 border border-gray-600 rounded-3xl md:mr-4 mb-2 md:mb-0 cursor-pointer">
                         <span><i className="fa fa-list-ul mr-2"></i></span><strong>{res.totalResults}</strong> mxene{res.totalResults === 1 ? "" : "s"} found
                     </p>
                     {idList.length > 0

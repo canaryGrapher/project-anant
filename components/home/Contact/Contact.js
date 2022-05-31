@@ -57,7 +57,7 @@ const Contact = (props) => {
                         <textarea style={{ minHeight: 130, maxHeight: 200 }} className="w-full p-2 text-black rounded border-2 border-gray-300 focus:outline-none" name="message" />
                     </div>
                 </div>
-                <div className="md:w-3/4 w-full text-right my-2">
+                <div className="lg:w-3/4 w-full text-center lg:text-right my-2">
                     <button className="rounded-lg bg-white theme-text px-8 py-2 text-xl hover:-translate-y-0.5">Send</button>
                 </div>
             </div>

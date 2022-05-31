@@ -7,7 +7,7 @@ const OptionSelector = (props) => {
     }
 
     return (
-        <div className="bg-[#ffffff33] px-5 mt-2 rounded-sm select-none py-5 h-full flex flex-col text-center">
+        <div className="bg-[#ffffff33] px-5 mt-2 rounded-sm select-none py-5 h-full hidden lg:flex flex-col text-center">
             {props.formSelected === "" && <div className="flex flex-col justify-center h-full"><p className="text-xl text-white">Select an input box to show available options</p></div>}
             {props.formSelected != "" && <p className="text-lg text-white">Select a value for <span className="font-bold">{props.formSelected}</span>:</p>}
             {props.formSelected.length != "" ?

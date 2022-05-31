@@ -4,14 +4,18 @@ import { Toaster } from "react-hot-toast";
 import { MyToaster } from "../../../functions/toaster";
 import Head from 'next/head';
 import { useUser } from '@auth0/nextjs-auth0';
-import { useState, useEffect, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 
 export default function MxeneResult({ mxene }) {
   const user = useUser();
+  const [Model3D, setModel3D] = useState(<p>Model is loading...</p>);
 
-  useEffect
-  const DynamicComponent = dynamic(() => import('../../../components/mxene/ThreeDModel'), { ssr: false });
+  useEffect(() => {
+    const DynamicComponent = dynamic(() => import('../../../components/mxene/ThreeDModel'), { ssr: false });
+    setModel3D(<DynamicComponent fileLink={process.env.NEXT_PUBLIC_SERVER_URL + mxene.pdb_file} />);
+  }, [])
 
 
   const handleDownload = async () => {
@@ -36,7 +40,7 @@ export default function MxeneResult({ mxene }) {
             const auth_header = {
               Authorization: `Bearer ${accessToken}`
             }
-            const resDown = await fetch(`http://localhost:3002/downloadmxene/?id=${mxene.id}`, { headers: auth_header });
+            const resDown = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/downloadmxene/?id=${mxene.id}`, { headers: auth_header });
             const res = await resDown.blob();
             await saveAs(res, `${mxene.mxene}.zip`);
             console.log("Verified and downloaded");
@@ -97,13 +101,13 @@ export default function MxeneResult({ mxene }) {
       </Head>
       <Toaster position="top-right" />
       <div className="my-8">
-        <h2 className="md:text-4xl text-2xl text-white text-center">{mxene.mxene}</h2>
+        <h2 className="md:text-4xl text-3xl font-bold text-white">{mxene.mxene}</h2>
         <div className="w-56 mx-auto my-2 h-1 bg-gray-100"></div>
       </div>
-      <div className="container md:mb-12 md:p-0 p-4 grid md:grid-cols-2 grid-cols-1 md:grid-rows-2 gap-2">
-        <div className="flex justify-center items-center result-card" id="apphere">
+      <div className="container md:mb-12 lg:p-0 p-4 grid lg:grid-cols-2 grid-cols-1 gap-2">
+        <div className="min-h-[30vh] h-full w-full flex justify-center items-center result-card" id="apphere">
           {/* 3d model here */}
-          <DynamicComponent fileLink={process.env.NEXT_PUBLIC_SERVER_URL + mxene.pdb_file} />
+          {Model3D}
         </div>
         <div className="md:h-full w-full flex flex-col">
           <div className="result-card h-1/2 flex flex-col justify-center w-full p-8 mb-1 text-center">
@@ -115,17 +119,17 @@ export default function MxeneResult({ mxene }) {
             <h4 className="md:text-4xl text-3xl theme-text font-bold">{mxene.magneticMoment}</h4>
           </div>
         </div>
-        <div className="flex justify-center items-center bg-white">
-          {/* graph */}
-          <img src={`data:image/png;base64,${mxene.bandImage}`} alt="Band image for the mxene protein" className="w-full h-full p-4" />
+        <div className="flex justify-center items-center bg-white relative h-[30vh] lg:h-full w-full">
+          <Image src={process.env.NEXT_PUBLIC_SERVER_URL + mxene.bandImage} alt="Band image for the mxene protein" layout='fill' loading='lazy' />
         </div>
         <div className="flex flex-col gap-2 justify-center items-center">
           <div className="result-card h-full w-full justify-start items-start p-4">
             <textarea
               disabled={true}
               value={mxene.poscar_data}
-              className="w-full focus:outline-none border-2 border-gray-300 my-2 p-2"
-              style={{ minHeight: "95%", maxHeight: "95%" }}
+              className="w-full focus:outline-none border-2 border-gray-300 my-2 p-2 h-full"
+              // style={{ minHeight: "95%", maxHeight: "95%" }}
+              rows={5}
             ></textarea>
           </div>
           <div className="theme border border-white w-full hover:bg-white text-white hover:text-black">
@@ -147,26 +151,26 @@ export default function MxeneResult({ mxene }) {
   )
 }
 
-export const getStaticPaths = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/searchmxene/getmxenepaths`);
-  const mxeneIds = await res.json();
-  const paths = [];
-  mxeneIds.forEach((element) => {
-    const item = {
-      params: {
-        slug: element.id,
-      },
-    };
-    paths.push(item);
-  });
+// export const getStaticPaths = async () => {
+//   const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/searchmxene/getmxenepaths`);
+//   const mxeneIds = await res.json();
+//   const paths = [];
+//   mxeneIds.forEach((element) => {
+//     const item = {
+//       params: {
+//         slug: element.id,
+//       },
+//     };
+//     paths.push(item);
+//   });
 
-  return {
-    paths,
-    fallback: 'blocking',
-  };
-};
+//   return {
+//     paths,
+//     fallback: 'blocking',
+//   };
+// };
 
-export const getStaticProps = async (context) => {
+export const getServerSideProps = async (context) => {
   const resMxenes = await fetch(
     `${process.env.NEXT_PUBLIC_SERVER_URL}/searchmxene/searchbyid/${context.params.slug}`
   );
@@ -174,7 +178,6 @@ export const getStaticProps = async (context) => {
   return {
     props: {
       mxene: mxenes
-    },
-    revalidate: 3600,
+    }
   };
 };

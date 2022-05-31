@@ -80,14 +80,14 @@ const SearchForm = (props) => {
                 {
                     desktop_map.map((group, index) => {
                         return (
-                            <div key={index} className={`flex flex-col w-full px-5 col-span-${group.name === "Carbon/Nitrogen" ? 1 : 2}`}>
-                                <p className="text-[#FAFAFA] text-xl font-medium text-center">{group.name}</p>
-                                <div key={index} className={`grid grid-cols-${group.elements.length} gap-2 w-full`}>
+                            <div key={index} className={`my-0 py-0 flex flex-col w-full px-5 col-span-${group.name != "Carbon/Nitrogen" ? 2 : 1}`}>
+                                <p className="text-[#FAFAFA] text-xl font-bold pt-4">{group.name}</p>
+                                <div key={index} className={`grid grid-cols-${group.elements.length} gap-x-2 w-full`}>
                                     {
                                         group.elements.map((element, index) => {
                                             return (
-                                                <div className="mt-4" key={index}>
-                                                    <p className="text-[#FAFAFA] mt-3">{element.name}</p>
+                                                <div className="mt-2" key={index}>
+                                                    <p className="text-[#FAFAFA] font-light">Select {element.name}</p>
                                                     <input type="text" className="p-2 rounded-sm w-full" placeholder={"Select a value for " + element.name} value={props[element.name]} onClick={() => props.currentlySelected(element.name)} />
                                                 </div>
 
@@ -133,9 +133,9 @@ const SearchForm = (props) => {
                     })
                 }
             </div>
-            <div className="grid grid-cols-1 gap-x-5 px-5 rounded-sm">
-                <p className="text-[#FAFAFA] text-xl font-medium underline">Band Gap</p>
-                <p className="text-[#FAFAFA] mt-3">Enter the Band Gap</p>
+            <div className="grid grid-cols-1 gap-x-5 px-5 mt-4 rounded-sm">
+                <p className="text-[#FAFAFA] text-xl font-bold pt-4">Band Gap</p>
+                <p className="text-[#FAFAFA] font-light">Enter the Band Gap</p>
                 <input type="text" className="p-2 rounded-sm" placeholder="Band Gap value" value={props.BandGap} onChange={(e) => props.SetBandGap(e.target.value)} />
             </div>
             <div className="grid grid-cols-2 gap-x-5 justify-center px-5 mt-5">
