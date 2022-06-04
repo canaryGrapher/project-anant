@@ -18,7 +18,7 @@ const appMenuOptions = [
 const MobileNav = () => {
     const [navBarOpen, setNavbarOpen] = useState(false);
     const router = useRouter();
-    // assign the menu optiosn for navbar
+    // assign the menu options for navbar
     let regex = /\/[a-zA-Z]+\//;
     const menuOptions
         = regex.test(router.pathname)
@@ -26,10 +26,14 @@ const MobileNav = () => {
     return (
         <React.Fragment>
             {navBarOpen ?
-                <div className='fixed z-50 bottom-0 lg:hidden flex flex-col justify-end w-full h-full' style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)', opacity: '1' }}>
+                <div className='transition ease-in-out fixed z-50 bottom-0 lg:hidden flex flex-col justify-end w-full h-full' style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)', opacity: '1' }}>
                     <div className="relative inset-0 transition-opacity"
                     >
                         <div className='w-11/12 md:w-3/4 min-h-3/4 mx-auto bg-white rounded-t-lg p-5'>
+                            <p className='mb-2'>You are not logged.</p>
+                            <div className='h-10 mb-1 flex flex-col items-center justify-center bg-[#163F65] py-2 hover:bg-black cursor-pointer text-white' onClick={() => setNavbarOpen(false)}>
+                                Login
+                            </div>
                             {menuOptions.map((option, index) => {
                                 return (
                                     <a href={option.href} className="">
@@ -39,15 +43,15 @@ const MobileNav = () => {
                                     </a>
                                 )
                             })}
-                            <div className='flex flex-col items-center justify-center bg-[#163F65] py-2 hover:bg-black cursor-pointer text-white' onClick={() => setNavbarOpen(false)}>
-                                &#x2715;
+                            <div className='h-10 flex flex-col items-center justify-center py-2 bg-white hover:bg-black border-2 border-black cursor-pointer text-black hover:text-white' onClick={() => setNavbarOpen(false)}>
+                                <i className='fa fa-times'></i>
                             </div>
                         </div>
                     </div>
                 </div>
                 :
                 <div className="mobile-nav fixed w-20 bg-white h-10 bottom-0 right-12 z-50 rounded-t-2xl text-center lg:hidden flex flex-col justify-start cursor-pointer" onClick={() => setNavbarOpen(!navBarOpen)}>
-                    <p className="text-3xl font-black">&#x21a5;</p>
+                    <p className="text-3xl font-black"><i className='fa fa-bars'></i></p>
                 </div>}
         </React.Fragment>
     )

@@ -23,6 +23,10 @@ body {
     .theme-text {
       color: #163F65;
     }
+
+    .border-theme {
+      border-color: #163F65;
+    }
   }
 }
 

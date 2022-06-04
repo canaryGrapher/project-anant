@@ -1,16 +1,28 @@
-import { saveAs } from 'file-saver';
 import axios from 'axios';
+import Session from 'supertokens-auth-react/recipe/session';
+Session.addAxiosInterceptors(axios);
 import { Toaster } from "react-hot-toast";
 import { MyToaster } from "../../../functions/toaster";
 import Head from 'next/head';
-import { useUser } from '@auth0/nextjs-auth0';
 import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
+import { saveAs } from "file-saver";
+import b64ToBlob from "b64-to-blob";
 
-export default function MxeneResult({ mxene }) {
-  const user = useUser();
+export default function MxeneResult({ mxene, slug }) {
   const [Model3D, setModel3D] = useState(<p>Model is loading...</p>);
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  async function getUserInfo() {
+    if (await Session.doesSessionExist()) {
+      setLoggedIn(true)
+    }
+  }
+
+  useEffect(() => {
+    getUserInfo()
+  }, [])
 
   useEffect(() => {
     const DynamicComponent = dynamic(() => import('../../../components/mxene/ThreeDModel'), { ssr: false });
@@ -19,37 +31,12 @@ export default function MxeneResult({ mxene }) {
 
 
   const handleDownload = async () => {
-    if (user.user) {
+    if (loggedIn) {
       try {
-        var options = {
-          method: 'POST',
-          url: `${process.env.NEXT_PUBLIC_AUTH0_ISSUER_BASE_URL}/oauth/token`,
-          headers: { 'content-type': 'application/json' },
-          data: {
-            "grant_type": "client_credentials",
-            "client_id": process.env.NEXT_PUBLIC_AUTH0_CLIENT_ID,
-            "client_secret": process.env.NEXT_PUBLIC_AUTH0_CLIENT_SECRET,
-            "audience": process.env.NEXT_PUBLIC_AUTH0_AUDIENCE
-          }
-        };
-        axios.request(options).then(async (response) => {
-          const resp = response.data;
-          console.log(resp)
-          if (resp.access_token) {
-            const accessToken = resp.access_token;
-            const auth_header = {
-              Authorization: `Bearer ${accessToken}`
-            }
-            const resDown = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/downloadmxene/?id=${mxene.id}`, { headers: auth_header });
-            const res = await resDown.blob();
-            await saveAs(res, `${mxene.mxene}.zip`);
-            console.log("Verified and downloaded");
-            MyToaster({ header: "Download successfull!", message: `You have downloaded ${mxene.mxene}` });
-          }
-        }).catch(function (error) {
-          console.error(error);
-          MyToaster({ header: "Download failed!", message: "There was an error downloading your mxenes" });
-        });
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/downloadmxene/?id=${slug}`)
+        const blob = b64ToBlob(res.data, "application/zip");
+        saveAs(blob, `anant_mxene.zip`);
+        MyToaster({ header: "Download successfull!", message: `Your mxene was downloaded` });
       } catch (error) {
         console.log(error);
         MyToaster({ header: "Download failed!", message: "There was an error downloading your mxenes" });
@@ -61,6 +48,7 @@ export default function MxeneResult({ mxene }) {
 
 
   return (
+
     <div className="w-screen min-h-screen flex flex-col items-center justify-start pt-16">
       <Head>
         <title>
@@ -128,7 +116,6 @@ export default function MxeneResult({ mxene }) {
               disabled={true}
               value={mxene.poscar_data}
               className="w-full focus:outline-none border-2 border-gray-300 my-2 p-2 h-full"
-              // style={{ minHeight: "95%", maxHeight: "95%" }}
               rows={5}
             ></textarea>
           </div>
@@ -151,25 +138,6 @@ export default function MxeneResult({ mxene }) {
   )
 }
 
-// export const getStaticPaths = async () => {
-//   const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/searchmxene/getmxenepaths`);
-//   const mxeneIds = await res.json();
-//   const paths = [];
-//   mxeneIds.forEach((element) => {
-//     const item = {
-//       params: {
-//         slug: element.id,
-//       },
-//     };
-//     paths.push(item);
-//   });
-
-//   return {
-//     paths,
-//     fallback: 'blocking',
-//   };
-// };
-
 export const getServerSideProps = async (context) => {
   const resMxenes = await fetch(
     `${process.env.NEXT_PUBLIC_SERVER_URL}/searchmxene/searchbyid/${context.params.slug}`
@@ -177,7 +145,8 @@ export const getServerSideProps = async (context) => {
   const mxenes = await resMxenes.json();
   return {
     props: {
-      mxene: mxenes
+      mxene: mxenes,
+      slug: context.params.slug,
     }
   };
 };

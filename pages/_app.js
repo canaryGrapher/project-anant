@@ -1,13 +1,22 @@
 import React from 'react'
-import 'tailwindcss/tailwind.css'
-import NavBar from '../components/common/Navbar/Navbar'
-import MobileNav from '../components/common/Navbar/MobileNav'
-import "./../styles/global.css"
-import { UserProvider } from '@auth0/nextjs-auth0';
 import Head from 'next/head';
 
+import SuperTokensReact from 'supertokens-auth-react'
+import { frontendConfig } from '../config/frontendConfig'
 
-import AppErrorBoundary from '../error-components/app.error';
+
+import NavBar from '../components/common/Navbar/Navbar'
+import MobileNav from '../components/common/Navbar/MobileNav'
+
+import "./../styles/global.css"
+import 'tailwindcss/tailwind.css'
+
+if (typeof window !== 'undefined') {
+  // we only want to call this init function on the frontend, so we check typeof window !== 'undefined'
+  SuperTokensReact.init(frontendConfig())
+}
+
+import ErrorBoundary from '../error-components/app.error';
 
 function MyApp({ Component, pageProps }) {
   // disables console.log in production
@@ -22,13 +31,11 @@ function MyApp({ Component, pageProps }) {
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
         />
       </Head>
-      <UserProvider>
-        <NavBar />
-        <MobileNav />
-        <AppErrorBoundary>
-          <Component {...pageProps} />
-        </AppErrorBoundary>
-      </UserProvider>
+      <NavBar />
+      <MobileNav />
+      <ErrorBoundary>
+        <Component {...pageProps} />
+      </ErrorBoundary>
     </div>
   )
 }

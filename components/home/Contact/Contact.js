@@ -1,34 +1,7 @@
 import React, { useState } from 'react';
-import Image from 'next/image'
+import Accordion from '../../common/Accordion';
 
 const Contact = (props) => {
-    const [expandedInd, setExpInd] = useState([])
-    const [expanded, setExpanded] = useState(false);
-
-    // function to handle click of the expandable FAQ
-    const handleClick = (index) => {
-
-        // add the index of the question to array of expanded questions
-        if (expandedInd.indexOf(index) === -1) {
-            setExpInd(expandedInd => [...expandedInd, index])
-        }
-
-        // set expanded as true
-        setExpanded(!expanded);
-
-        const collapsible = document.querySelector(`.collapsible-${index}`);
-        if (expanded) {
-            // if the question is expanded, remove the item from the expanded array and close the question
-            const index = expandedInd.indexOf(index)
-            expandedInd.splice(index, 1);
-            setExpInd(expandedInd)
-            collapsible.style.maxHeight = "0";
-        }
-        else {
-            // if the question is close, then open the question 
-            collapsible.style.maxHeight = `${collapsible.scrollHeight}px`;
-        }
-    }
 
     return (
         <div className="w-screen flex flex-col items-center justify-center mt-14 md:mt-20 mb-20 md:px-0 px-2">
@@ -63,21 +36,13 @@ const Contact = (props) => {
             </div>
             <div className="md:w-2/3 w-full md:px-0 px-1">
                 <div className="mb-4 mt-8">
-                    <h2 className="text-3xl font-bold text-white">Few answers we have</h2>
+                    <h2 className="text-3xl font-bold text-white">Frequently Asked Questions</h2>
                     <div className="w-80 rounded my-1 h-1 bg-gray-100"></div>
                 </div>
                 {
                     props.faqs.map((faq, index) => {
                         return (
-                            <div key={index} onClick={() => handleClick(index)}>
-                                <div className="flex justify-between py-2 px-4 rounded bg-white mt-1 cursor-pointer">
-                                    <p className="text-black text-lg font-medium">{faq.question}</p>
-                                    <Image src="https://ik.imagekit.io/iiscvsmanipal/chevron-up_d5sUlZR4fLI.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1642282534518" className={`${expanded && (expandedInd.indexOf(index) !== -1) ? "rotate-180" : "rotate-0"} duration-300 ease-out`} height={20} width={20} />
-                                </div>
-                                <div className={`collapsible-${index} rounded-b`} style={{ maxHeight: "0px", overflow: "hidden", transition: "all 0.3s ease-in-out", backgroundColor: "rgba(255, 255, 255, 0.2)" }}>
-                                    <p className="m-2 text-l">{faq.answer}</p>
-                                </div>
-                            </div>
+                            <Accordion title={faq.question} content={<p>{faq.answer}</p>} key={index} />
                         )
                     })
                 }

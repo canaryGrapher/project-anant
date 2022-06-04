@@ -79,8 +79,10 @@ const SearchForm = (props) => {
             <div className="hidden lg:grid grid-cols-5">
                 {
                     desktop_map.map((group, index) => {
+                        const { name } = group;
+                        const styleConditional = name == "Carbon/Nitrogen" ? "col-span-1" : "col-span-2";
                         return (
-                            <div key={index} className={`my-0 py-0 flex flex-col w-full px-5 col-span-${group.name != "Carbon/Nitrogen" ? 2 : 1}`}>
+                            <div key={index} className={`my-0 py-0 flex flex-col w-full px-5 ${styleConditional}`}>
                                 <p className="text-[#FAFAFA] text-xl font-bold pt-4">{group.name}</p>
                                 <div key={index} className={`grid grid-cols-${group.elements.length} gap-x-2 w-full`}>
                                     {

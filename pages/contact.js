@@ -1,10 +1,12 @@
 import Head from 'next/head'
-
+import Error from './_error'
 // importing components
 import Contact from '../components/home/Contact/Contact'
 
-export default function ContactPage({ faqs }) {
-  console.log(faqs)
+export default function ContactPage({ faqs, error }) {
+  if (error) {
+    return <Error />
+  }
   return (
     <div className="min-h-screen bg-theme text-gray-50">
       <Head>
@@ -23,14 +25,23 @@ export default function ContactPage({ faqs }) {
 }
 
 export const getStaticProps = async () => {
-  const resFAQs = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_URL}/faqs`
-  );
-  const FAQs = await resFAQs.json();
-  return {
-    props: {
-      faqs: FAQs
-    },
-    revalidate: 3600,
-  };
+  try {
+    const resFAQs = await fetch(
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/faqs`
+    );
+    const FAQs = await resFAQs.json();
+    return {
+      props: {
+        faqs: FAQs,
+        error: false
+      },
+      revalidate: 3600,
+    };
+  } catch (err) {
+    return {
+      props: {
+        error: true
+      }
+    }
+  }
 }
