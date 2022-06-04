@@ -1,12 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  font-family: 'Inter', sans-serif;
+}
 
 body {
   display        : flex;
   flex-direction : column;
   justify-content: flex-start;
-  overflow-x: hidden;
+  overflow-x     : hidden;
 }
 
 @layer utilities {
@@ -14,8 +19,13 @@ body {
     .theme {
       background-color: #163F65;
     }
+
     .theme-text {
       color: #163F65;
+    }
+
+    .border-theme {
+      border-color: #163F65;
     }
   }
 }

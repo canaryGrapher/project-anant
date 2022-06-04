@@ -1,6 +1,6 @@
 // next.config.js
 module.exports = {
     images: {
-        domains: ['ik.imagekit.io'],
+        domains: ['ik.imagekit.io', 'localhost'],
     },
 }
