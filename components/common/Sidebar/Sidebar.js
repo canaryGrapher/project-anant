@@ -26,6 +26,54 @@ const Sidebar = () => {
         getUserInfo()
     }, [])
 
+    const currentURL = router.asPath;
+    const queries = router.query;
+    const currentPage = currentURL.split('/')
+    let redirectToAfterLogin
+    if (currentURL.split("?")[0] === "/apps/mxene/filter") {
+        if (currentPage[3].split("?")[0] == "filter") {
+            redirectToAfterLogin = `/apps/mxene/filter/redirection`
+            if (queries.M1) {
+                redirectToAfterLogin += `/${queries.M1}`
+            } else {
+                redirectToAfterLogin += `/_`
+            }
+            if (queries.M2) {
+                redirectToAfterLogin += `/${queries.M2}`
+            } else {
+                redirectToAfterLogin += `/_`
+            }
+            if (queries.T1) {
+                redirectToAfterLogin += `/${queries.T1}`
+            } else {
+                redirectToAfterLogin += `/_`
+            }
+            if (queries.T2) {
+                redirectToAfterLogin += `/${queries.T2}`
+            } else {
+                redirectToAfterLogin += `/_`
+            }
+            if (queries.X) {
+                redirectToAfterLogin += `/${queries.X}`
+            } else {
+                redirectToAfterLogin += `/_`
+            }
+            if (queries.bandGap) {
+                redirectToAfterLogin += `/${queries.bandGap}`
+            } else {
+                redirectToAfterLogin += `/_`
+            }
+            if (queries.currentPage) {
+                redirectToAfterLogin += `/${queries.currentPage}`
+            } else {
+                redirectToAfterLogin += `/_`
+            }
+        }
+    } else {
+        redirectToAfterLogin = currentURL
+    }
+
+
     return (
         <div className="bg-white z-50 text-black h-screen flex flex-col justify-between pb-3 border-l-2 border-white">
             <div>
@@ -48,9 +96,9 @@ const Sidebar = () => {
                         :
                         <Fragment>
                             <p className='mx-4'>Certain features of this application require you to sign in.</p>
-                            <a href="/auth">
+                            <p onClick={() => router.push(`/auth?redirectToPath=${redirectToAfterLogin}`)}>
                                 <button className='text-white hover:theme-text hover:bg-white border-2 border-theme theme text-lg px-3 py-1 rounded-md my-3 mx-4 focus:outline-none'>Log in</button>
-                            </a>
+                            </p>
                         </Fragment>}
                 </div>
             </div>

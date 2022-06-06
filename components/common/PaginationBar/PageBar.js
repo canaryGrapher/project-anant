@@ -17,10 +17,10 @@ const PageBar = (props) => {
                 </Link>
             }
             {
-                pages.map(page => {
+                pages.map((page, index) => {
                     if (page == props.currentPage) {
                         return (
-                            <div>
+                            <div key={index}>
                                 <p className="text-2xl mx-2 rounded-full w-10 h-10 flex flex-col justify-center bg-white cursor-pointer">{page}</p>
                             </div>
                         )
@@ -30,7 +30,7 @@ const PageBar = (props) => {
                             pageLink += `&bandGap=${props.query.bandGap}`;
                         }
                         return (
-                            <Link href={pageLink} key={pageLink}>
+                            <Link href={pageLink} key={index} >
                                 <p className="text-2xl text-white mx-2 w-10 h-10 flex flex-col justify-center cursor-pointer">{page}</p>
                             </Link>
                         )
