@@ -30,7 +30,7 @@ const Publications = ({ favorites, others, error }) => {
         {favorites.length > 0 ?
           favorites.map((cit, index) => {
             return (
-              <Accordion title={cit.title} content={
+              <Accordion key={index} title={cit.title} content={
                 <div className="flex md:flex-row flex-col justify-between items-center pb-8">
                   <div className='mx-5 my-2'>
                     <h2 className='mt-5 text-2xl font-bold underline'>{cit.journal}</h2>
@@ -40,12 +40,12 @@ const Publications = ({ favorites, others, error }) => {
                     <p><span className="font-bold">Pages:</span> {cit.pages}</p>
                   </div>
                   <a href={cit.url} target="_blank" rel="noreferrer noopener">
-                    <button className="rounded-full bg-[#FAFAFA] text-black px-8 py-2 mr-10 ml-auto">
+                    <button className="rounded-full bg-[#FAFAFA] text-black px-8 py-2 mx-auto">
                       Read
                     </button>
                   </a>
                 </div>
-              } key={index} />
+              } />
             )
           }) : null
         }
@@ -59,7 +59,7 @@ const Publications = ({ favorites, others, error }) => {
         {
           others.map((cit, index) => {
             return (
-              <Accordion title={cit.title} content={
+              <Accordion key={index} title={cit.title} content={
                 <div className={`collapsible-${index + favorites.length} rounded-b text-white`}>
                   <div className="flex md:flex-row flex-col justify-between items-center pb-8">
                     <div>
@@ -78,7 +78,7 @@ const Publications = ({ favorites, others, error }) => {
                     </a>
                   </div>
                 </div>
-              } key={index} />
+              } />
             )
           })
         }

@@ -18,7 +18,7 @@ const PeriodicTable = (props) => {
                                         return <Box key={index} item={' '} type="spacing" current={props.selected} />
                                     }
                                     else {
-                                        return <Box item={element} key={index} type="element" current={props.selected} />
+                                        return <Box key={index} item={element} type="element" current={props.selected} />
                                     }
                                 })
                             }

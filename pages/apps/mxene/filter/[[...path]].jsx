@@ -90,7 +90,7 @@ export default function MxeneFilter({ query, res }) {
           </p>
         </div>
         <div className="w-full px-8 py-6">
-          <div className="flex flex-col md:flex-row mb-5 gap-2 items-center">
+          <div className="flex flex-row mb-5 gap-2 items-center">
             <p className="md:text-md text-center text-white text-lg bg-gray-900 inline px-4 py-3 border border-gray-600 rounded-3xl md:mr-4 mb-2 md:mb-0 cursor-pointer">
               <span>
                 <i className="fa fa-list-ul mr-2"></i>
@@ -169,7 +169,6 @@ export default function MxeneFilter({ query, res }) {
 const resolvedURL = (query) => {
   // Here is the query:  /apps/mxene/filter/redirection/Cr/_/_/_/C/_
   const queryArray = query.split("/");
-  console.log(queryArray.length, queryArray);
   let redirectionUrl = null;
   if (queryArray.length >= 5) {
     redirectionUrl = "/apps/mxene/filter";
@@ -224,15 +223,11 @@ const resolvedURL = (query) => {
 
 export async function getServerSideProps(context) {
   const query = context.query;
-
-  // resolvedURL(context.req.url)
-  console.log(context.req.url);
   const redirectLink = resolvedURL(context.resolvedUrl);
-  // const redirectLink = null;
-  console.log("Redirect Link: ", redirectLink);
   if (redirectLink) {
     context.res.writeHead(302, { Location: redirectLink });
     context.res.end();
+    return { props: {} };
   } else {
     let parameters = {
       M1: query.M1,

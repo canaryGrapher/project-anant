@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { useRouter } from 'next/router';
 
 import Session from 'supertokens-auth-react/recipe/session';
@@ -93,7 +93,7 @@ const MobileNav = () => {
     }
 
     return (
-        <React.Fragment>
+        <Fragment>
             {navBarOpen ?
                 <div className='transition ease-in-out fixed z-50 bottom-0 lg:hidden flex flex-col justify-end w-full h-full' style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)', opacity: '1' }}>
                     <div className="relative inset-0 transition-opacity"
@@ -101,20 +101,20 @@ const MobileNav = () => {
                         <div className='w-11/12 md:w-3/4 min-h-3/4 mx-auto bg-white rounded-t-lg p-5'>
                             <p className='mb-2'>{loggedIn ? "You are already logged in." : "You are not logged in."}</p>
                             {loggedIn ?
-                                <p onClick={onLogout}>
+                                <div onClick={onLogout}>
                                     <div className="10 mb-1 flex flex-col items-center justify-center bg-[#163F65] py-2 hover:bg-black cursor-pointer text-white" onClick={() => setNavbarOpen(false)} >
                                         Logout
                                     </div>
-                                </p>
+                                </div>
                                 :
-                                <p onClick={() => router.push(`/auth?redirectToPath=${redirectToAfterLogin}`)}>
+                                <div onClick={() => router.push(`/auth?redirectToPath=${redirectToAfterLogin}`)}>
                                     <div className='h-10 mb-1 flex flex-col items-center justify-center bg-[#163F65] py-2 hover:bg-black cursor-pointer text-white' onClick={() => setNavbarOpen(false)}>
                                         Login
                                     </div>
-                                </p>}
+                                </div>}
                             {menuOptions.map((option, index) => {
                                 return (
-                                    <a href={option.href} className="">
+                                    <a href={option.href} key={index}>
                                         <div className="flex items-center w-full py-2 my-5 text-black font-medium hover:text-white hover:bg-gray-400 pl-5" key={index}>
                                             <p>{option.name}</p>
                                         </div>
@@ -128,10 +128,10 @@ const MobileNav = () => {
                     </div>
                 </div>
                 :
-                <div className="mobile-nav fixed w-20 bg-white h-10 bottom-0 right-12 z-50 rounded-t-2xl text-center lg:hidden flex flex-col justify-start cursor-pointer" onClick={() => setNavbarOpen(!navBarOpen)}>
+                <div className="mobile-nav fixed w-20 bg-white h-10 bottom-0 right-12 z-50 rounded-t-2xl text-center lg:hidden flex flex-col justify-start cursor-pointer border-2 border-[#163F65]" onClick={() => setNavbarOpen(!navBarOpen)}>
                     <p className="text-3xl font-black"><i className='fa fa-bars'></i></p>
                 </div>}
-        </React.Fragment >
+        </Fragment >
     )
 }
 

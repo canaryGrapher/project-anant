@@ -2,7 +2,6 @@ import Link from "next/link";
 
 const PageBar = (props) => {
     let pages = [...Array(props.totalPages).keys()];
-    // console.log(pages, props);
     pages.shift()
     pages.push(props.totalPages)
     return (

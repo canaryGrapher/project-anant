@@ -9,11 +9,11 @@ export default function Mxene() {
                 <title>Mxene Database | Project Anant</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <div className="my-8">
+            <div className="pt-20 lg:pt-8">
                 <h2 className="md:text-4xl text-3xl font-bold text-white">MXene Database</h2>
                 <div className="w-56 mx-auto my-2 h-1 bg-gray-100"></div>
             </div>
-            <div className="container flex lg:flex-row flex-col items-center justify-center">
+            <div className="container flex lg:flex-row flex-col items-center justify-center mb-12">
                 <div className="lg:w-1/2 w-full px-8 md:px-8">
                     <Image src="https://ik.imagekit.io/iiscvsmanipal/mxene_NMetdDe-U0?updatedAt=1639042149885" height="100" width="200" layout="responsive" />
                 </div>
