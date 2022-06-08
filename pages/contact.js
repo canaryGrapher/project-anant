@@ -40,7 +40,8 @@ export const getStaticProps = async () => {
   } catch (err) {
     return {
       props: {
-        error: true
+        faqs: [],
+        error: false
       }
     }
   }

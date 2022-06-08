@@ -43,7 +43,8 @@ export const getStaticProps = async () => {
     // return <Error />
     return {
       props: {
-        error: true
+        updates: [],
+        error: false
       }
     }
   }

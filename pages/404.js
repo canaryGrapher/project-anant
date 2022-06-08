@@ -1,8 +1,11 @@
+import Image from "next/image"
+
 export default function _400() {
     return (
-        <div className="text-white text-center">
-            <h2 className="text-3xl font-text">Ah snap!</h2>
-            <p>This is not a valid page</p>
+        <div className="text-center text-white p-5 mt-10">
+            <Image src="/images/page-not-found.png" width={200} height={200} />
+            <h1 className="text-xl md:text-2xl lg:text-4xl font-bold">Uh oh!</h1>
+            <p className="lg:w-2/3 mx-auto">This is not a valid page. Are you sure you got that address right?</p>
         </div>
     )
 }

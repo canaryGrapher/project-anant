@@ -5,11 +5,6 @@ import Error from './_error';
 import Accordion from '../components/common/Accordion';
 
 const Publications = ({ favorites, others, error }) => {
-
-  if (error) {
-    return <Error />
-  }
-
   return (
     <div className="flex flex-col items-center w-screen py-32">
       <Head>
@@ -27,7 +22,9 @@ const Publications = ({ favorites, others, error }) => {
             <div className="w-80 my-2 h-1 bg-gray-100"></div>
           </div>
         </div>
-        {favorites.length > 0 ?
+        {favorites.length === 0 ?
+          <p className='mt-2 w-full text-center py-12 text-xl text-white border-2 border-white font-bold'>No publications found</p>
+          :
           favorites.map((cit, index) => {
             return (
               <Accordion key={index} title={cit.title} content={
@@ -47,7 +44,7 @@ const Publications = ({ favorites, others, error }) => {
                 </div>
               } />
             )
-          }) : null
+          })
         }
 
         <div className="md:flex justify-between mt-16 items-center">
@@ -57,7 +54,7 @@ const Publications = ({ favorites, others, error }) => {
           </div>
         </div>
         {
-          others.map((cit, index) => {
+          others.length === 0 ? <p className='mt-2 w-full text-center py-12 text-xl text-white border-2 border-white font-bold'>No publications found</p> : others.map((cit, index) => {
             return (
               <Accordion key={index} title={cit.title} content={
                 <div className={`collapsible-${index + favorites.length} rounded-b text-white`}>
@@ -110,7 +107,9 @@ export const getStaticProps = async () => {
     // return <Error />
     return {
       props: {
-        error: true
+        favorites: [],
+        others: [],
+        error: false
       }
     }
   }

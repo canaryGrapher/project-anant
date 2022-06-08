@@ -167,7 +167,6 @@ export default function MxeneFilter({ query, res }) {
 }
 
 const resolvedURL = (query) => {
-  // Here is the query:  /apps/mxene/filter/redirection/Cr/_/_/_/C/_
   const queryArray = query.split("/");
   let redirectionUrl = null;
   if (queryArray.length >= 5) {
@@ -251,6 +250,9 @@ export async function getServerSideProps(context) {
       },
       referrerPolicy: "no-referrer",
       body: JSON.stringify(parameters),
+    }).catch((err) => {
+      context.res.writeHead(302, { Location: "/500" });
+      context.res.end();
     });
     const res = await resBody.json();
     return {

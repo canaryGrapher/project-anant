@@ -139,10 +139,13 @@ export default function MxeneResult({ mxene, slug }) {
 }
 
 export const getServerSideProps = async (context) => {
-  const resMxenes = await fetch(
+  const resMxenes = await axios.get(
     `${process.env.NEXT_PUBLIC_SERVER_URL}/searchmxene/searchbyid/${context.params.slug}`
-  );
-  const mxenes = await resMxenes.json();
+  ).catch(err => {
+    context.res.writeHead(302, { Location: "/500" });
+    context.res.end();
+  });
+  const mxenes = resMxenes ? await resMxenes.json() : {};
   return {
     props: {
       mxene: mxenes,

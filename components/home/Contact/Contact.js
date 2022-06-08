@@ -40,7 +40,7 @@ const Contact = (props) => {
                     <div className="w-80 rounded my-1 h-1 bg-gray-100"></div>
                 </div>
                 {
-                    props.faqs.map((faq, index) => {
+                    props.faqs.length === 0 ? <p>There was an error fetching this data</p> : props.faqs.map((faq, index) => {
                         return (
                             <Accordion title={faq.question} content={<p>{faq.answer}</p>} key={index} />
                         )
