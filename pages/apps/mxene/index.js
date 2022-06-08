@@ -18,7 +18,7 @@ export default function Mxene() {
                     <Image src="https://ik.imagekit.io/iiscvsmanipal/mxene_NMetdDe-U0?updatedAt=1639042149885" height="100" width="200" layout="responsive" />
                 </div>
                 <div className="lg:w-1/2 w-full px-8 pt-5 md:pt-0  text-center flex flex-col-reverse lg:flex-col">
-                    <p className="md:text-2xl text-xl text-white lg:text-justify">
+                    <p className="md:text-xl text-lg text-white lg:text-justify">
                         MXene has emerged as one of the promising class of 2D material with probably largest possible members (of the order of several tens of thousands).
                         Over 23,000 MXene are uploaded to the database with their calculated properties to date, and we have planned to include more such scientific data.
                     </p>
@@ -26,8 +26,8 @@ export default function Mxene() {
                         <button
                             className="w-full lg:w-auto bg-gray-900 text-white rounded-md text-lg px-4 py-3 my-3 hover:translate-y-1 outline-none"
                         >
+                            <span><i className="fa fa-search mr-2"></i></span>
                             Go to search
-                            <span><i className="fa fa-search ml-2"></i></span>
                         </button>
                     </Link>
                 </div>
