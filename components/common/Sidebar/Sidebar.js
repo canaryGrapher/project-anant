@@ -102,9 +102,6 @@ const Sidebar = () => {
                         </Fragment>}
                 </div>
             </div>
-            <div className="text-center theme-text text-xl font-bold">
-                <Link href="/team">Meet the team</Link>
-            </div>
         </div>
     )
 }

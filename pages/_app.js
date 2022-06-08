@@ -7,6 +7,7 @@ import { frontendConfig } from '../config/frontendConfig'
 
 import NavBar from '../components/common/Navbar/Navbar'
 import MobileNav from '../components/common/Navbar/MobileNav'
+import Footer from '../components/common/Footer';
 
 import "./../styles/global.css"
 import 'tailwindcss/tailwind.css'
@@ -36,6 +37,7 @@ function MyApp({ Component, pageProps }) {
       <ErrorBoundary>
         <Component {...pageProps} />
       </ErrorBoundary>
+      <Footer />
     </div>
   )
 }
