@@ -5,10 +5,10 @@ import b64ToBlob from "b64-to-blob";
 import axios from "axios";
 import { Toaster } from "react-hot-toast";
 import { MyToaster } from "../../../../functions/toaster";
-import Head from "next/head";
 import PageBar from "../../../../components/common/PaginationBar/PageBar";
 import { useRouter } from "next/router";
 import Loader from "../../../../components/common/loader";
+import Meta from "../../../../components/common/Meta/Meta";
 
 import Session from "supertokens-auth-react/recipe/session";
 Session.addAxiosInterceptors(axios);
@@ -76,9 +76,7 @@ export default function MxeneFilter({ query, res }) {
     <Fragment>
       {loading ? <Loader /> : null}
       <div className="w-screen min-h-screen pt-16 flex flex-col items-center justify-start">
-        <Head>
-          <title>Filter Search | Mxene Database</title>
-        </Head>
+        <Meta title="Filter Search | Mxene Database" extraKeywords={"filter mxenes, mxene data"}/>
         <Toaster position="top-right" />
         <div className="my-8">
           <h2 className="md:text-4xl text-2xl text-white text-center">

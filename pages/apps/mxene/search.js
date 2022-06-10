@@ -1,12 +1,12 @@
 import { Fragment, useState } from "react"
 import { useRouter } from "next/router";
-import Head from 'next/head';
 
 import SearchForm from "../../../components/home/Apps/Mxene/Search/SearchForm";
 import PeriodicTable from "../../../components/home/Apps/Mxene/Search/PeriodicTable";
 import OptionSelector from "../../../components/home/Apps/Mxene/Search/OptionSelector";
 import toast, { Toaster } from "react-hot-toast";
 import Loader from "../../../components/common/loader";
+import Meta from "../../../components/common/Meta/Meta";
 
 export default function MxeneSearch() {
     const router = useRouter();
@@ -89,10 +89,7 @@ export default function MxeneSearch() {
         <Fragment>
             {loading ? <Loader /> : null}
             <div className="w-screen py-20 flex flex-col items-center justify-start" style={{ minHeight: 'max-content' }}>
-                <Head>
-                    <title>Mxene Search | Project Anant</title>
-                    <link rel="icon" href="/favicon.ico" />
-                </Head>
+                <Meta title="Mxene Search | Project Anant" extraKeywords={"search mxenes, find mxenes, periodic table"}/>
                 <div className="mt-8 mb-3">
                     <h2 className="md:text-4xl text-2xl text-white text-center">MXene Search</h2>
                     <div className="w-56 mx-auto my-2 h-1 bg-gray-100"></div>

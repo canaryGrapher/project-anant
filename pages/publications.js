@@ -3,14 +3,12 @@ import Head from 'next/head';
 import Error from './_error';
 
 import Accordion from '../components/common/Accordion';
+import Meta from '../components/common/Meta/Meta';
 
 const Publications = ({ favorites, others, error }) => {
   return (
-    <div className="flex flex-col items-center w-screen py-32">
-      <Head>
-        <title>Publications | Project Anant</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <div className="flex flex-col items-center w-screen py-32" extraKeywords={"publications, citations, research papers"}>
+      <Meta title="Publications | Project Anant"/>
       <div className="md:mt-8 text-white text-center">
         <h2 className="md:text-4xl text-3xl font-bold">Our Publications</h2>
         <div className="w-56 mx-auto my-2 h-1 bg-gray-100"></div>

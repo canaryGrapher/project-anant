@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import Meta from '../components/common/Meta/Meta'
 
 // importing components
 import Landing from "./../components/home/Landing/landing"
@@ -6,11 +6,7 @@ import Landing from "./../components/home/Landing/landing"
 export default function Home() {
   return (
     <div className="min-h-screen bg-theme text-gray-50">
-      <Head>
-        <title>Project Anant</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
+      <Meta />
       <main>
         <Landing />
       </main>

@@ -11,6 +11,7 @@ import { saveAs } from "file-saver";
 import b64ToBlob from "b64-to-blob";
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import Meta from '../../../components/common/Meta/Meta';
 
 export default function MxeneResult({ mxene, slug }) {
   const router = useRouter();
@@ -91,6 +92,7 @@ export default function MxeneResult({ mxene, slug }) {
         />
       </Head>
       <Toaster position="top-right" />
+      <Meta title={`${mxene.mxene} | Mxene Database`} extraKeywords={"mxene"}/>
       <div className="my-8">
         <h2 className="md:text-4xl text-3xl font-bold text-white">{mxene.mxene}</h2>
         <div className="w-56 mx-auto my-2 h-1 bg-gray-100"></div>
