@@ -9,22 +9,22 @@ const Contact = (props) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         let formData = new FormData(e.target);
-        formData.append('service_id', process.env.NEXT_PUBLIC_SERVICE_ID);
-        formData.append('template_id', process.env.NEXT_PUBLIC_TEMPLATE_ID);
-        formData.append('user_id', process.env.NEXT_PUBLIC_USER_ID);
+        formData.append('service_id', process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID);
+        formData.append('template_id', process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID);
+        formData.append('user_id', process.env.NEXT_PUBLIC_EMAILJS_USER_ID);
 
         let res = await axios.post("https://api.emailjs.com/api/v1.0/email/send-form", formData)
-        if(res.status === 200) {
-            MyToaster({header: "Thank you!", message: "We have received your email!"});
+        if (res.status === 200) {
+            MyToaster({ header: "Thank you!", message: "We have received your email!" });
             e.target.reset();   // resets form data
         } else {
-            MyToaster({header: "Oops", message: "We did not get that message!"});
+            MyToaster({ header: "Oops", message: "We did not get that message!" });
         }
-    } 
+    }
 
     return (
         <div className="w-screen flex flex-col items-center justify-center mt-14 md:mt-20 mb-20 md:px-0 px-2">
-             <Toaster position="top-right" />
+            <Toaster position="top-right" />
             <div className="my-4">
                 <h2 className="md:text-4xl text-xl text-white text-center">Contact Us</h2>
                 <div className="w-56 mx-auto my-2 h-1 bg-gray-100"></div>
