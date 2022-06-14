@@ -20,7 +20,7 @@ const About = (props) => {
                 <div className="lg:w-3/4 lg:ml-16 py-5 px-5 lg:p-10 overflow-y-scroll rounded-lg" style={{ backgroundColor: "rgba(255, 255, 255, 0.2)" }}>
                     <h2 className="underline text-center text-3xl pb-10">Updates</h2>
                     {
-                        props.updates.map((item, index) => {
+                        props.updates.length === 0 ? <p className='text-center'>No updates found</p> : props.updates.map((item, index) => {
                             const updateDate = new Date(item.date);
                             return (
                                 <div key={index} className="pb-5">

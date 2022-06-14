@@ -1,6 +1,7 @@
 import { useState } from "react"
 import dynamic from 'next/dynamic'
 import ThirdParty from 'supertokens-auth-react/recipe/thirdparty'
+import Meta from "../../../components/common/Meta/Meta";
 
 
 const ThirdPartyAuthNoSSR = dynamic(
@@ -46,6 +47,7 @@ export default function MxeneUpload() {
     }
     return (
         <ThirdPartyAuthNoSSR>
+            <Meta title="Upload Mxene | Mxene Database" extraKeywords={"upload, add mxenes"}/>
             <div className="w-screen min-h-screen flex flex-col items-center justify-center px-4 mt-8 md:mt-2">
                 <div className="my-4">
                     <h2 className="md:text-4xl text-2xl text-white text-center">MXene upload</h2>

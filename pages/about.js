@@ -1,8 +1,8 @@
-import Head from 'next/head'
 import Error from './_error'
 
 // importing components
 import About from "../components/home/About/About"
+import Meta from '../components/common/Meta/Meta'
 
 export default function AboutPage({ updates, error }) {
   if (error) {
@@ -11,14 +11,7 @@ export default function AboutPage({ updates, error }) {
 
   return (
     <div className="min-h-screen bg-theme text-gray-50">
-      <Head>
-        <title>About | Project Anant</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <header>
-      </header>
-
+      <Meta title="About | Project Anant" extraKeywords={"about, description, what"}/>
       <main>
         <About updates={updates} />
       </main>
@@ -43,7 +36,8 @@ export const getStaticProps = async () => {
     // return <Error />
     return {
       props: {
-        error: true
+        updates: [],
+        error: false
       }
     }
   }

@@ -1,7 +1,7 @@
-import Head from 'next/head'
 import Error from './_error'
 // importing components
 import Contact from '../components/home/Contact/Contact'
+import Meta from '../components/common/Meta/Meta'
 
 export default function ContactPage({ faqs, error }) {
   if (error) {
@@ -9,14 +9,7 @@ export default function ContactPage({ faqs, error }) {
   }
   return (
     <div className="min-h-screen bg-theme text-gray-50">
-      <Head>
-        <title>Contact | Project Anant</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <header>
-      </header>
-
+      <Meta title="Contact | Project Anant" extraKeywords={"contact, email, faqs, questions, doubts"}/>
       <main>
         <Contact faqs={faqs} />
       </main>
@@ -40,7 +33,8 @@ export const getStaticProps = async () => {
   } catch (err) {
     return {
       props: {
-        error: true
+        faqs: [],
+        error: false
       }
     }
   }

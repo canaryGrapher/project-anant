@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import { M_Values, T_Values, X_Values } from "../../../../../data/PeriodicTableData"
 
 const desktop_map = [
@@ -90,7 +89,7 @@ const SearchForm = (props) => {
                                             return (
                                                 <div className="mt-2" key={index}>
                                                     <p className="text-[#FAFAFA] font-light">Select {element.name}</p>
-                                                    <input type="text" className="p-2 rounded-sm w-full" placeholder={"Select a value for " + element.name} value={props[element.name]} onClick={() => props.currentlySelected(element.name)} />
+                                                    <input type="text" className="p-2 rounded-sm w-full" placeholder={"Select a value for " + element.name} value={props[element.name]} onClick={() => props.currentlySelected(element.name)} readOnly={true} />
                                                 </div>
 
                                             )

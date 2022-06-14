@@ -3,19 +3,12 @@ import Head from 'next/head';
 import Error from './_error';
 
 import Accordion from '../components/common/Accordion';
+import Meta from '../components/common/Meta/Meta';
 
 const Publications = ({ favorites, others, error }) => {
-
-  if (error) {
-    return <Error />
-  }
-
   return (
-    <div className="flex flex-col items-center w-screen py-32">
-      <Head>
-        <title>Publications | Project Anant</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <div className="flex flex-col items-center w-screen py-32" extraKeywords={"publications, citations, research papers"}>
+      <Meta title="Publications | Project Anant"/>
       <div className="md:mt-8 text-white text-center">
         <h2 className="md:text-4xl text-3xl font-bold">Our Publications</h2>
         <div className="w-56 mx-auto my-2 h-1 bg-gray-100"></div>
@@ -27,10 +20,12 @@ const Publications = ({ favorites, others, error }) => {
             <div className="w-80 my-2 h-1 bg-gray-100"></div>
           </div>
         </div>
-        {favorites.length > 0 ?
+        {favorites.length === 0 ?
+          <p className='mt-2 w-full text-center py-12 text-xl text-white border-2 border-white font-bold'>No publications found</p>
+          :
           favorites.map((cit, index) => {
             return (
-              <Accordion title={cit.title} content={
+              <Accordion key={index} title={cit.title} content={
                 <div className="flex md:flex-row flex-col justify-between items-center pb-8">
                   <div className='mx-5 my-2'>
                     <h2 className='mt-5 text-2xl font-bold underline'>{cit.journal}</h2>
@@ -40,14 +35,14 @@ const Publications = ({ favorites, others, error }) => {
                     <p><span className="font-bold">Pages:</span> {cit.pages}</p>
                   </div>
                   <a href={cit.url} target="_blank" rel="noreferrer noopener">
-                    <button className="rounded-full bg-[#FAFAFA] text-black px-8 py-2 mr-10 ml-auto">
+                    <button className="rounded-full bg-[#FAFAFA] text-black px-8 py-2 mx-auto">
                       Read
                     </button>
                   </a>
                 </div>
-              } key={index} />
+              } />
             )
-          }) : null
+          })
         }
 
         <div className="md:flex justify-between mt-16 items-center">
@@ -57,9 +52,9 @@ const Publications = ({ favorites, others, error }) => {
           </div>
         </div>
         {
-          others.map((cit, index) => {
+          others.length === 0 ? <p className='mt-2 w-full text-center py-12 text-xl text-white border-2 border-white font-bold'>No publications found</p> : others.map((cit, index) => {
             return (
-              <Accordion title={cit.title} content={
+              <Accordion key={index} title={cit.title} content={
                 <div className={`collapsible-${index + favorites.length} rounded-b text-white`}>
                   <div className="flex md:flex-row flex-col justify-between items-center pb-8">
                     <div>
@@ -78,7 +73,7 @@ const Publications = ({ favorites, others, error }) => {
                     </a>
                   </div>
                 </div>
-              } key={index} />
+              } />
             )
           })
         }
@@ -110,7 +105,9 @@ export const getStaticProps = async () => {
     // return <Error />
     return {
       props: {
-        error: true
+        favorites: [],
+        others: [],
+        error: false
       }
     }
   }
