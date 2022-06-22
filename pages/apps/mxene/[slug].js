@@ -102,14 +102,26 @@ export default function MxeneResult({ mxene, slug }) {
           {/* 3d model here */}
           {Model3D}
         </div>
-        <div className="md:h-full w-full flex flex-col">
-          <div className="result-card h-1/2 flex flex-col justify-center w-full p-8 mb-1 text-center">
+        <div className="md:h-full w-full flex md:flex-row flex-col gap-2">
+          {/* <div className="result-card h-1/2 flex flex-col justify-center w-full p-8 mb-1 text-center">
             <h5 className="text-2xl">Lattice Constant</h5>
             <h4 className="md:text-4xl text-3xl theme-text font-bold">{mxene.latticeConstant}</h4>
           </div>
           <div className="result-card h-1/2 flex flex-col justify-center w-full p-8 mt-1 text-center">
             <h5 className="text-2xl">Magnetic Moment</h5>
             <h4 className="md:text-4xl text-3xl theme-text font-bold">{mxene.magneticMoment}</h4>
+          </div> */}
+          <div className="w-1/3 h-full bg-gray-200 flex flex-col items-center justify-center">
+            <h5 className="text-xl">Lattice Constant (Å)</h5>
+            <h4 className="md:text-4xl text-2xl theme-text font-bold">{mxene.latticeConstant}</h4>
+          </div>
+          <div className="w-1/3 h-full bg-gray-200 flex flex-col items-center justify-center">
+            <h5 className="text-xl">Band Gap (eV)</h5>
+            <h4 className="md:text-4xl text-2xl theme-text font-bold">{mxene.bandGap}</h4>
+          </div>
+          <div className="w-1/3 h-full bg-gray-200 flex flex-col items-center justify-center">
+            <h5 className="text-xl">Magnetic Moment (μB)</h5>
+            <h4 className="md:text-4xl text-2xl theme-text font-bold">{mxene.magneticMoment}</h4>
           </div>
         </div>
         <div className="flex justify-center items-center bg-white relative h-[30vh] lg:h-full w-full">

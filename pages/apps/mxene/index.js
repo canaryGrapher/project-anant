@@ -1,8 +1,21 @@
+
+import React, { Fragment, useEffect, useState } from 'react';
 import Image from "next/image"
 import Link from "next/link"
 import Meta from "../../../components/common/Meta/Meta"
 
+import Session from 'supertokens-auth-react/recipe/session';
+
 export default function Mxene() {
+    const [loggedIn, setLoggedIn] = useState(false);
+    async function getUserInfo() {
+        if (await Session.doesSessionExist()) {
+            setLoggedIn(true)
+        }
+    }
+    useEffect(() => {
+        getUserInfo()
+    }, [])
     return (
         <div className="w-screen min-h-screen flex flex-col items-center justify-center">
             <Meta title="Mxene Database | Project Anant" extraKeywords={"mxene database, functional materials, mxene"}/>
@@ -27,6 +40,20 @@ export default function Mxene() {
                             Go to search
                         </button>
                     </Link>
+                    <Fragment>
+                        {
+                            loggedIn &&
+                            // change dummy link to drive link for database
+                            <Link href="/">
+                                <button
+                                    className="w-full lg:w-auto theme bg-gray-300 theme-text rounded-md text-lg px-4 py-3 hover:translate-y-1 outline-none"
+                                >
+                                    <span><i className="fa fa-database mr-2"></i></span>
+                                    Download full database
+                                </button>
+                            </Link>
+                        }
+                    </Fragment>
                 </div>
             </div>
         </div>

@@ -89,7 +89,7 @@ export default function MxeneFilter({ query, res }) {
         </div>
         <div className="w-full px-8 py-6">
           <div className="flex flex-row mb-5 gap-2 items-center">
-            <p className="md:text-md text-center text-white text-lg bg-gray-900 inline px-4 py-3 border border-gray-600 rounded-3xl md:mr-4 mb-2 md:mb-0 cursor-pointer">
+            <p className="md:text-md text-center text-white text-lg bg-gray-900 inline px-4 py-3 border border-gray-600 rounded-3xl md:mr-4 mb-2 md:mb-0">
               <span>
                 <i className="fa fa-list-ul mr-2"></i>
               </span>
