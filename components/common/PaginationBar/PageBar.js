@@ -5,7 +5,7 @@ const PageBar = (props) => {
     pages.shift()
     pages.push(props.totalPages)
     return (
-        <div className="container mx-auto text-center mt-6 mb-4 flex justify-center items-center">
+        <div className="container mx-auto text-center mt-6 mb-4 flex flex-wrap justify-center items-center">
             {
                 ((props.currentPage - 1) > 0)
                 &&
@@ -16,7 +16,38 @@ const PageBar = (props) => {
                 </Link>
             }
             {
-                pages.map((page, index) => {
+                pages.slice(0, 5).map((page, index) => {
+                    if (page == props.currentPage) {
+                        return (
+                            <div key={index}>
+                                <p className="text-2xl mx-2 rounded-full w-10 h-10 flex flex-col justify-center bg-white cursor-pointer">{page}</p>
+                            </div>
+                        )
+                    } else {
+                        let pageLink = `/apps/mxene/filter?M1=${props.query.M1}&M2=${props.query.M2}&T1=${props.query.T1}&T2=${props.query.T2}&X=${props.query.X}&currentPage=${page}`;
+                        if (props.query.bandGap) {
+                            pageLink += `&bandGap=${props.query.bandGap}`;
+                        }
+                        return (
+                            <Link href={pageLink} key={index} >
+                                <p className="text-2xl text-white mx-2 w-10 h-10 flex flex-col justify-center cursor-pointer">{page}</p>
+                            </Link>
+                        )
+                    }
+                })
+            }
+            {
+                pages.length > 5 && 
+                <div className="flex gap-3">
+                    <div className="bg-white h-2 w-2 rounded-full"></div>
+                    <div className="bg-white h-2 w-2 rounded-full"></div>
+                    <div className="bg-white h-2 w-2 rounded-full"></div>
+                    <div className="bg-white h-2 w-2 rounded-full"></div>
+                    <div className="bg-white h-2 w-2 rounded-full"></div>
+                </div>
+            }
+            {
+                pages.slice(pages.length-5, pages.length).map((page, index) => {
                     if (page == props.currentPage) {
                         return (
                             <div key={index}>

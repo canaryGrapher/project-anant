@@ -139,7 +139,7 @@ export default function MxeneResult({ mxene, slug }) {
           <div className="theme border border-white w-full hover:bg-white text-white hover:text-black">
             <button
               onClick={handleDownload}
-              className="w-full my-2 uppercase text-lg"
+              className="w-full my-2 uppercase text-lg outline-none"
             >
               Download <span><i className="fa fa-download mx-1"></i></span>
             </button>

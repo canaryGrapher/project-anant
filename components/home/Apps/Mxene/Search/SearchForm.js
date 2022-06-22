@@ -140,11 +140,11 @@ const SearchForm = (props) => {
                 <input type="text" className="p-2 rounded-sm" placeholder="Band Gap value" value={props.BandGap} onChange={(e) => props.SetBandGap(e.target.value)} />
             </div>
             <div className="grid grid-cols-2 gap-x-5 justify-center px-5 mt-5">
-                <button className="text-md bg-white hover:bg-red-700 hover:text-white text-[#163F65] font-bold py-2 px-4 rounded-sm border-2 border-[#163F65]"
+                <button className="text-md bg-white hover:bg-red-700 hover:text-white text-[#163F65] font-bold py-2 px-4 rounded-sm border-2 border-[#163F65] outline-none"
                     onClick={props.resetFunction}>
                     Reset
                 </button>
-                <button className="text-md bg-[#163F65] hover:bg-green-600 text-white font-bold py-2 px-4 rounded-sm border-2 border-[#163F65]"
+                <button className="text-md bg-[#163F65] hover:bg-green-600 text-white font-bold py-2 px-4 rounded-sm border-2 border-[#163F65] outline-none"
                     onClick={props.searchFunction}>
                     Search
                 </button>
