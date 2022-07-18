@@ -5,8 +5,10 @@ import Link from "next/link"
 import Meta from "../../../components/common/Meta/Meta"
 
 import Session from 'supertokens-auth-react/recipe/session';
+import Modal from '../../../components/common/Modal';
 
 export default function Mxene() {
+    const [isOpen, setIsOpen] = useState(false);
     const [loggedIn, setLoggedIn] = useState(false);
     async function getUserInfo() {
         if (await Session.doesSessionExist()) {
@@ -43,19 +45,21 @@ export default function Mxene() {
                     <Fragment>
                         {
                             loggedIn &&
-                            // change dummy link to drive link for database
-                            <Link href="/">
-                                <button
-                                    className="w-full lg:w-auto theme bg-gray-300 theme-text rounded-md text-lg px-4 py-3 hover:translate-y-1 outline-none"
-                                >
-                                    <span><i className="fa fa-database mr-2"></i></span>
-                                    Download full database
-                                </button>
-                            </Link>
+                            <button
+                                onClick={() => setIsOpen(true)}
+                                className="w-full lg:w-auto theme bg-gray-300 theme-text rounded-md text-lg px-4 py-3 hover:translate-y-1 outline-none"
+                            >
+                                <span><i className="fa fa-database mr-2"></i></span>
+                                Download full database
+                            </button>
                         }
                     </Fragment>
                 </div>
             </div>
+            <Modal 
+                isOpen={isOpen} 
+                setIsOpen={setIsOpen}
+            />
         </div>
     )
 } 
