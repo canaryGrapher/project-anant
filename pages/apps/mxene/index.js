@@ -20,7 +20,7 @@ export default function Mxene() {
     }, [])
     return (
         <div className="w-screen min-h-screen flex flex-col items-center justify-center">
-            <Meta title="Mxene Database | Project Anant" extraKeywords={"mxene database, functional materials, mxene"}/>
+            <Meta title="Mxene Database | Project Anant" extraKeywords={"mxene database, functional materials, mxene"} />
             <div className="pt-20 lg:pt-8">
                 <h2 className="md:text-4xl text-3xl font-bold text-white">MXene Database</h2>
                 <div className="w-56 mx-auto my-2 h-1 bg-gray-100"></div>
@@ -44,20 +44,20 @@ export default function Mxene() {
                     </Link>
                     <Fragment>
                         {
-                            loggedIn &&
-                            <button
-                                onClick={() => setIsOpen(true)}
-                                className="w-full lg:w-auto theme bg-gray-300 theme-text rounded-md text-lg px-4 py-3 hover:translate-y-1 outline-none"
-                            >
-                                <span><i className="fa fa-database mr-2"></i></span>
-                                Download full database
-                            </button>
+                            loggedIn ?
+                                <button
+                                    onClick={() => setIsOpen(true)}
+                                    className="w-full lg:w-auto theme bg-gray-300 theme-text rounded-md text-lg px-4 py-3 hover:translate-y-1 outline-none"
+                                >
+                                    <span><i className="fa fa-database mr-2"></i></span>
+                                    Download full database
+                                </button> : <p className='text-gray-300'>(Login to download the entire database)</p>
                         }
                     </Fragment>
                 </div>
             </div>
-            <Modal 
-                isOpen={isOpen} 
+            <Modal
+                isOpen={isOpen}
                 setIsOpen={setIsOpen}
             />
         </div>

@@ -7,7 +7,6 @@ const ModelOfProtein = (props) => {
     }, true);
     stage.loadFile(props.fileLink, { defaultRepresentation: true });
     stage.backgroundColor = "white";
-    // alert("Here here")
     return (
         <p></p>
     )

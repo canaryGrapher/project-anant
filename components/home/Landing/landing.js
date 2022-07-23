@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import styles from "./landing.module.css"
+import Image from "next/image"
 
 const Landing = () => {
   return (
@@ -14,7 +15,9 @@ const Landing = () => {
           <div className="flex flex-col justify-center lg:w-3/4 w-full lg:pt-0 pt-32">
             <h3 className={`bg-gray-100 text-5xl theme-text py-2 px-5 ${styles.welcome}`}>Welcome to</h3>
             <div className="flex flex-col my-2 px-5 lg:px-12">
-              <h1 className="px-5 m-0 lg:text-left text-center md:text-9xl text-6xl">aNANt</h1>
+              <h1 className="px-5 m-0 lg:text-left text-center md:text-9xl text-6xl">
+                <Image height={130} width={600} alt="Anant Logo" src="https://ik.imagekit.io/iiscvsmanipal/anantLogo_jDpZAhBDXG9.png?updatedAt=1638595324436" />
+              </h1>
               <p className="lg:text-left text-center md:text-4xl text-xl">A Functional Material Database</p>
             </div>
             <div className="relative w-full my-7 px-5 lg:px-12 text-2xl lg:text-left text-center">

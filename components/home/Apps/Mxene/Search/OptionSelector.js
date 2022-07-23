@@ -19,7 +19,7 @@ const OptionSelector = (props) => {
 
 const SelectorGroup = (selector) => {
     const Value = selector.option === "M1" || selector.option === "M2" ? M_Values : selector.option === "X" ? X_Values : T_Values
-    const Grids = Value === X_Values ? 2 : Value === M_Values ? 3 : 4;
+    const Grids = Value === X_Values ? 2 : Value === M_Values ? 3 : Value === T_Values ? 4 : 1;
     const renderer = Value.map((item, index) => {
         return <Selector key={index} value={item} clickFunction={() => selector.associated_function(selector.option, item)} />
     })
@@ -29,7 +29,7 @@ const SelectorGroup = (selector) => {
 }
 
 const Selector = (item) => {
-    const color = M_Values.includes(item.value) ? "#004a77" : T_Values.includes(item.value) ? "#2f4d47" : "#433c65"
+    const color = M_Values.includes(item.value) ? "#EF5455" : T_Values.includes(item.value) ? "#FCD200" : "#00C9B8"
     const classValues = `border border-black rounded-md font-medium px-5 py-3 bg-[${color}] text-white cursor-pointer hover:bg-white hover:text-black`
     return (
         <p className={classValues} onClick={item.clickFunction}>{item.value}</p>

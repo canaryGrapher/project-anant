@@ -19,20 +19,17 @@ const Footer = () => {
           <Link href="/team">
             <a className="hover:underline">Meet the team</a>
           </Link>
-          <Link href="/credits">
-            <a className="hover:underline">Credits</a>
-          </Link>
-          <Link href="/contact">
-            <a className="hover:underline">Contact us</a>
-          </Link>
-        </div>
-        <div className="flex flex-col mx-auto lg:mx-0">
-          <h2 className="font-bold pb-1">Important Links</h2>
           <Link href="/privacypolicy">
             <a className="hover:underline">Privacy Policy</a>
           </Link>
           <Link href="/termsandconditions">
             <a className="hover:underline">Terms and Conditions</a>
+          </Link>
+        </div>
+        <div className="flex flex-col mx-auto lg:mx-0">
+          <h2 className="font-bold pb-1">Important Links</h2>
+          <Link href="/contact">
+            <a className="hover:underline">Contact us</a>
           </Link>
           <Link href="http://www.mrc.iisc.ac.in/">
             <a className="hover:underline">Material Research Center, IISc</a>

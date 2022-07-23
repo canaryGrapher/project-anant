@@ -12,8 +12,10 @@ export default function Accordion(props) {
 
     return (
         <div className="w-full rounded mb-2 cursor-pointer">
-            <div className="bg-white w-full py-2 px-4 flex justify-between text-black select-none" onClick={toggle}>
-                <p className="text-lg font-medium">{props.title}</p>
+            <div className="bg-transparent w-full py-2 px-4 flex justify-between text-white select-none" onClick={toggle}>
+                <p className="text-lg font-medium">
+                    <li>{props.title}</li>
+                </p>
                 <i className={`fa ${fa_item} text-2xl`}></i>
             </div>
             <div className={`${classDisplay} px-3 py-2 bg-[#ffffff33] text-white`} >

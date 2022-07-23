@@ -2,12 +2,12 @@ import React, { useState, useEffect, useRef } from "react";
 
 import { useRouter } from 'next/router'
 import Link from "next/link"
-import Image from "next/image"
 
 import Sidebar from "../Sidebar/Sidebar";
 
 
 const genMenuOptions = [
+    { name: "Home", href: "/" },
     { name: "Apps", href: "/apps" },
     { name: "Publications", href: "/publications" },
     { name: "About", href: "/about" },
@@ -17,7 +17,7 @@ const genMenuOptions = [
 const appMenuOptions = [
     { name: "Home", href: "/" },
     { name: "About", href: "/apps/mxene" },
-    { name: "Upload", href: "/apps/mxene/upload" },
+    // { name: "Upload", href: "/apps/mxene/upload" },
     { name: "Mxene Search", href: "/apps/mxene/search" }
 ]
 
@@ -59,11 +59,11 @@ const NavBar = () => {
         <navbar className="flex h-16 fixed top-0 w-screen items-center z-20 theme">
             <div className="lg:w-1/4 w-full h-full lg:p-2 py-5">
                 <a href="\">
-                    <Image width={200} height={40} alt="Anant Logo" src="https://ik.imagekit.io/iiscvsmanipal/anantLogo_jDpZAhBDXG9.png?updatedAt=1638595324436" />
+
                 </a>
             </div>
             <div className="md:w-3/4 h-full w-screen flex justify-end">
-                <div className="w-full items-center bg-[#163F65] justify-center lg:grid hidden grid-cols-4 h-full">
+                <div className={`w-full items-center bg-[#163F65] justify-center lg:grid hidden h-full ${regex.test(router.pathname) ? "grid-cols-3" : "grid-cols-5"}`}>
                     {
                         menuOptions.map((option, index) => (
                             <Link key={index} href={option.href} className="px-2">
