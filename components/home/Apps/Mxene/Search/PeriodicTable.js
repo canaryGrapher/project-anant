@@ -53,13 +53,13 @@ const Box = (subProps) => {
             colorValue = currentlySelected === "X" ? "bg-white text-[#613b28] scale-105 hover:text-white" : "bg-[#a0d173] text-white"
         }
         else if (T_Values.includes(subProps.item)) {
-            colorValue = currentlySelected === "T" ? "bg-white text-[#2f4d47] scale-105 hover:text-white" : "bg-[#ffdbc0] text-black"
+            colorValue = currentlySelected === "T" ? "bg-white text-[#2f4d47] scale-105 hover:text-white" : "bg-[#FA5F55] text-white"
         }
         else {
             colorValue = "bg-[#ffe0b9] text-black"
         }
         return (
-            <div className={`flex hover:bg-black transition ease-in-out hover:scale-150 hover:font-bold ${colorValue} border border-black h-9 w-full rounded-md`}>
+            <div className={`flex hover:bg-black hover:text-white transition ease-in-out hover:scale-150 hover:font-bold ${colorValue} border border-black h-9 w-full rounded-md`}>
                 <p className="self-center mx-auto text-xs font-medium">
                     {subProps.item}
                 </p>

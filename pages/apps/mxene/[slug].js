@@ -52,6 +52,7 @@ export default function MxeneResult({ mxene, slug }) {
 
 
   return (
+
     <div className="w-screen min-h-screen flex flex-col items-center justify-start pt-16">
       <Head>
         <title>
@@ -96,40 +97,38 @@ export default function MxeneResult({ mxene, slug }) {
         <h2 className="md:text-4xl text-3xl font-bold text-white">{mxene.mxene}</h2>
         <div className="w-56 mx-auto my-2 h-1 bg-gray-100"></div>
       </div>
-      <div className="md:mb-12 lg:px-20 p-4 grid lg:grid-cols-2 grid-cols-1 gap-2">
-        <div className='relative'>
-          <div className="max-h-[30vh] h-full w-[400px] flex flex-row justify-end right-0" id="apphere">
-            {/* 3d model here */}
-            {Model3D}
+      <div className="container md:mb-12 lg:p-0 p-4 grid lg:grid-cols-2 grid-cols-1 gap-2">
+        <div className="md:h-[30vh] h-50vh md:w-[30vw] w-[50vw] flex justify-center items-center" id="apphere">
+          {/* 3d model here */}
+          {Model3D}
+        </div>
+        <div className="md:h-full w-full flex md:flex-row flex-col gap-2">
+          <div className="w-1/3 h-full bg-[#ffffff94] flex flex-col items-center justify-center">
+            <h5 className="text-xl">Lattice Constant (Å)</h5>
+            <h4 className="md:text-4xl text-2xl theme-text font-bold">{mxene.latticeConstant}</h4>
           </div>
-          <div className="flex justify-end items-center bg-transparent relative h-[30vh] w-full">
-            <Image src={process.env.NEXT_PUBLIC_SERVER_URL + mxene.bandImage} alt="Band image for the mxene protein" height={210} width={400} loading='lazy' />
+          <div className="w-1/3 h-full bg-[#ffffff94] flex flex-col items-center justify-center">
+            <h5 className="text-xl">Band Gap (eV)</h5>
+            <h4 className="md:text-4xl text-2xl theme-text font-bold">{mxene.bandGap}</h4>
+          </div>
+          <div className="w-1/3 h-full bg-[#ffffff94] flex flex-col items-center justify-center">
+            <h5 className="text-xl">Magnetic Moment (μ<sub>B</sub>)</h5>
+            <h4 className="md:text-4xl text-2xl theme-text font-bold">{mxene.magneticMoment}</h4>
           </div>
         </div>
-        <div className="flex flex-col">
-          <div className="w-full flex flex-row text-white">
-            <p className="text-xl">Lattice Constant (Å)</p>
-            <p className="ml-2 text-xl">{mxene.latticeConstant}</p>
-          </div>
-          <div className="w-full flex flex-row text-white">
-            <p className="text-xl">Band Gap (eV)</p>
-            <p className="ml-2 text-xl">{mxene.bandGap}</p>
-          </div>
-          <div className="w-full flex flex-row text-white">
-            <p className="text-xl">Magnetic Moment (μ<sub>B</sub>)</p>
-            <p className="ml-2 text-xl">{mxene.magneticMoment}</p>
-          </div>
-          <div className="text-white h-full w-full justify-start items-start p-4">
+        <div className="flex justify-center items-center bg-white relative h-[30vh] lg:h-full w-full">
+          <Image src={process.env.NEXT_PUBLIC_SERVER_URL + mxene.bandImage} alt="Band image for the mxene protein" layout='fill' loading='lazy' />
+        </div>
+        <div className="flex flex-col gap-2 justify-center items-center">
+          <div className="result-card h-full w-full justify-start items-start p-4">
             <textarea
               disabled={true}
               value={mxene.poscar_data}
-              className="w-full focus:outline-none border-2 border-gray-300 my-2 p-2 h-full bg-transparent"
+              className="w-full focus:outline-none border-2 border-gray-300 my-2 p-2 h-full"
               rows={5}
             ></textarea>
           </div>
-        </div>
-        <div className="flex flex-col gap-2 justify-center items-center">
-          <div className="w-1/2 hover:theme border text-center border-white bg-white hover:text-white text-black">
+          <div className="theme border border-white w-full hover:bg-white text-white hover:text-black">
             <button
               onClick={handleDownload}
               className="w-full my-2 uppercase text-lg outline-none"
@@ -145,7 +144,7 @@ export default function MxeneResult({ mxene, slug }) {
       </div>
       <style>{`
         .result-card {
-          background-color: rgba(255,255,255,0.9)
+          background-color: #ffffff94
         }
       `}</style>
     </div>
@@ -168,3 +167,11 @@ export const getServerSideProps = async (context) => {
     }
   };
 };
+
+
+// 3D Model - {Model3D}
+// Lattice constant - mxene.latticeConstant (Å)
+// Band Gap - mxene.bandGap (eV)
+// Magnetic moment - mxene.magneticMoment (μ<sub>B</sub>)
+// Band image - <Image src={process.env.NEXT_PUBLIC_SERVER_URL + mxene.bandImage} alt="Band image for the mxene protein" layout='fill' loading='lazy' />
+// Poscar data - <textarea disabled={true} value={mxene.poscar_data} className="w-full focus:outline-none border-2 border-gray-300 my-2 p-2 h-full" rows={5}></textarea>
