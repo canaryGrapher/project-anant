@@ -11,7 +11,7 @@ const OptionSelector = (props) => {
         let color, grids
         if (data === "T") {
             color = "bg-[#FA5F55]"
-            grids = 4
+            grids = 3
         } else if (data === "M") {
             color = "bg-[#5172b0]"
             grids = 3

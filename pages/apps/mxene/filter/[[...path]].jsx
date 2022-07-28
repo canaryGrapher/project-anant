@@ -17,6 +17,7 @@ export default function MxeneFilter({ query, res }) {
   const router = useRouter();
   const [loggedIn, setLoggedIn] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [downloadLoading, setDownloadLoading] = useState(false);
 
   async function getUserInfo() {
     if (await Session.doesSessionExist()) {
@@ -31,12 +32,14 @@ export default function MxeneFilter({ query, res }) {
   const [idList, setIdList] = useState([]);
   const handleDownload = async () => {
     if (idList.length === 0 && idList.length <= 10) {
+      setDownloadLoading(false);
       return MyToaster({
         header: "No mxene selected!",
         message: "Please select at least 1 mxene",
       });
     }
     if (idList.length > 10) {
+      setDownloadLoading(false);
       return MyToaster({
         header: "Max download limit!",
         message: "You cannot download more than 10 mxenes at once",
@@ -50,6 +53,7 @@ export default function MxeneFilter({ query, res }) {
         );
         const blob = b64ToBlob(res.data, "application/zip");
         saveAs(blob, `anant_mxene.zip`);
+        setDownloadLoading(false);
         MyToaster({
           header: "Download successfull!",
           message: `You have downloaded ${idList.length} mxene${
@@ -58,13 +62,14 @@ export default function MxeneFilter({ query, res }) {
         });
         setIdList([]);
       } catch (error) {
-        console.log(error);
+        setDownloadLoading(false);
         MyToaster({
           header: "Download failed!",
           message: "There was an error downloading your mxenes",
         });
       }
     } else {
+      setDownloadLoading(false);
       MyToaster({
         header: "Login to download!",
         message: "Please login to download mxenes",
@@ -76,7 +81,10 @@ export default function MxeneFilter({ query, res }) {
     <Fragment>
       {loading ? <Loader /> : null}
       <div className="w-screen min-h-screen pt-16 flex flex-col items-center justify-start">
-        <Meta title="Filter Search | Mxene Database" extraKeywords={"filter mxenes, mxene data"}/>
+        <Meta
+          title="Filter Search | Mxene Database"
+          extraKeywords={"filter mxenes, mxene data"}
+        />
         <Toaster position="top-right" />
         <div className="my-8">
           <h2 className="md:text-4xl text-2xl text-white text-center">
@@ -98,13 +106,27 @@ export default function MxeneFilter({ query, res }) {
             </p>
             {idList.length > 0 && (
               <button
-                onClick={handleDownload}
+                onClick={() => {
+                  setDownloadLoading(true);
+                  handleDownload();
+                }}
                 className="outline-none md:text-md text-center text-lg bg-gray-300 inline px-4 py-3 border border-gray-600 rounded-3xl"
               >
                 <span>
-                  <i className="fa fa-download mr-1"></i>
+                  {!downloadLoading ? (
+                    <i className="fa fa-download mr-1"></i>
+                  ) : (
+                    <i className="fa fa-circle-o-notch mr-2 animate-spin"></i>
+                  )}
                 </span>{" "}
-                Download {idList.length} Mxene{idList.length === 1 ? "" : "s"}
+                {!downloadLoading ? (
+                  <>
+                    Download {idList.length} Mxene
+                    {idList.length === 1 ? "" : "s"}
+                  </>
+                ) : (
+                  <>Downloading</>
+                )}
               </button>
             )}
             {idList.length <= 0 && res.mxenes.length > 0 && (
