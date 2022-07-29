@@ -20,7 +20,6 @@ export const frontendConfig = () => {
                 signInAndUpFeature: {
                     providers: [
                         ThirdPartyReact.Google.init(),
-                        ThirdPartyReact.Facebook.init(),
                         ThirdPartyReact.Github.init(),
                         ThirdPartyReact.Apple.init(),
                     ],
