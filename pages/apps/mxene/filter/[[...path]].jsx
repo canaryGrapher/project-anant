@@ -271,6 +271,7 @@ export async function getServerSideProps(context) {
       referrerPolicy: "no-referrer",
       body: JSON.stringify(parameters),
     }).catch((err) => {
+      console.log(err);
       context.res.writeHead(302, { Location: "/500" });
       context.res.end();
     });
