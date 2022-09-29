@@ -259,7 +259,7 @@ export async function getServerSideProps(context) {
     if (query.bandGap) {
       parameters["bandGap"] = query.bandGap;
     }
-    const fetchURL = process.env.NEXT_PUBLIC_SERVER_URL + "/searchMxene";
+    const fetchURL = process.env.NEXT_PUBLIC_SERVER_URL + "/searchmxene";
     const resBody = await fetch(fetchURL, {
       method: "POST",
       mode: "cors",
