@@ -22,8 +22,8 @@ const Meta = ({ title, keywords, description, extraKeywords }) => {
 }
 
 Meta.defaultProps = {
-  title: "Project Anant",
-  keywords: "anant, materials theory and simulations group, iisc bangalore, research, database, functional materials, mxene",
+  title: "Project aNANt",
+  keywords: "aNANt, anant, materials theory and simulations group, iisc bangalore, research, database, functional materials, mxene",
   description: "aNANt is an initiative of Materials Theory and Simulations Group, Materials Research Center, Indian Institute of Science Bangalore to develop and host an open-access online repository of functional materials."
 }
 
