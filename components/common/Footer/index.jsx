@@ -8,7 +8,7 @@ const Footer = () => {
         <Image
           width={220}
           height={60}
-          alt="Anant Logo"
+          alt="aNANt Logo"
           src="https://ik.imagekit.io/iiscvsmanipal/anantLogo_jDpZAhBDXG9.png?updatedAt=1638595324436"
         />
         <p className="text-gray-300">A functional materials database</p>

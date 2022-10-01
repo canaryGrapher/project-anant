@@ -91,7 +91,7 @@ export default function MxeneResult({ mxene, slug }) {
         <meta property="og:url" content="" />
         <meta
           property="og:site_name"
-          content="Project Anant"
+          content="Project aNANt"
         />
       </Head>
       <Toaster position="top-right" />
@@ -100,7 +100,7 @@ export default function MxeneResult({ mxene, slug }) {
         <h2 className="md:text-4xl text-3xl font-bold text-white">{mxene.mxene}</h2>
         <div className="w-56 mx-auto my-2 h-1 bg-gray-100"></div>
       </div>
-      <div className="container md:mb-12 lg:p-0 p-4 grid lg:grid-cols-2 grid-cols-1 gap-2">
+      <div className="container md:mb-12 lg:p-8 p-4 grid lg:grid-cols-2 grid-cols-1 gap-2">
         <div className="min-h-[45vh] h-full w-full flex justify-center items-center result-card rounded-lg" id="apphere">
           {Model3D}
         </div>
@@ -118,15 +118,15 @@ export default function MxeneResult({ mxene, slug }) {
         <div className="flex flex-col gap-2 justify-center items-center">
           <div className="md:h-full w-full flex md:flex-row flex-col gap-2">
             <div className="w-full md:w-1/3 h-full bg-gray-200 flex flex-col items-center justify-center rounded-lg p-2 text-center">
-              <h4 className="md:text-3xl text-2xl theme-text font-bold">{mxene.latticeConstant}</h4>
+              <h4 className="md:text-3xl text-2xl theme-text font-bold">{parseFloat(mxene.latticeConstant).toFixed(2)}</h4>
               <h5 className="text-lg">Lattice Constant (Å)</h5>
             </div>
             <div className="w-full md:w-1/3 h-full bg-gray-200 flex flex-col items-center justify-center rounded-lg p-2 text-center">
-              <h4 className="md:text-3xl text-2xl theme-text font-bold">{mxene.bandGap}</h4>
+              <h4 className="md:text-3xl text-2xl theme-text font-bold">{parseFloat(mxene.bandGap).toFixed(2)}</h4>
               <h5 className="text-lg">Band Gap (eV)</h5>
             </div>
             <div className="w-full md:w-1/3 h-full bg-gray-200 flex flex-col items-center justify-center rounded-lg p-2 text-center">
-              <h4 className="md:text-3xl text-2xl theme-text font-bold">{mxene.magneticMoment}</h4>
+              <h4 className="md:text-3xl text-2xl theme-text font-bold">{parseFloat(mxene.magneticMoment).toFixed(2)}</h4>
               <h5 className="text-lg">Magnetic Moment (μ<sub>B</sub>)</h5>
             </div>
           </div>
@@ -149,7 +149,7 @@ export default function MxeneResult({ mxene, slug }) {
           </div>
         </div>
       </div>
-      <div className='flex flex-row justify-between container md:mb-12 lg:p-0 p-4 text-white'>
+      <div className='flex flex-row justify-between container md:mb-12 lg:px-8 p-4 text-white'>
         <p onClick={() => router.back()} className="cursor-pointer hover:underline"><i className='fa fa-arrow-left pr-2'></i>Go back</p>
         <Link href="/apps/mxene/search"><p className="cursor-pointer hover:underline"><i className='fa fa-search pr-2'></i>Search Page</p></Link>
       </div>

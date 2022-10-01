@@ -9,7 +9,7 @@ export default function ContactPage({ faqs, error }) {
   }
   return (
     <div className="min-h-screen bg-theme text-gray-50">
-      <Meta title="Contact | Project Anant" extraKeywords={"contact, email, faqs, questions, doubts"}/>
+      <Meta title="Contact | Project aNANt" extraKeywords={"contact, email, faqs, questions, doubts"}/>
       <main>
         <Contact faqs={faqs} />
       </main>

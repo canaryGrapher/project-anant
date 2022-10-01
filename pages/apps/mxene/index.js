@@ -20,7 +20,7 @@ export default function Mxene() {
     }, [])
     return (
         <div className="w-screen min-h-screen flex flex-col items-center justify-center">
-            <Meta title="Mxene Database | Project Anant" extraKeywords={"mxene database, functional materials, mxene"} />
+            <Meta title="Mxene Database | Project aNANt" extraKeywords={"mxene database, functional materials, mxene"} />
             <div className="pt-20 lg:pt-8">
                 <h2 className="md:text-4xl text-3xl font-bold text-white">MXene Database</h2>
                 <div className="w-56 mx-auto my-2 h-1 bg-gray-100"></div>

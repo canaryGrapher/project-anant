@@ -3,23 +3,23 @@ import Meta from "../components/common/Meta/Meta"
 const TermsAndConditions = () => {
     return (
         <div className="min-h-screen w-screen text-gray-100 lg:px-24 px-6 py-8 pt-28">
-            <Meta title="Terms and Conditions | Project Anant" extraKeywords={"terms and conditions, citing, referening, copyright, license"}/>
+            <Meta title="Terms and Conditions | Project aNANt" extraKeywords={"terms and conditions, citing, referening, copyright, license"}/>
             <h1 className="text-4xl font-black"><strong>Terms and Conditions</strong></h1>
-            <p className="my-6">Welcome to Project Anant!</p>
+            <p className="my-6">Welcome to Project aNANt!</p>
             <p className="mt-1">These terms and conditions outline the rules and regulations for the use of Indian Institute of Science's Website, located at https://anant.mrc.iisc.ac.in/.</p>
-            <p className="mt-1">By accessing this website we assume you accept these terms and conditions. Do not continue to use Project Anant if you do not agree to take all of the terms and conditions stated on this page.</p>
+            <p className="mt-1">By accessing this website we assume you accept these terms and conditions. Do not continue to use Project aNANt if you do not agree to take all of the terms and conditions stated on this page.</p>
             <p className="mt-1">The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and all Agreements: "Client", "You" and "Your" refers to you, the person log on this website and compliant to the Company’s terms and conditions. "The Company", "Ourselves", "We", "Our" and "Us", refers to our Company. "Party", "Parties", or "Us", refers to both the Client and ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner for the express purpose of meeting the Client’s needs in respect of provision of the Company’s stated services, in accordance with and subject to, prevailing law of Netherlands. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to same.</p>
             <h3 className="mt-2 text-lg font-bold"><strong>Cookies</strong></h3>
-            <p className="mt-1">We employ the use of cookies. By accessing Project Anant, you agreed to use cookies in agreement with the Indian Institute of Science's Privacy Policy. </p>
+            <p className="mt-1">We employ the use of cookies. By accessing Project aNANt, you agreed to use cookies in agreement with the Indian Institute of Science's Privacy Policy. </p>
             <p className="mt-1">Most interactive websites use cookies to let us retrieve the user’s details for each visit. Cookies are used by our website to enable the functionality of certain areas to make it easier for people visiting our website. Some of our affiliate/advertising partners may also use cookies.</p>
             <h3 className="mt-2 text-lg font-bold"><strong>License</strong></h3>
-            <p className="mt-1">Unless otherwise stated, Indian Institute of Science and/or its licensors own the intellectual property rights for all material on Project Anant. All intellectual property rights are reserved. You may access this from Project Anant for your own personal use subjected to restrictions set in these terms and conditions.</p>
+            <p className="mt-1">Unless otherwise stated, Indian Institute of Science and/or its licensors own the intellectual property rights for all material on Project aNANt. All intellectual property rights are reserved. You may access this from Project aNANt for your own personal use subjected to restrictions set in these terms and conditions.</p>
             <p className="mt-1">You must not:</p>
             <ul className="px-4" style={{listStyle: "disc"}}>
-                <li>Republish material from Project Anant</li>
-                <li>Sell, rent or sub-license material from Project Anant</li>
-                <li>Reproduce, duplicate or copy material from Project Anant</li>
-                <li>Redistribute content from Project Anant</li>
+                <li>Republish material from Project aNANt</li>
+                <li>Sell, rent or sub-license material from Project aNANt</li>
+                <li>Reproduce, duplicate or copy material from Project aNANt</li>
+                <li>Redistribute content from Project aNANt</li>
             </ul>
             <p className="mt-1">This Agreement shall begin on the date hereof. Our Terms and Conditions were created with the help of the <a href="https://www.termsfeed.com/terms-conditions-generator/">TermsFeed Free Terms and Conditions Generator</a>.</p>
             <p className="mt-1">Parts of this website offer an opportunity for users to post and exchange opinions and information in certain areas of the website. Indian Institute of Science does not filter, edit, publish or review Comments prior to their presence on the website. Comments do not reflect the views and opinions of Indian Institute of Science,its agents and/or affiliates. Comments reflect the views and opinions of the person who post their views and opinions. To the extent permitted by applicable laws, Indian Institute of Science shall not be liable for the Comments or for any liability, damages or expenses caused and/or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this website.</p>

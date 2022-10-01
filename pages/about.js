@@ -11,7 +11,7 @@ export default function AboutPage({ updates, error }) {
 
   return (
     <div className="min-h-screen bg-theme text-gray-50">
-      <Meta title="About | Project Anant" extraKeywords={"about, description, what"}/>
+      <Meta title="About | Project aNANt" extraKeywords={"about, description, what"}/>
       <main>
         <About updates={updates} />
       </main>
