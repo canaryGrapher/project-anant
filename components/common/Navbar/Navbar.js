@@ -18,7 +18,7 @@ const appMenuOptions = [
     { name: "Home", href: "/" },
     { name: "About", href: "/apps/mxene" },
     // { name: "Upload", href: "/apps/mxene/upload" },
-    { name: "Mxene Search", href: "/apps/mxene/search" }
+    { name: "MXene Search", href: "/apps/mxene/search" }
 ]
 
 const NavBar = () => {

@@ -101,7 +101,7 @@ export default function MxeneFilter({ query, res }) {
               <span>
                 <i className="fa fa-list-ul mr-2"></i>
               </span>
-              <strong>{res.totalResults}</strong> mxene
+              <strong>{res.totalResults}</strong> MXene
               {res.totalResults === 1 ? "" : "s"} found
             </p>
             {idList.length > 0 && (
@@ -121,7 +121,7 @@ export default function MxeneFilter({ query, res }) {
                 </span>{" "}
                 {!downloadLoading ? (
                   <>
-                    Download {idList.length} Mxene
+                    Download {idList.length} MXene
                     {idList.length === 1 ? "" : "s"}
                   </>
                 ) : (
