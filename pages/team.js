@@ -13,7 +13,7 @@ const TeamPage = () => {
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-2">
                             <TeamNameTile isLink={false} position={"IISc"} person={"Rohith KMS"} />
                             <TeamNameTile isLink={false} position={"IISc"} person={"Arun CR"} />
-                            <TeamNameTile isLink={false} position={"IISc"} person={"Avinash Mishra"} />
+                            <TeamNameTile isLink={false} position={"IISc"} person={"Avanish Mishra"} />
                         </div>
                     </div>
                     <div className="mt-10">
