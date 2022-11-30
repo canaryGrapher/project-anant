@@ -16,7 +16,7 @@ const PageBar = (props) => {
                 </Link>
             }
             {
-                pages.slice(0, 5).map((page, index) => {
+                pages.slice(0, `${pages.length >= 5 ? 5 : pages.length}`).map((page, index) => {
                     if (page == props.currentPage) {
                         return (
                             <div key={index}>
@@ -47,7 +47,7 @@ const PageBar = (props) => {
                 </div>
             }
             {
-                pages.slice(pages.length-5, pages.length).map((page, index) => {
+                pages.length > 5 && pages.slice(pages.length - 5, pages.length).map((page, index) => {
                     if (page == props.currentPage) {
                         return (
                             <div key={index}>
