@@ -31,7 +31,11 @@ export default function MxeneResult({ mxene, slug }) {
 
   useEffect(() => {
     const DynamicComponent = dynamic(() => import('../../../components/mxene/ThreeDModel'), { ssr: false });
-    setModel3D(<DynamicComponent fileLink={process.env.NEXT_PUBLIC_SERVER_URL + mxene.pdb_file} />);
+    setModel3D(
+      <DynamicComponent
+        fileContents={mxene.pdb_file_content}
+        // fileLink={process.env.NEXT_PUBLIC_SERVER_URL + mxene.pdb_file}
+      />);
   }, [])
 
 
