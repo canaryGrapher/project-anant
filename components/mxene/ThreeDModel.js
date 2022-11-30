@@ -5,7 +5,7 @@ const ModelOfProtein = (props) => {
     window.addEventListener("resize", function (event) {
         stage.handleResize();
     }, true);
-    stage.loadFile(props.fileLink, { defaultRepresentation: true });
+    stage.loadFile(new Blob([props.fileContents], { type: 'text/plain' }), { ext: 'pdb', defaultRepresentation: true });
     stage.backgroundColor = "white";
     return (
         <p></p>
