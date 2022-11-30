@@ -83,7 +83,7 @@ const Sidebar = () => {
                     </div>
                     <div className='flex flex-col mr-10 text-white'>
                         <h1 className='text-4xl font-bold ml-auto'>Hello!</h1>
-                        <p className='text-lg'>Welcome to Anant</p>
+                        <p className='text-lg'>Welcome to <span><Link href={'/'}>aNANt</Link></span></p>
                     </div>
                 </div>
                 <div className='w-full text-right my-5 px-4 flex flex-col items-end'>

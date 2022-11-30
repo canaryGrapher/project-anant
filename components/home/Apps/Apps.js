@@ -27,7 +27,7 @@ export default function Apps() {
   return (
     <div className="text-gray-50">
       <Head>
-        <title>Our Apps | Project Anant</title>
+        <title>Our Apps | Project aNANt</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

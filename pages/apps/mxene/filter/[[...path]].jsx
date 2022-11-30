@@ -101,7 +101,7 @@ export default function MxeneFilter({ query, res }) {
               <span>
                 <i className="fa fa-list-ul mr-2"></i>
               </span>
-              <strong>{res.totalResults}</strong> mxene
+              <strong>{res.totalResults}</strong> MXene
               {res.totalResults === 1 ? "" : "s"} found
             </p>
             {idList.length > 0 && (
@@ -121,7 +121,7 @@ export default function MxeneFilter({ query, res }) {
                 </span>{" "}
                 {!downloadLoading ? (
                   <>
-                    Download {idList.length} Mxene
+                    Download {idList.length} MXene
                     {idList.length === 1 ? "" : "s"}
                   </>
                 ) : (
@@ -259,7 +259,7 @@ export async function getServerSideProps(context) {
     if (query.bandGap) {
       parameters["bandGap"] = query.bandGap;
     }
-    const fetchURL = process.env.NEXT_PUBLIC_SERVER_URL + "/searchMxene";
+    const fetchURL = process.env.NEXT_PUBLIC_SERVER_URL + "/searchmxene";
     const resBody = await fetch(fetchURL, {
       method: "POST",
       mode: "cors",
@@ -271,6 +271,7 @@ export async function getServerSideProps(context) {
       referrerPolicy: "no-referrer",
       body: JSON.stringify(parameters),
     }).catch((err) => {
+      console.log(err);
       context.res.writeHead(302, { Location: "/500" });
       context.res.end();
     });

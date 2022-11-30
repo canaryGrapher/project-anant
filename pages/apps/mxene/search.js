@@ -89,7 +89,7 @@ export default function MxeneSearch() {
         <Fragment>
             {loading ? <Loader /> : null}
             <div className="w-screen py-20 flex flex-col items-center justify-start" style={{ minHeight: 'max-content' }}>
-                <Meta title="Mxene Search | Project Anant" extraKeywords={"search mxenes, find mxenes, periodic table"}/>
+                <Meta title="Mxene Search | Project aNANt" extraKeywords={"search mxenes, find mxenes, periodic table"}/>
                 <div className="mt-8 mb-3">
                     <h2 className="md:text-4xl text-2xl text-white text-center">MXene Search</h2>
                     <div className="w-56 mx-auto my-2 h-1 bg-gray-100"></div>

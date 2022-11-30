@@ -9,15 +9,15 @@ const TeamPage = () => {
                     <h1 className="text-3xl mb-5">Meet the team</h1>
                     <TeamNameTile isLink={false} position={"Project Lead"} person={"Prof Abhishek Kumar Singh"} />
                     <div className="mt-10">
-                        <h3 className="text-2xl font-medium">Anant Version 1</h3>
+                        <h3 className="text-2xl font-medium">aNANt Version 1</h3>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-2">
                             <TeamNameTile isLink={false} position={"IISc"} person={"Rohith KMS"} />
                             <TeamNameTile isLink={false} position={"IISc"} person={"Arun CR"} />
-                            <TeamNameTile isLink={false} position={"IISc"} person={"Avinash Mishra"} />
+                            <TeamNameTile isLink={false} position={"IISc"} person={"Avanish Mishra"} />
                         </div>
                     </div>
                     <div className="mt-10">
-                        <h3 className="text-2xl font-medium">Anant Version 2</h3>
+                        <h3 className="text-2xl font-medium">aNANt Version 2</h3>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-2">
                             <TeamNameTile isLink={false} position={"IISc"} person={"Ashutosh Srivastava"} />
                             <TeamNameTile isLink={false} position={"IISc"} person={"Nikhil Khatavkar"} />

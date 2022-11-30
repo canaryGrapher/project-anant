@@ -2,7 +2,7 @@
   "name": "project-anant",
   "version": "0.1.0",
   "private": true,
-  "description": "Frontend for the Anant project",
+  "description": "Frontend for the aNANt project",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

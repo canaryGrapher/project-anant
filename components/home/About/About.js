@@ -8,7 +8,7 @@ const About = (props) => {
         <div className="flex lg:flex-row flex-col items-center min-h-screen lg:px-20 px-6 py-8 pt-16">
             <div className="lg:w-1/2 w-full pb-5 lg:pb-0">
                 <div className="lg:w-3/4 ml-auto my-4">
-                    <Image src="https://ik.imagekit.io/iiscvsmanipal/anantLogo_jDpZAhBDXG9.png?updatedAt=1638595324436" alt="Anant Logo" width={700} height={175} layout="responsive" />
+                    <Image src="https://ik.imagekit.io/iiscvsmanipal/anantLogo_jDpZAhBDXG9.png?updatedAt=1638595324436" alt="aNANt Logo" width={700} height={175} layout="responsive" />
                 </div>
                 <p className="lg:w-3/4 ml-auto text-left lg:text-justify">
                     aNANt is an initiative of Materials Theory and Simulations Group, Materials Research Center, Indian Institute of Science Bangalore to develop and host an open-access online repository of functional materials. <br /><br />

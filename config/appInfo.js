@@ -1,8 +1,8 @@
 export const appInfo = {
     // learn more about this on https://supertokens.com/docs/thirdpartyemailpassword/appinfo
-    appName: "Project Anant",
-    apiDomain: "http://localhost:3002",
-    websiteDomain: "http://localhost:3000",
+    appName: "Project aNANt",
+    apiDomain: "https://anantapi.mrc.iisc.ac.in",
+    websiteDomain: "https://anant.mrc.iisc.ac.in",
     apiBasePath: "/",
     websiteBasePath: "/auth"
 }

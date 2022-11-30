@@ -6,7 +6,7 @@ const Landing = () => {
   return (
     <div className="text-gray-50">
       <Head>
-        <title>Project Anant</title>
+        <title>Project aNANt</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -16,7 +16,7 @@ const Landing = () => {
             <h3 className={`bg-gray-100 text-5xl theme-text py-2 px-5 ${styles.welcome}`}>Welcome to</h3>
             <div className="flex flex-col my-2 px-5 lg:px-12">
               <h1 className="px-5 m-0 lg:text-left text-center md:text-9xl text-6xl">
-                <Image height={130} width={600} alt="Anant Logo" src="https://ik.imagekit.io/iiscvsmanipal/anantLogo_jDpZAhBDXG9.png?updatedAt=1638595324436" />
+                <Image height={130} width={600} alt="aNANt Logo" src="https://ik.imagekit.io/iiscvsmanipal/anantLogo_jDpZAhBDXG9.png?updatedAt=1638595324436" />
               </h1>
               <p className="lg:text-left text-center md:text-4xl text-xl">A Functional Material Database</p>
             </div>
